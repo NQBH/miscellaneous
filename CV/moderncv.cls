@@ -72,6 +72,7 @@
 % \AtEndPreamble hook (loading etoolbox instead of defining the macro, as to avoid incompatibilities with etoolbox (and packages relying on it) defining the macro too)
 % languages
 \usepackage[utf8]{inputenc}
+\usepackage[vietnamese,english]{babel}
 \RequirePackage{etoolbox}
 %\let\@endpreamblehook\@empty
 %\def\AtEndPreamble{\g@addto@macro\@endpreamblehook}
