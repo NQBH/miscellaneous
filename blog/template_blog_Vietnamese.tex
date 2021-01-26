@@ -1,11 +1,14 @@
-\documentclass[onsided,11pt]{article}
+\documentclass[onsided,12pt]{article}
 \usepackage[utf8]{vietnam}
 \usepackage[vietnamese,english]{babel}
+\usepackage{float}
 \usepackage{graphicx}
+\usepackage{subfig}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
 \usepackage{amsmath,amssymb,amsthm}
 \allowdisplaybreaks
+\usepackage[splitrule]{footmisc} %% The splitrule option draws a full width rule above the continued part of the footnote as a visual cue to readers.
 \numberwithin{equation}{section}
 \newtheorem{assumption}{Assumption}[section]
 \newtheorem{lemma}{Lemma}[section]
@@ -24,12 +27,12 @@
 \pagestyle{fancy}
 \fancyhf{}
 \addtolength{\headheight}{0pt}% obsolete
-\lhead{\itshape \small ~\thesection}
-\rhead{\itshape \small \nouppercase{\leftmark}} %\nouppercase !
+\lhead{\small \textsc{Sect.} ~\thesection}
+\rhead{\small \nouppercase{\leftmark}} %\nouppercase !
 \renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 \cfoot{\thepage}
 
-\title{}
+\title{Psychological Manipulation}
 \author{Nguyễn Quản Bá Hồng}
 \date{\today}
 
