@@ -1,0 +1,819 @@
+\documentclass[onsided]{book}
+\usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
+\addbibresource{/home/nguyen/1_NQBH/math/bib.bib}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{soul} % strikethrough text
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{notation}{Notation}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{ques}{Question}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\usepackage[left=0.5in,right=0.5in,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\addtolength{\headheight}{0pt}% obsolete
+\lhead{\itshape \scriptsize \chaptername~\thechapter}
+\rhead{\itshape \scriptsize \nouppercase{\leftmark}} %\nouppercase !
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\cfoot{\thepage}
+
+\title{N26}
+\author{Collector: Nguyen Quan Ba Hong}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{secnumdepth}{6}
+\setcounter{tocdepth}{6}
+\tableofcontents
+
+%------------------------------------------------------------------------------%
+
+\part{Wikipedia's}
+
+\chapter{\href{https://en.wikipedia.org/wiki/N26}{Wikipedia/N26}}
+
+\textbf{N26 Bank GmbH.}
+\begin{itemize}
+    \item \textbf{Industry.} \href{https://en.wikipedia.org/wiki/Financial_services}{Financial services}
+    \item \textbf{Headquarters.} Klosterstraße 62, 10179, Berlin, Germany
+    \item \textbf{Area served.} Europe, United States
+    \item \textbf{Services.} Direct bank
+    \item \textbf{Owner.} N26 GmbH
+    \item \textbf{Website.} \url{https://n26.com/en-de}
+\end{itemize}
+\textit{N26} (known as \textit{Number 26} until July 2016) is a German \href{https://en.wikipedia.org/wiki/Neobank}{neobank} headquartered in Berlin, Germany.
+
+N26 currently offers its services throughout various member states of the \href{https://en.wikipedia.org/wiki/Single_Euro_Payments_Area}{Single Euro Payments Area (SEPA)} and in the United States.[1]
+
+Its operations in the United Kingdom have been suspended since April 2020 due to the uncertainties caused by \href{https://en.wikipedia.org/wiki/Brexit}{Brexit}.[2]
+
+\section{History}
+The company was founded as a \href{https://en.wikipedia.org/wiki/Financial_technology}{financial technology} startup in 2013 by Valentin Stalf and Maximilian Tayenthal.[3]
+
+The name is derived from the 26-sided \href{https://en.wikipedia.org/wiki/Rubik%27s_Cube}{Rubik's Cube}.[4]
+    
+In Apr 2015, N26 received €10 million in a \href{https://en.wikipedia.org/wiki/Series_A_round}{series A round} by \href{https://en.wikipedia.org/wiki/Valar_Ventures}{Valar Ventures}.[5]
+
+Valar Ventures was co-founded by \href{https://en.wikipedia.org/wiki/Peter_Thiel}{Peter Thiel}, \href{https://en.wikipedia.org/wiki/PayPal}{PayPal}'s co-founder.
+
+%
+Initially, Number 26 started operations without holding a banking license; instead, it was merely an interface while the back end was provided by \href{https://en.wikipedia.org/wiki/Wirecard}{Wirecard}.
+
+In Jul 2016, it re-branded as N26 Bank, having received its own \href{https://en.wikipedia.org/wiki/Banking_license}{banking license} from \href{https://en.wikipedia.org/wiki/BaFin}{BaFin}.[6]
+
+%
+In Jun 2016 N26 notified several customers that their accounts were going to be terminated.
+
+The company cited as main reasons that some customers were making too many ATM withdrawals, while others were suspected of \href{https://en.wikipedia.org/wiki/Money_laundering}{money laundering}.[7]
+
+%
+In Nov 2016, customers were asked to transfer their accounts to N26 Bank's infrastructure.
+
+As a result, they would have to get a new account \href{https://en.wikipedia.org/wiki/IBAN}{IBAN} number, while the previous accounts held by Wirecard would be terminated.
+
+During the transfer of its customer base to its own banking infrastructure, N26 customers took to social media to report various problems.[8]
+
+%
+In Dec 2016, N26 announced that its basic \href{https://en.wikipedia.org/wiki/Current_account_(banking)}{current account} would become available to 17 \href{https://en.wikipedia.org/wiki/Eurozone}{Eurozone} countries. 
+
+%
+In Mar 2018, N26 raised \$160 million in a \href{https://en.wikipedia.org/wiki/Series_C_round}{series C round} by Chinese internet giant \href{https://en.wikipedia.org/wiki/Tencent_Holdings}{Tencent Holdings} and Allianz X (\href{https://en.wikipedia.org/wiki/Allianz}{Allianz}).
+
+On the same date, N26 claimed a customer base of 850,000, with the goal of having 5,000,000 customers by 2020.
+
+%
+In Jan 2019, N26 raised an additional \$300 million in a \href{https://en.wikipedia.org/wiki/Series_D_round}{series D round} led by Insight Venture Partners with Singapore's sovereign wealth fund GIC and a few existing investors also participating at a valuation of \$2.7 billion.
+
+With its new valuation of \$2.7 billion, N26 overtook \href{https://en.wikipedia.org/wiki/Revolut}{Revolut} as the most valuable mobile bank in Europe.[9][10]
+
+%
+On 11 Jul 2019, N26 soft launched in the United States, initially allowing customers to sign up for a waiting list.
+
+Due to differences in the U.S. market (particularly in regards to regulatory schemes for financial providers), N26 partnered with \href{https://en.wikipedia.org/wiki/Axos_Bank}{Axos Bank} to serve as the provider of its services, insured under \href{https://en.wikipedia.org/wiki/Federal_Deposit_Insurance_Corporation}{FDIC}.
+
+Unlike in Europe, where they are provided by \href{https://en.wikipedia.org/wiki/Mastercard}{MasterCard}, N26 uses \href{https://en.wikipedia.org/wiki/Visa_Inc.}{Visa} cards for U.S. customers.[11]
+
+The following week, the company extended its series D round with an additional \$170 million investment, valuing the company at \$3.5 billion.[12]
+
+In May 2020, the company announced the extension of its recent Series D round with an additional \$100M raised at the same valuation.[13]
+
+%
+On Feb 11, 2020, N26 announced that it will cease doing business in the United Kingdom and close all accounts effective Apr 15, due to the \href{https://en.wikipedia.org/wiki/Brexit}{UK withdrawal from the European Union}.
+
+The company cited that European financial institutions can no longer operate in the region without applying for a banking license in the UK (rather than being allowed to operate under its EU license), as well as ``the timings and framework outlined in the \href{https://en.wikipedia.org/wiki/Brexit_withdrawal_agreement}{EU Withdrawal Agreement}''.[14][15]
+
+%
+In Sep 2020, N26 announced the appointment of former \href{https://en.wikipedia.org/wiki/Dropbox_(service)}{Dropbox} executive Adrienne Gormley as the company's chief operating officer, replacing Martin Schilling who parted with the company in March.[16]
+
+\section{Product overview}
+\textsf{N26 MasterCard}.
+
+N26 provides a free basic \href{https://en.wikipedia.org/wiki/Transaction_account}{current account} and a \href{https://en.wikipedia.org/wiki/Debit_MasterCard}{Debit MasterCard} card to all its customers, as well as a \href{https://en.wikipedia.org/wiki/Maestro_(debit_card)}{Maestro} card for their customers in certain markets.
+
+Additionally, customers can request overdraft and investment products. N26 also offers premium accounts (\textit{N26 You} and \textit{N26 Metal}) which offer additional features for a monthly fee.
+
+%
+The account opening process can be completed via a video chat with N26's identity verification partner, IDnow.
+
+Only holders of certain passports and ID cards can verify their identity online; others will have to visit a German post office if it is supported by Postident.
+
+\subsection{Availability}
+N26 offers its services in 22 European countries, plus the United States.[17]
+
+In Austria, Germany and the Netherlands customers can additionally request a \href{https://en.wikipedia.org/wiki/Maestro_card}{Maestro card}.
+
+N26 has closed its business in the UK and all bank accounts are closed.
+
+%
+Some parts of the website and customer service are provided in English, German, French, Italian and Spanish regardless of the customer's residency.[18]
+
+\subsection{Mobile payments}
+N26 customers in several of its markets can use their smartphone for in-store purchases.
+
+N26 supports \href{https://en.wikipedia.org/wiki/Google_Pay}{Google Pay} in France, Belgium, Germany, Ireland, Italy, Slovakia, and Spain, while it supports \href{https://en.wikipedia.org/wiki/Apple_Pay}{Apple Pay} in Austria, Belgium, Germany, The Netherlands, Greece, Finland, France, Ireland, Italy, Luxembourg, Slovenia and Spain.
+
+Additional countries are added as both Google Pay and Apple Pay gradually expand throughout N26's markets.
+
+\subsection{Fees}
+N26 has a basic account with no monthly fee and charges no fees for basic banking transactions or credit card payments in foreign currencies.
+
+In the Eurozone (except Austria and Italy) ATM withdrawals are limited to 5 per month for primary account holders and 3 per month for others.
+
+N26 charges a €2 fee for any additional withdrawal.
+
+In the UK, ATM withdrawals were unlimited.[19]
+
+%
+ATM withdrawals in foreign currencies are also subject to a 1.70\% fee for basic account and are free for N26 You and Metal account holders.
+
+%
+German customers can also withdraw and deposit money at retail locations.
+
+While there is no fee for withdrawals up to €999, free deposits are limited to €100 and additional amounts are subject to a 1.5\% fee.
+
+\subsection{Security}
+Customers can lock and unlock their MasterCard through the mobile app without having to contact N26 support.
+
+They can also enable and disable it for usage abroad or online usage and modify the daily limits for cash withdrawals and card payments. 
+
+\subsection{Mobile transfers}
+The N26 app can scan the users' contacts in their smartphone and identify other N26 account holders.
+
+Using a service called Moneybeam a N26 customer can send funds to these contacts without having to fill in their \href{https://en.wikipedia.org/wiki/IBAN}{IBAN}.
+
+Moneybeam transfers are executed instantaneously.
+
+\section{Security incidents}
+In Dec 2016, Vincent Haupert, a research fellow in computer science from the \href{https://en.wikipedia.org/wiki/University_of_Erlangen-Nuremberg}{University of Erlangen-Nuremberg}, demonstrated how he could take advantage of security vulnerabilities in order to get access to N26 users' accounts.[20]
+
+Haupert had already notified N26 of the vulnerabilities back in Sep 2016.[21]
+
+N26 acknowledged the issues and claimed that they had been fixed before they became public, adding that no user account had actually been compromised.
+
+%
+In Mar 2019, German media reported that customers who had their account credentials stolen found it difficult to contact the bank and resolve the situation.
+
+Customer advocates reported that there was a growing number of complaints from \href{https://en.wikipedia.org/wiki/Phishing}{phishing} victims who were unable to access their accounts and found it difficult to contact the bank.
+
+In a widely reported case N26 took more than 2 weeks to restore access for a customer who had €80,000 stolen from their account.
+
+The reports raised the question if the rapid growth of the bank had left it ill-equipped to deal with the increasing number of support cases.[22][23][24]\hfill$\square$
+
+%------------------------------------------------------------------------------%
+
+\part{\href{https://n26.com/}{N26}}
+
+\chapter{\href{https://n26.com/en-de}{Home}}
+
+\section{The bank you'll love}
+N26 is the mobile bank that lets you manage your bank account, spend and set money aside in real-time, 100\% mobile.
+
+Open yours in minutes right from your smartphone, and start spending before your physical card arrives.
+
+\href{https://get.n26.com/?ch=homepage3&_ga=2.115453510.1189510936.1611884241-1079622474.1611780638}{Open Bank Account}.
+
+\section{Your free N26 bank account}
+Join N26 to get a free bank account and a Mastercard debit card to use all over the world.
+
+Stay up-to-date and in control of your finances, wherever you are.
+
+\begin{remark}
+    Up to €50,000 balance, after which a deposit fee of 0.5\% p.a. may apply.
+    
+    \href{https://n26.com/en-de/legal-documents}{Terms \& Conditions}.
+\end{remark}
+
+\section{N26 Smart - spend and save with confidence}
+Discover N26 Smart - the bank account that gives you more control.
+
+Enjoy access to a direct Customer Support hotline, and get a colorful Mastercard debit card, free ATM withdrawals, up to 10 Spaces sub-accounts, access to Shared Spaces, and insights into your spending habits with Statistics - a powerful AI-powered categorization tool.
+
+\href{https://n26.com/en-de/bank-account}{Discover N26 Smart}.
+
+\section{Smart, flexible banking in real-time}
+Whether you're withdrawing or depositing money, or sending a MoneyBeam to your friend in real-time - keep on top of your spending thanks to automated push-notifications after each transaction.
+
+Stay flexible with CASH26, and withdraw and deposit money at no cost at over 11,500 shops in Germany.
+
+\href{https://n26.com/en-de/cash26}{Discover CASH26}.
+
+\section{Your finances at a glance with Statistics}
+Whether it's your salary coming in or money going out when you're buying that treat in your favorite café - thanks to N26's automatic categorization feature Statistics, you can see all your transactions at a glance, divided into smart sub-categories to keep you posted on your financial habits.
+
+\section{Your safety is top priority}
+N26 operates with a full European banking license, and every N26 bank account is safe up to €100,000 according to EU directives.
+
+Thanks to 3D Secure, you're also protected when making purchases online.
+
+\section{Dream big and save money with Spaces}
+N26 Spaces are a new way for you to handle your money.
+
+It's easy - create a space with just a few clicks and start saving money for the things that matter.
+
+Monitor your financial goals and keep a track of your progress.
+
+Use Shared Spaces to manage money together with up to 10 N26 customers.
+
+\href{https://n26.com/en-de/shared-spaces-bank-account}{Shared Spaces}.
+
+\section{Multi-language support}
+If you have any questions or run into any problems, N26's Customer Service team will be on hand to help you in English, French, German, Spanish and Italian.
+
+Just reach out to them via email or chat with an N26 expert in your app.
+
+\href{https://support.n26.com/?_ga=2.152159737.1189510936.1611884241-1079622474.1611780638}{Visit Support Center}.
+
+\section{Banking with N26: smart, digital, simple}
+N26 helps you stay on top of your finances effortless and flexible.
+
+Open your free bank account without annoying paperwork within minutes.
+
+Compare all N26 bank accounts and choose an account that suits you.
+
+%------------------------------------------------------------------------------%
+
+\chapter{Plans}
+
+\section{\href{https://n26.com/en-de/plans}{N26 Personal Plans}}
+
+\subsection{N26 Standard}
+The free* online bank account.
+
+\subsubsection{Your Mastercard debit}
+\begin{itemize}
+    \item \textbf{A transparent debit card.} \textit{Accepted worldwide}. Get your statement transparent Mastercard debit.
+    \item \textbf{Contactless payments.} \textit{NFC technology-enabled}. Go cashless and pay with your contactless card at the checkout.
+    \item \textbf{Mobile payments.} \textit{With your smartphone}. You can use your N26 card with Apple Pay and Google Pay.
+    \item \textbf{\st{Optional extra card}.} \textit{For more flexibility}. Unlock this feature with N26 Smart, You or Metal.
+\end{itemize}
+
+\subsubsection{Your bank account}
+\begin{itemize}
+    \item \textbf{100\% mobile banking} \textit{for all your transactions}. Send and receive transfers, set up direct debits and standing orders, and move money instantly between N26 users.
+    \item \textbf{Free payments worldwide.} \textit{In any currency}. Enjoy free and unlimited payments in any currency, wherever you are.
+    \item \textbf{Up to 3 free withdrawals.} \textit{In Germany}. Enjoy up to 3 free ATM withdrawals per month.
+    \item \textbf{\st{Unlimited free withdrawals}.} \textit{In foreign currencies}. Unlock this feature with N26 You or Metal.
+\end{itemize}
+
+\subsubsection{Your travel insurance package}
+\begin{itemize}
+    \item \textbf{\st{Medical travel insurance}.} \textit{In case of emergencies}. Unlock this feature with N26 You or Metal.
+    \item \textbf{\st{Trip insurance}.} In case of cancellations. Unlock this feature with N26 You or Metal.
+    \item \textbf{\st{Pandemic travel coverage}} \textit{in case of COVID-19}. Unlock this feature with N26 You or Metal.
+    \item \textbf{\st{Flight insurance}.} \textit{In case of delays.} Unlock this feature with N26 You or Metal.
+    \item \textbf{\st{Luggage coverage}.} \textit{In case of delay or loss}. Unlock this feature with N26 You or Metal.
+\end{itemize}
+
+\subsubsection{Your lifestyle insurances}
+\begin{itemize}
+    \item \textbf{\st{Mobility insurance}.} \textit{For shared vehicles.} Unlock this feature with N26 You or Metal.
+    \item \textbf{\st{Winter sport insurance}.} \textit{In case of accidents}. Unlock this feature with N26 You or Metal.
+    \item \textbf{\st{Car rental}.} \textit{Away from home}. Unlock this feature with N26 You or Metal.
+    \item \textbf{\st{Phone insurance}.} \textit{For damage and theft}. Unlock this feature with N26 Metal.
+\end{itemize}
+
+\subsubsection{Your extra features}
+\begin{itemize}
+    \item \textbf{Statistics} \textit{for insights on your spending}. Get your spending automatically categorized in a monthly overview.
+    \item \textbf{Up to 2 Spaces sub-accounts} \textit{for budgeting and saving}. Create spaces to organize your money and save for your financial goals.
+    \item \textbf{\st{Shared Spaces sub-accounts}} \textit{with up to 10 N26 users}. Unlock this feature with N26 Smart, You or Metal.
+    \item \textbf{\st{Round-ups}} \textit{to save with every purchase}. Unlock this feature with N26 Smart, You or Metal.
+    \item \textbf{\st{Premium partner offers}} \textit{selected for you}. Unlock this feature with N26 Smart, You or Metal.
+    \item \textbf{\st{Unique Experiences}} \textit{carefully curated} Unlock this feature with N26 Metal.
+\end{itemize}
+
+\subsubsection{Your customer support}
+\begin{itemize}
+    \item \textbf{Chatbot support.} \textit{24/7 assistance}. N26 chatbot can answer your basic questions, 24/7.
+    \item \textbf{In-app livechat} \textit{with N26 specialists}. You can contact us directly through your N26 app or via the web app, 7 days a week.
+    \item \textbf{\st{Phone support}} \textit{via a direct hotline}. Unlock this feature with N26 Smart, You or Metal.
+\end{itemize}
+
+\subsubsection{Your account security}
+\begin{itemize}
+    \item \textbf{Deposit protection.} \textit{Up to €100,000}. Your money is protected by the German Deposit Protection Scheme.
+    \item \textbf{3D Secure.} \textit{For your online payments}. All your online payments are secure, thanks to advanced 3D Secure (3DS) technology.
+    \item \textbf{Two-factor authentication.} \textit{For a secure log-in}. An additional layer of security to keep your money safe.
+\end{itemize}
+
+\subsection{N26 Smart}
+The bank account that gives you more control.
+
+See \href{https://n26.com/en-de/plans}{N26 Personal Plans} for details.
+
+\subsection{N26 You}
+The debit card for everyday and travel.
+
+See \href{https://n26.com/en-de/plans}{N26 Personal Plans} for details.
+
+\subsection{N26 Metal}
+The premium account with a metal card.
+
+See \href{https://n26.com/en-de/plans}{N26 Personal Plans} for details.
+
+\section{\href{https://n26.com/en-de/plans-business}{N26 Business Plans}}
+
+\subsection{N26 Business}
+The free* online business bank account.
+
+\subsubsection{Your Mastercard debit}
+\begin{itemize}
+    \item \textbf{A transparent debit card.} \textit{Accepted worldwide}. Get your statement transparent Mastercard debit.
+    \item \textbf{Contactless payments.} \textit{NFC technology-enabled}. Go cashless and pay with your contactless card at the checkout.
+    \item \textbf{Mobile payments.} \textit{With your smartphone}. You can use your N26 card with Apple Pay and Google Pay.
+    \item \textbf{\st{Optional extra card}.} \textit{For more flexibility}. Unlock this feature with N26 Business Smart, Business You or Business Metal.
+\end{itemize}
+
+\subsubsection{Your bank account}
+\begin{itemize}
+    \item \textbf{100\% mobile banking} \textit{for all your transactions}. Send and receive transfers, set up direct debits and standing orders, and transfer money instantly.
+    \item \textbf{0.1\% cashback} \textit{on all card purchases}. Pay with your N26 Mastercard and get 0.1\% cashback every month.
+    \item \textbf{Free payments worldwide.} \textit{In any currency}. Enjoy free and unlimited payments in any currency, wherever you are.
+    \item \textbf{Up to 3 free withdrawals.} \textit{In Germany}. Enjoy up to 3 free withdrawals per month.
+    \item \textbf{\st{Free withdrawals}.} \textit{In foreign currencies}. Unlock this feature with N26 Business You or Business Metal.
+\end{itemize}
+
+\subsubsection{Your travel insurance package}
+\begin{itemize}
+    \item \textbf{\st{Travel medical insurance}.} \textit{In case of emergency}. Unlock this feature with N26 Business You or Business Metal.
+    \item \textbf{\st{Trip insurance}.} \textit{In case of cancellation}. Unlock this feature with N26 Business You or Business Metal.
+    \item \textbf{\st{Pandemic travel coverage}} \textit{in case of COVID-19}. Unlock this feature with N26 Business You or Business Metal.
+    \item \textbf{\st{Flight insurance}.} \textit{In case of delay}. Unlock this feature with N26 Business You or Business Metal.
+    \item \textbf{\st{Luggage coverage}.} \textit{In case of delay or loss}. Unlock this feature with N26 Business You or Business Metal.
+\end{itemize}
+
+\subsubsection{Your lifestyle insurances}
+\begin{itemize}
+    \item \textbf{\st{Mobility}.} \textit{For shared vehicles}. Unlock this feature with N26 Business You or Business Metal.
+    \item \textbf{\st{Winter sport insurance}.} \textit{In case of accidents}. Unlock this feature with N26 Business You or Business Metal.
+    \item \textbf{\st{Car rental}.} \textit{Away from home}. Unlock this feature with N26 Business Metal.
+    \item \textbf{\st{Phone insurance}.} \textit{For damage and theft}. Unlock this feature with N26 Business Metal.
+\end{itemize}
+
+\subsubsection{Your extra features}
+\begin{itemize}
+    \item \textbf{Transaction list} \textit{downloadable in CSV and PDF}. For easier tax return and invoicing
+    \item \textbf{Statistics} \textit{for insights on your spending}. Get your spending automatically categorized in a monthly overview.
+    \item \textbf{Up to 2 Spaces sub-accounts} \textit{for budgeting and saving}. Create spaces to organize your money and save for your financial goals.
+    \item \textbf{\st{Shared sub-accounts}} \textit{with up to 10 N26 users}. Unlock this feature with N26 Business Smart, Business You or Business Metal.
+    \item \textbf{\st{Round-ups}} \textit{to save with every purchase}. Unlock this feature with N26 Business Smart, Business You or Business Metal.
+    \item \textbf{\st{Premium partner offers}} \textit{selected for you}. Unlock this feature with N26 Business Smart, Business You or Business Metal.
+\end{itemize}
+
+\subsubsection{Your Customer Support}
+\begin{itemize}
+    \item \textbf{Chatbot support.} \textit{24/7 assistance}. Our chatbot can answer your basic questions, 24/7.
+    \item \textbf{In-app livechat} \textit{with N26 specialists}.  You can contact us directly through your N26 app or via the web app, 7 days a week.
+    \item \textbf{\st{Phone support}} \textit{via a direct hotline.} You can contact us on the phone, 7 days a week.
+\end{itemize}
+
+\subsubsection{Your account security}
+\begin{itemize}
+    \item \textbf{Deposit protection.} \textit{Up to €100,000}. Your money is protected by the German Deposit Protection Scheme.
+    \item \textbf{3D Secure.} \textit{For your online payments}. All your online payments are secure, thanks to advanced 3D Secure (3DS) technology.
+    \item \textbf{2-factor authentication.} \textit{For a secure log-in}. An additional layer of security to keep your money safe.
+\end{itemize}
+
+\subsection{N26 Business Smart}
+The intelligent business bank account for freelancers.
+
+See \href{https://n26.com/en-de/plans-business}{N26 Personal Plans} for details.
+
+\subsection{N26 Business You}
+The business bank account for everyday and travel.
+
+See \href{https://n26.com/en-de/plans-business}{N26 Personal Plans} for details.
+
+\subsection{N26 Business Metal}
+The business bank account with cashback.
+
+See \href{https://n26.com/en-de/plans-business}{N26 Personal Plans} for details.
+
+%------------------------------------------------------------------------------%
+
+\chapter{\href{https://n26.com/en-de/free-bank-account}{Free Bank Account}}
+
+\section{N26 Standard: A free* bank account - 100\% mobile and flexible}
+The standard N26 account is a checking account at no extra cost.
+
+Manage your account from your smartphone and discover modern banking.
+
+Start making free mobile payments before your physical card arrives.
+
+\begin{remark}
+    *Up to €50,000 balance, after which a deposit fee of 0.5\% p.a. may apply.
+    
+    \href{https://n26.com/en-de/legal-documents}{Terms \& Conditions}.
+\end{remark}
+
+\section{Your bank account with N26}
+N26 offers a free online bank account that you can open from your smartphone in less than 8 minutes.
+
+Benefit from free withdrawals at ATMs, contactless technology and free payments in all currencies - wherever you are in the world.
+
+Smart features like automatic categorization of your spending and real-time push notification help you keep track of your finances.
+
+All of this at zero cost.
+
+\section{Transparent N26 Mastercard Debit}
+With your N26 account you receive a transparent Mastercard Debit, accepted all around the world.
+
+Thanks to contactless technology you can use your N26 Mastercard for contactless payments.
+
+Add it to Apple or Google Wallet to use mobile payments, even before your physical card arrives.
+
+\section{N26 Smart - spend and save with confidence}
+Discover N26 Smart, N26's newest premium bank account.
+
+Unlock access to 10 Spaces sub-accounts, including Shared Spaces to easily save together with others.
+
+Plus, get a colorful Mastercard debit card, 5 free ATM withdrawals in Germany, unlimited free ATM withdrawals while traveling within the Eurozone, and zero foreign transaction fees when spending in foreign currencies.
+
+And if you ever need help, we'll always only be a dial away with your premium Customer Support hotline.
+
+\href{https://n26.com/en-de/bank-account}{Discover N26 Smart}.
+
+\section{Save with Spaces and reach your goals}
+Spaces is a N26 feature that lets you create your own sub-accounts to better organize your finances and save money.
+
+Create a space with just a few clicks, set a savings target and follow your progress.
+
+%
+As an N26 You or Metal customer you can also invite up to 10 other N26 users to your Space.
+
+This makes saving up together and managing common expenses a breeze!
+
+\href{https://n26.com/en-de/spaces}{Discover Spaces}.
+
+\section{Free withdrawals at ATMs}
+Why pay fees?
+
+With an N26 Standard account you can withdraw money from ATMs for free, between 3-5 times a month.
+
+Abroad you can withdraw as often as you want with no additional fees.
+
+Using CASH26 at 1 of N26's over 11.500 partner shops (such as Rewe, dm and Penny) you can also withdraw cash for free, while doing your shopping.
+
+\section{Secure online banking with N26}
+
+\subsection{Your N26 account is 3D Secure}
+3D Secure (3DS) protects you when making purchases online.
+
+With Mastercard Identity Check, your online card payments are extra secure so you have 1 less thing to worry about.
+
+\subsection{Push-notifications in real-time}
+With real-time push-notifications after every transaction - whether you're paying in store or online, receiving your salary, or withdrawing money from the ATM - you'll always have an overview of your financial movement.
+
+\subsection{Full control of your card}
+You can easily adjust the security settings of your N26 account directly in the app - no paperwork needed.
+
+Lock your card if you lose it (and unlock if you find it), change your PIN and allow foreign payments when you're abroad.
+
+With N26 online banking becomes hassle-free.
+
+\subsection{Faster login with fingerprint authentication}
+Additional safety measures keep your account safe: open your N26 app with fingerprint identification or face recognition, and protect it from unauthorized access.
+
+With biometric authentication, you can easily authorize payments for your online purchases without having to enter your PIN every time.
+
+\section{Headache-free instant payments}
+After signing up, instantly top up through a debit card to get money into your account.
+
+Make bank transfers for free using N26 MoneyBeam in real-time - send, receive or request money from your contacts listed in the N26 app, or to new ones with just an email or phone number.
+
+%
+Need to get funds into your account straight away?
+
+Avoid the worry, and receive incoming payments with SEPA Instant Credit Transfer in seconds.
+
+\section{Track your expenses with Statistics}
+Your salary comes in, you pay for your coffee with card (or your mobile phone) and transfer money to friends - your free bank account tracks and recognizes your transactions.
+
+Thanks to automatic spending categorization, always receive an up-to-date overview of your current expenses.
+
+%
+With \#tags, you can further personalize the system.
+
+And when you go to file your tax return, simply export your transaction history as a CSV file via the \texttt{WebApp}.
+
+\section{N26 Metal - the new generation premium account}
+Enjoy N26's exclusive premium banking experience with a stainless steel Mastercard, an extensive insurance package that includes mobile phone insurance, fee-free ATM withdrawals worldwide and zero foreign transaction fees around the globe.
+
+\href{https://get.n26.com/?_ga=2.185272041.1189510936.1611884241-1079622474.1611780638}{Upgrade to Metal}.
+
+\section{The N26 web app}
+
+\subsection{Banking on the big screen}
+You might feel more comfortable with a bigger screen when you want to make important payments or get a good overview of your finances.
+
+N26 also offers a web app that lets you check your account information and transactions.
+
+\subsection{Download your transaction list}
+The web app also lets you print or download your transaction list and bank statements in PDF or CSV format.
+
+That makes it easier to file for tax returns!
+
+\section{Fee-free foreign currency transactions}
+N26 does not charge any extra fees for transactions in foreign currencies.
+
+So when you use your N26 Mastercard abroad you don't have to worry about bad surprises.
+
+Payments are always for free with N26, no matter which currency.
+
+You also always profit from the real Mastercard exchange rate.
+
+\section{Free account switching}
+Many don't switch their bank, even though they've been unhappy for a while.
+
+Why? Because it's too complicated.
+
+Together with finleap N26 does all the work for you: finleap automatically transfers all your standing orders, direct debits and incoming payments to your N26 account, for free!
+
+See \url{https://n26.com/en-de/account-switching}
+
+\section{An account that fits in with you}
+Ready to discover mobile banking?
+
+Compare N26's bank accounts now to find the one that fits you best.
+
+Choose between N26's free standard account and the N26 premium accounts, or opt for a business account if you're a freelancer.
+
+Open your account directly on your smartphone in less than 8 minutes and discover modern banking.
+
+\href{https://n26.com/en-de/plans}{Compare Accounts}.
+
+\section{FAQs}
+\begin{itemize}
+    \item \textbf{Is N26 a real bank?}
+    
+    N26 is the Mobile Bank.
+    
+    They operate with a full European banking license, and offer a free standard account, N26 You and Metal premium accounts, as well as business accounts for freelancers and self-employed.
+    
+    Their customers can manage all their banking transactions simply, easily and securely via a smartphone, and receive a Mastercard debit for free.
+    \item \textbf{Is N26 secure?}
+    
+    N26 operates with a full European banking license, which protects your N26 account up to €100,000, under EU law directives.
+    
+    With 3D Secure, Mastercard Identity Check and fingerprint and face recognition, the security of your online payments is always guaranteed.
+    \item \textbf{What are the benefits of using the free checking account?}
+    
+    The free bank account lets you manage all your finances under 1 app, whether at home or traveling.
+    
+    In addition, N26 does not charge you any hidden fees when withdrawing money from an ATM, or when making payments in foreign currencies.
+    
+    Alongside getting instant push-notifications after every transaction, benefit from Spaces sub-accounts for better saving, automatic spending categorization with Statistics, and the ability to make and receive immediate funds from other N26 customers with MoneyBeam.
+    
+    %
+    With N26 You and N26 Metal you can also withdraw money at no fees worldwide, and enjoy exclusive benefits such as discounts.
+    
+    On top of this, premium accounts come with an extensive package of travel and lifestyle insurance, courtesy of Allianz.
+    \item \textbf{How much does it cost to open an N26 bank account?}
+    
+    With N26's standard account you will receive a free checking account - without having to pay anything.
+    
+    An N26 You bank account costs €9.90 per month, and the N26 Metal account costs €16.90 per month.
+    
+    If you opt for a N26 premium account, you commit to at least 12 months.
+    
+    You don't need a steady income or a minimum deposit to open an account.
+    
+    %
+    Up to €50,000 balance, after which a custody fee may apply.
+    
+    \href{https://n26.com/en-eu/legal-documents}{Terms \& Conditions}.
+    \item \textbf{How to open an N26 bank account?}
+    
+    If you meet all the requirements, you can open your checking account with N26 for free and within minutes.
+    
+    All you need is a smartphone and your photo ID.
+    
+    It's easy with our digital authentication process.
+    
+    Download our app to open an account - you don't even need a minimum deposit amount.
+\end{itemize}
+
+%------------------------------------------------------------------------------%
+
+\chapter{\href{https://n26.com/en-eu/free-business-bank-account}{Free Business Bank Account}}
+
+\section{N26 Business - Business banking for freelancers and the self-employed}
+N26 Business is the free bank account for freelancers and the self-employed.
+
+Earn 0.1\% cashback on all purchases you make, and enjoy free card payments worldwide.
+
+Open yours in a few minutes, and start making mobile payments before your physical card arrives.
+
+\href{https://get.n26.com/?ch=businessAccountPage&pr=n26Business&_ga=2.74032722.1189510936.1611884241-1079622474.1611780638}{Get Business Account}.
+
+\section{Go global with a Mastercard debit card}
+Make payments online or in-store anywhere in the world without fees and Mastercard's best exchange rate.
+
+It's 1 card for all your transactions - accepted worldwide.
+
+\section{Stay on top of business in real-time}
+Stay up to date.
+
+Get push notifications immediately after all account activity, including card payments, direct debits, and transfers.
+
+\section{Take your business further with N26 Business Smart}
+Organize your business finances better with N26 Business Smart.
+
+Alongside 0.1\% cashback on all card purchases, get a colorful Mastercard, free ATM withdrawals, and customer support via the phone when needed.
+
+Plus, set aside your tax payments and budget for expenses with 10 Spaces sub-accounts - including Shared Spaces to manage funds together with others.
+
+\href{https://n26.com/en-eu/business-bank-account}{Get N26 Business Smart}.
+
+\subsection{Earn 0.1\% cashback}
+You'll get 0.1\% cashback for all your purchases when you pay using your N26 Mastercard and reinvest the profits straight back into your business.
+
+\subsection{Mastercard 3D Secured payments}
+Mastercard 3D Secure (3DS) is an extra layer of security that helps prevent fraud when making payments online using your N26 account.
+
+\subsection{No minimum deposit needed}
+You do not have to deposit a certain amount or meet earning threshold requirements, so you can open a free business account even if you're just starting out.
+
+\subsection{\#Tag your transactions}
+\#client, \#office, \#bizness$\ldots$ create your own personal hashtags and attach them to your transactions to organize them better.
+
+\section{Spaces for your plans}
+Spaces lets you create sub-accounts for managing your saving goals and budget in real time.
+
+Perfect for organizing your business expenses or put money aside for your projects!
+
+Plus, you're now able to participate in shared sub-accounts to manage funds collectively, e.g. with your colleagues.
+
+\href{https://n26.com/en-eu/shared-spaces-bank-account}{Shared Spaces}.
+
+\section{Automatic categorization. Get a breakdown of your spending}
+The N26 online business bank account uses artificial intelligence to automatically categorize your spending.
+
+Forget clunky spreadsheets - it's all there in a clear overview in the app.
+
+\subsection{Print your transactions list}
+N26 is mobile, but for easier tax returns and invoicing, export and download your transaction list as CSV or PDF files for easy printing.
+
+\subsection{Banking on the big screen}
+1st, sign up to N26 using the mobile app.
+
+Then, you can use the web application to view your account from a desktop or other device.
+
+\section{Discover N26 Business Metal, with 0.5\% cashback}
+Upgrade to our most premium account for freelancers and the self-employed, packed with 0.5\% cashback on all purchases, fee-free payments in all currencies, and a travel, lifestyle and mobility insurance package that includes smartphone coverage.
+
+Enjoy that extra peace of mind, wherever your business takes you.
+
+\href{https://get.n26.com/?_ga=2.185705065.1189510936.1611884241-1079622474.1611780638}{Get Business Metal}.
+
+\section{N26 Support speaks your language}
+Need help with making a bank transfer, or just have a question?
+
+Whatever the issue or need, our Customer Service team is always on-hand to help you in English, French, German, Spanish and Italian.
+
+Contact them via email, or connect with a specialist via the live chat in your N26 app.
+
+N26 Bank Account Customer Service Chat in App.
+
+\section{Get your N26 Business bank account. It only takes 8 minutes}
+Open a new N26 business bank account from your phone or computer in an easy, paperless signup process.
+
+\href{https://get.n26.com/?ch=businessAccountPage&pr=n26Business&_ga=2.178448740.1189510936.1611884241-1079622474.1611780638}{Get Business Account}.
+
+\section{FAQs}
+\begin{itemize}
+    \item \textbf{What are Eligibility Requirements?}
+    \begin{itemize}
+        \item You will use the account primarily for business purposes.
+        \item You're not already an N26 user.
+        \item You reside in a country where N26 operates: Germany, Austria, France, Italy, Spain, Portugal, Ireland, Greece, the Netherlands, Belgium, Luxembourg, Finland, Latvia, Estonia, Lithuania, Slovakia, Slovenia, Switzerland.
+    \end{itemize}
+    \item \textbf{Is N26 Business free?}
+    
+    N26 Business is free to open online with no account management fees.
+    
+    It's the easiest business bank account to open if you're a freelancer or self-employed.
+    
+    %
+    After a balance of €50,000 or higher a custody fee may apply.
+    \item \textbf{Should I open the account with my personal name or with by business name?}
+    
+    To sign up for N26 Business you must use your personal name and last name.
+    
+    The N26 Business account is designed for self-employed and freelance users doing business under their own name.
+    
+    That means you can't have your company's name on the account or card.
+    \item \textbf{Can I have a regular N26 bank account and an N26 Business account at the same time?}
+    
+    It's possible to do business banking and spending with your N26 Business Mastercard and personal spending with your additional Maestro card on the same account.
+    
+    However, it's currently not possible to have 2 separate N26 accounts at the same time.
+    \item \textbf{How do I get my cashback on Mastercard purchases?}
+    
+    Since N26 Business is an online business bank account, you'll receive your 0.1\% cashback on all Mastercard purchases directly into your account.
+    
+    This will automatically be deposited on a monthly basis. 
+    
+    You don't have to take any additional steps!
+    \item \textbf{What happens if I use my N26 Business account for personal spending?}
+    
+    N26 Business is the online bank account designed for freelancers, therefore you're expected to use it mainly for business purposes.
+    
+    However, you can also use it for private purposes as long as these are in a minority compared to your business spending. You may also use it to receive payments from customers, for spendings related to your business activity such as traveling, or to pay the rent.
+\end{itemize}
+\textbf{Availability.} Portugal, Ireland, Greece, Netherlands, Belgium, Luxembourg, Finland, Latvia, Estonia, Lithuania, Slovakia, Slovenia.
+
+%------------------------------------------------------------------------------%
+
+\chapter{Manage}
+
+\section{Spaces}
+
+\section{Shared Spaces}
+
+\section{Budgeting}
+
+%------------------------------------------------------------------------------%
+
+\chapter{Financial Products}
+
+\section{Credit}
+
+\section{Overdraft}
+
+\section{Savings}
+
+%------------------------------------------------------------------------------%
+
+\chapter{Pay}
+
+\section{Mastercard}
+
+\section{Apple Pay}
+
+\section{Google Pay}
+
+\section{CASH26}
+
+\section{TransferWise}
+
+\section{Instant Payments}
+
+%------------------------------------------------------------------------------%
+
+\chapter{More}
+
+\section{Online Banking}
+
+\section{Invite Friends}
+
+\section{Travel Insurance}
+
+\section{Perks}
+
+\section{Account Switching}
+
+%------------------------------------------------------------------------------%
+
+
+€
+
+%------------------------------------------------------------------------------%
+
+\printbibliography[heading=bibintoc]
+\end{document}
