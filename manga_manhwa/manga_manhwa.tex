@@ -1,7 +1,7 @@
-\documentclass[onsided]{article}
+\documentclass{book}
 \usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
 \addbibresource{/home/nguyen/1_NQBH/math/bib.bib}
-\usepackage[utf8]{vietnam}
+\usepackage[utf8]{inputenc}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
@@ -25,12 +25,12 @@
 \pagestyle{fancy}
 \fancyhf{}
 \addtolength{\headheight}{0pt}% obsolete
-\lhead{\itshape \scriptsize \sectionname~\thesection}
+\lhead{\itshape \scriptsize \chaptername~\thechapter}
 \rhead{\itshape \scriptsize \nouppercase{\leftmark}} %\nouppercase !
-\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \cfoot{\thepage}
 
-\title{Manga}
+\title{Manga \& Manhwa}
 \author{Collector: Nguyen Quan Ba Hong}
 \date{\today}
 
@@ -42,10 +42,20 @@
 
 %------------------------------------------------------------------------------%
 
+\chapter{Manga}
+
 \begin{enumerate}
-    \item Mushoku-tensei $\sim$Isekai ittara honki dasu$\sim$ $\star$ Mushoku Tensei: Jobless Reincarnation $\star$ Thất nghiệp chuyển sinh làm lại hết sức
-    \item Perfect Half
+    \item Mushoku-tensei $\sim$Isekai ittara honki dasu$\sim$ $\star$ Mushoku Tensei: Jobless Reincarnation
     \item Shingeki no kyojin $\star$ Attack on Titan
+\end{enumerate}
+
+%------------------------------------------------------------------------------%
+
+\chapter{Manhwa}
+
+\begin{enumerate}
+    \item Perfect Half
+    \item Sweet Guy
 \end{enumerate}
 
 %------------------------------------------------------------------------------%
