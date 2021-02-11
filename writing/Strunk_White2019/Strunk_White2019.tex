@@ -1,0 +1,474 @@
+\documentclass{book}
+\usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
+\addbibresource{/home/nguyen/1_NQBH/math/bib.bib}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{notation}{Notation}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{ques}{Question}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\usepackage[left=0.5in,right=0.5in,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\addtolength{\headheight}{0pt}% obsolete
+\lhead{\itshape \scriptsize \chaptername~\thechapter}
+\rhead{\itshape \scriptsize \nouppercase{\leftmark}} %\nouppercase !
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\cfoot{\thepage}
+
+\title{William Strunk Jr., E.B. White (2019). The Elements of Style., 4th Edition}
+\author{Collector: Nguyen Quan Ba Hong}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{secnumdepth}{6}
+\setcounter{tocdepth}{6}
+\tableofcontents
+
+%------------------------------------------------------------------------------%
+
+\section*{Amazon/reviews}
+\begin{quotation}
+    `The Elements of Style' (1918), by William Strunk, Jr., is an American English writing style guide.
+    
+    It is the best-known, most influential prescriptive treatment of English grammar and usage, and often is required reading and usage in U.S. high school and university composition classes.
+    
+    This edition of `The Elements of Style' details 8 elementary rules of usage, 10 elementary principles of composition, ``a few matters of form'', and a list of commonly misused words and expressions.
+\end{quotation}
+
+\begin{quotation}
+    ``\textit{$\ldots$ a marvellous and timeless little book$\ldots$ Here, succinctly, elegantly and without fuss are the essentials of writing clear, correct English}.'' - John Clare, \textit{The Telegraph}
+\end{quotation}
+
+%------------------------------------------------------------------------------%
+
+\chapter*{Forword}
+
+The 1st writer Roger Angell watched at work was my stepfather, E. B. White.
+
+Each Tuesday morning, he would close his study door and sit down to write the ``Notes \& Comment'' page for \textit{The New Yorker}.
+
+The task was familiar with him - he was required to file a few hundred words of editorial or personal commentary on some topic in or out of the news that week - but the sounds of his typewriter from his room came in hesitant bursts, with long silences in between.
+
+Hours went by.
+
+Summoned at last for lunch, he was silent and preoccupied, and soon excused himself to get back to the job.
+
+When the copy went off at last, in the afternoon RFD pouch - we were in Maine, a day's mail away from New York - he rarely seemed satisfied.
+
+``It isn't good enough,'' he said sometimes.
+
+``I wish it were better.''
+
+%
+Writing is hard, even for authors who do it all the time.
+
+Less frequent practitioners - the job applicant; the business executive with an annual report to get out; the high school senior with a Faulkner assignment; the graduate-school student with her thesis proposal; the writer of a letter of condolence - often get stuck in an awkward passage of find a muddle on their screens, and then blame themselves.
+
+What should be easy and flowing looks tangled or feeable or overblown - not what was meant at all.
+
+What's wrong with me, each one thinks.
+
+Why can't I get this right?
+
+%
+It was this recurring question, put to himself, that must have inspired White to revive and add to a textbook by an English professor of his, Will Strunk Jr., that he had 1st read in college, and to get it published.
+
+The result, this quiet book, has been in print for 40 years, and has offered more than 10 million writers a helping hand.
+
+White knew that a compendium of specific tips - about singular and plural verbs, parentheses, that ``that'' - ``which'' scuffle, and many others - could clear up a recalcitrant sentence or subclause when quickly reconsulted, and that the larger principles needed to be kept in plain sight, like a wall sampler.
+
+%
+How simple they look, set down here in White's last chapter: ``Write in a way that comes naturally,'' ``Revise and rewrite,'' ``Do not explain too much,'' and the rest; above all, the cleansing, clarion ``Be clear.''
+
+How often Roger Angell has turned to them, in the book or in my mind, while trying to start or unblock or revise some piece of my own writing!
+
+They help - they really do.
+
+They work.
+
+They are the way.
+
+%
+E. B. White's prose is celebrated for its ease and clarity - just think of \textit{Charlotte's Web} - but maintaining this standard required endless attention.
+
+When the new issue of \textit{The New Yorker} turned up in Maine, Roger Angell sometimes saw him reading his ``Comment'' piece over to himself, with only a slightly different expression than the one he'd worn on the day it went off.
+
+Well, O.K., he seemed to be saying.
+
+\textit{At least I got the elements right}.
+
+%
+This edition has been modestly updated, with word processors and air conditioners making their 1st appearance among White's references, and with a light redistribution of genders to permit a feminine pronoun or female farmer to take their places among the males who once innocently served him.
+
+Sylvia Plath has knocked Keats out of the box, and Roger Angell notices that ``America'' has become ``this country'' in a sample text, to forestall a subsequent and possibly demeaning ``she'' in the same paragraph.
+
+What is not here is anything about E-mail - the rules-free, lower-case flow that cheerfully keeps us in touch these days.
+
+E-mail is conversation, and it may be replacing the sweet and endless talking we once sustained (and tucked away) within the informal letter.
+
+But we are all writers and readers as well as communicators, with the need at times to please and satisfy ourselves (as White put it) with the clear and almost perfect thought.
+
+\begin{flushright}
+    \textit{Roger Angell}
+\end{flushright}
+
+%------------------------------------------------------------------------------%
+
+\chapter*{Introduction}
+
+At the close of the 1st World War, when E. B. White was a student at Cornell, E. B. White took a course called \textit{English 8}.
+
+My professor was William Strunk Jr.
+
+A textbook required for the course was a slim volume called \textit{The Elements of Style}, whose authors was the professor himself.
+
+The year was 1919.
+
+The book was known on the campus in those days as ``the little book,'' with the stress on the word ``little.''
+
+It had been privately printed by the author.
+
+%
+E. B. White passed the course, graduated from the university, and forgot the book but not the professor.
+
+Some 38 years later, the book bobbed up again in my life when Macmillan commissioned me to revise it for the college market and the general trade.
+
+Meantime, Prof. Strunk had died.
+
+%
+\textit{The Elements of Style}, when E. B. White reexamined it in 1957, seemed to me to contain rich deposits of gold.
+
+It was Will Strunk's \textit{parvum opus}, his attempt to cut the vast tangle of English rhetoric down to size and write its rules and principles on the head of a pint.
+
+Will himself had hung the tag ``little'' on the book; he referred to it sardonically and with secret pride as ``the \textit{little} book,'' always giving the word ``little'' a special twist, as though he were putting a spin on a ball.
+
+In its original form, it was a 43 page summation of the case for cleanliness, accuracy, and brevity in the use of English.
+
+Today, 52 years later, its vigor is unimpaired, and for sheer pith E. B. White thinks it probably sets a record that is not likely to be broken.
+
+Even after E. B. White got through tampering with it, it was still a tiny thing, a barely tarnished gem.
+
+7 rules of usage, 11 principles of composition, a few matters of form, and a list of words and expressions commonly misused - that was the sum and substance of Prof. Strunk's work.
+
+Somewhat audaciously, and in an attempt to give my publisher his money's worth, E. B. White added a chapter called ``An Approach to Style,'' setting forth my own prejudices, my notions of error, my articles of faith.
+
+This chapter (Chap. V) is addressed particularly to those who feel that English prose composition is not only a necessary skills but a sensible pursuit as well - a way to spend one's days.
+
+E. B. White thinks Prof. Strunk would not object to that.
+
+%
+A 2nd edition of the book was published in 1972.
+
+E. B. White has now completed a 3rd revision.
+
+Chap. IV has been refurbished with words and expressions of a recent vintage; 4 rules of usage have been added to Chap. I.
+
+Fresh examples have been added to some of the rules and principles, amplification has reared its head in a few places in the text where E. B. White felt an assault could successfully be made on the bastions of its brevity, and in general the book has received a thorough overhaul - to correct errors, delete bewhiskered entries, and enliven the argument.
+
+%
+Prof. Strunk was a positive man.
+
+His book contains rules of grammar phrased as direct orders.
+
+In the main E. B. White has not tried to soften his commands, or modify his pronouncements, or remove the special objects of his scorn.
+
+E. B. White has tried, instead, to preserve the flavor of his discontent while slightly enlarging the scope of the discussion.
+
+\textit{The Element of Style} does not pretend to survey the whole field.
+
+Rather it proposes to give in brief space the principal requirements of plain English style.
+
+It concentrates on fundamentals: the rules of usage and principles of composition most commonly violated.
+
+%
+The reader will soon discover that these rules and principles are in the form of sharp commands, Sergeant Strunk snapping orders to his platoon.
+
+``Do not joint independent clauses with a comma.'' (Rule 5.)
+
+``Do not break sentences in 2.'' (Rule 6.)
+
+``Use the active voice.'' (Rule 14.)
+
+``Omit needless words.'' (Rule 17.)
+
+``Avoid a succession of loose sentences.'' (Rule 18.)
+
+``In summaries, keep to 1 tense.'' (Rule 21.)
+
+Each rule or principle is followed by a short hortatory essay, and usually the exhortation is followed by, or interlarded with, examples in parallel columns - the true vs. the false, the right vs. the wrong, the timid vs. the bold, the ragged vs. the trim.
+
+From every line there peers out at me the puckish face of my professor, his short hair pared neatly in the middle and combed down over his forehead, his eyes blinking incessantly behind steel-rimmed spectacles as though he had just emerged into strong light, his lips nibbling each other like nervous horses, his smile shuttling to and fro under a carefully edged mustache.
+
+%
+``Omit needless words!'' cries the author on p. 24, and into that imperative Will Strunk really put his heart and soul.
+
+In the days when E. B. White was sitting in his class, he omitted so many needless words, and omitted them so forcibly and with such eagerness and obvious relish, that he often seemed in the position of having shortchanged himself - a man left with nothing more to say yet with time to fill, a radio prophet who had out-distanced the clock.
+
+Will Strunk got out of this predicament by a simple trick: he uttered every sentence 3 times.
+
+When he delivered his oration on brevity to the class, he leaned forward over his desk, grasped his coat lapels in his hands, and, in a husky, conspiratorial voice, said, ``Rule 17. Omit needless words! Omit needless words! Omit needless words!''
+
+%
+He was a memorable man, friendly and funny.
+
+Under the remembered string of his kindly lash, E. B. White has been trying to omit needless words since 1919, and although there are still many words that cry for omission and the huge task will never be accomplished, it is exciting to me to reread the masterly Strunkian elaboration of this noble theme.
+
+It goes:
+
+\begin{quotation}
+    \it
+    Vigorous writing is concise. A sentence should contain no unnecessary words, a paragraph no unnecessary sentences, for the same reason that a drawing should have no unnecessary lines and a machine no unnecessary parts.
+    
+    This requires not that the writer make all sentences short or avoid all detail and treat subjects only in outline, but that every word tell.
+\end{quotation}
+There you have a short, valuable essay on the nature and beauty of brevity - 59 words that could change the world.
+
+Having recovered from his adventure in prolixity (59 words were a lot of words in the tight world of William Strunk Jr.), the professor proceeds to give a few quick lessons in pruning.
+
+Students learn to cut the dead-wood from ``this is a subject that,'' reducing it to ``this subject,'' a saving of 3 words.
+
+They learn to trim ``used for fuel purposes'' down to ``used for fuel.''
+
+They learn that they are being chatterboxes when they say ``the question as to whether'' and they should just day ``whether'' - a saving of 4 words out of a possible 5.
+
+%
+The professor devotes a special paragraph to the vile expression \textit{the fact that}, a phrase that causes him to quiver with revulsion.
+
+The expression, he says, should be ``revised out of every sentence in which it occurs.''
+
+But a shadow of gloom seems to hang over the page, and you feel that he knows how hopeless his cause is.
+
+E. B. White supposes E. B. White has written \textit{the fact that} a thousand times in the heat of composition, revised it out maybe 500 times in the cool aftermath.
+
+To be batting only .500 this late in the season, to fail half the time to connect with this fat pitch, saddens me, for it seems a betrayal of the man who showed me how to swing at it and made the swinging seem worthwhile.
+
+%
+E. B. White treasures \textit{The Elements of Style} for its shape advice, but E. B. White treasures it even more for the audacity and self-confidence of its author.
+
+Will knew where he stood.
+
+He was so sure of where he stood, and made his position so clear and so plausible, that his peculiar stance has continued to invigorate me - and, E. B. White is sure, thousands of other ex-students - during the years that have intervened since our 1st encounter.
+
+He had a number of likes and dislikes that were almost as whimsical as the choice of a necktie, yet he made them seem utterly convincing.
+
+He disliked the word \textit{forceful} and advised us to use \textit{forcible} instead.
+
+He felt that the word \textit{clever} was greatly overused: ``It is best restricted to ingenuity displayed in small matters.''
+
+He despised the expression \textit{student body}, which he termed gruesome, and made a special trip downtown to the \textit{Alumni News} office 1 day to protest the expression and suggest that \textit{studentry} be substituted - a coinage of is own, which he felt was similar to \textit{citizenry}.
+
+E. B. White is told that the \textit{News} editor was so charmed by the visit, if not by the word, that he ordered the student body buried, never to rise again.
+
+\textit{Studentry} has taken its place.
+
+It's not much of an improvement, but it does sound less cadaverous, and it made Will Strunk quite happy.
+
+%
+Some years ago, when the heir to the throne of England was a child, E. B. White noticed a headline in the \textit{Times} about Bonnie Prince Charlie: ``CHARLES' TONSILS OUT.''
+
+Immediately Rule 1 leapt to mind.
+\begin{enumerate}
+    \item Form the posssessive singular of nuns by adding \textit{'s}.
+    
+    Follow this rule whatever the final consonant.
+    
+    Thus write,
+    \begin{example}
+        Charles's friend
+        
+        Burns's poems
+        
+        the witch's malice
+    \end{example}
+\end{enumerate}
+Clearly, Will Strunk had foreseen, as far back as 1918, the dangerous tonsillectomy of a prince, in which the surgeon removes the tonsils and the \textit{Times} copy desk removes the final \textit{s}.
+
+He started his book with it.
+
+E. B. White recommends Rule 1 to the \textit{Times}, and E. B. White trusts that Charles's throat, not Charles' throat, is in fine shape today.
+
+%
+Style rules of this sort are, of course, somewhat a matter of individual preference, and even the established rules of grammar are open to challenge.
+
+Professor Strunk, although 1 of the most inflexible and choosy of men, was quick to acknowledge the fallacy of inflexibility and the danger of doctrine.
+\begin{quotation}
+    ``\textit{It is an old observation},'' he wrote, ``\textit{that the best writers sometimes disregard the rules of rhetoric. When they do so, however, the reader will usually find in the sentence some compensating merit, attained at the cost of the violation. Unless he is certain of doing as well, he will probably do best to follow the rules}.''
+\end{quotation}
+It is encouraging to see how perfectly a book, even a dusty rule book, perpetuates and extends the spirit of a man.
+
+Will Strunk loved the clear, the brief, the bold, and his book is clear, brief, bold.
+
+Boldness is perhaps its chief distinguishing mark.
+
+On p. 26, explaining 1 of his parallels, he says,
+\begin{quotation}
+    ``\textit{The lefthand version gives the impression that the writer is undecided or timid, apparently unable or afraid to choose 1 form of expression and hold to it}.''
+\end{quotation}
+And his original Rule 11 was ``Make definite assertions.''
+
+That was Will all over.
+
+He scorned the vague, the tame, the colorless, the irresolute.
+
+He felt it was worse to be irresolute than to be wrong.
+
+E. B. White remembers a day in class when he leaned far forward, in this characteristic pose - the pose of a man about to impart a secret - and croaked,
+\begin{quotation}
+    ``\textit{If you don't know how to pronounce a word, say it loud! If you don't know how to pronounce a word, say it loud!}''
+\end{quotation}
+This comical piece of advice struck me as sound at the time, and E. B. White still respects it.
+
+\textit{Why compound ignorance with inaudibility?}
+
+\textit{Why run and hide?}
+
+%
+All through \textit{The Elements of Style} one finds evidences of the author's deep sympathy for the reader.
+
+Will felt that the reader was in serious trouble most of the time, floundering in a swamp, and that it was the duty of anyone attempting to write English to drain this swamp quickly and get the reader up on dry ground, or at least to throw a rope.
+
+In revising the text, E. B. White has tried to hold steadily in mind this belief of his, this concern for the bewildered reader.
+
+%
+In the English classes of today, ``the little book'' is surrounded be longer, lower textbooks - books with permissive steering and automatic transitions.
+
+Perhaps the book has become something of a curiosity.
+
+To E. B. White, it still seems to maintain its original poise, standing, in a drafty time, erect, resolute, and assured.
+
+E. B. White still finds the Strunkian wisdom a comfort, the Strunkian humor a delight, and the Strunkian attitude toward right-and-wrong a blessing undisguised.
+
+\begin{flushright}
+    E. B. White
+\end{flushright}
+
+%------------------------------------------------------------------------------%
+
+\chapter{Elementary Rules of Usage}
+
+\section{Form the possessive singular of nouns by adding `s}
+
+\section{In a series of 3 or more terms with a single conjunction, use a comma after each term except the last}
+
+\section{Enclose parenthetic expressions between commas}
+
+\section{Place a comma before a conjunction introduction an independent clause}
+
+\section{Do not join independent clauses with a comma}
+
+\section{Do not break sentences in 2}
+
+\section{Use a colon after an independent clause to introduce a list of particulars, an appositive, an amplification, or an illustrative quotation}
+
+\section{Use a dash to set off an abrupt break or interruption and to announce a long appositive or summary}
+
+\section{The number of the subject determines the number of the verb}
+
+\section{Use the proper case of pronoun}
+
+\section{A participial phrase at the beginning of a sentence must refer to the grammatical subject}
+
+%------------------------------------------------------------------------------%
+
+\chapter{Elementary Principles of Composition}
+
+\section{Choose a suitable design \& hold to it}
+
+\section{Make the paragraph the unit of composition: 1 paragraph to each topic}
+
+\section{Use the active voice}
+
+\section{Put statements in positive form}
+
+\section{Use definite, specific, concrete language}
+
+\section{Omit needless words}
+
+\section{Avoid a succession of loose sentences}
+
+\section{Express coordinate ideas in similar form}
+
+\section{Keep related words together}
+
+\section{In summaries, keep to 1 tense}
+
+\section{Place the emphatic words of a sentence at the end}
+
+%------------------------------------------------------------------------------%
+
+\chapter{A Few Matters of Form}
+
+%------------------------------------------------------------------------------%
+
+\chapter{Words \& Expressions Commonly Misused}
+
+%------------------------------------------------------------------------------%
+
+\chapter{An Approach to Style (with a List of Reminders)}
+
+\section{Place yourself in the background}
+
+\section{Write in a way that comes naturally}
+
+\section{Work from a suitable design}
+
+\section{Write with nouns \& verbs}
+
+\section{Revise \& rewrite}
+
+\section{Do not overwrite}
+
+\section{Do not overstate}
+
+\section{Avoid the use of qualifiers}
+
+\section{Do not affect a breezy manner}
+
+\section{Use orthodox spelling}
+
+\section{Do not explain too much}
+
+\section{Do not construct awkward adverbs}
+
+\section{Make sure the reader knows who is speaking}
+
+\section{Avoid fancy words}
+
+\section{Do not use dialect unless your ear is good}
+
+\section{Be clear}
+
+\section{Do not inject opinion}
+
+\section{Use figures of speech sparingly}
+
+\section{Do not take shortcuts at the cost of clarity}
+
+\section{Avoid foreign languages}
+
+\section{Prefer the standard to the offbeat}
+
+%------------------------------------------------------------------------------%
+
+\chapter*{Afterword}
+
+%------------------------------------------------------------------------------%
+
+\printbibliography[heading=bibintoc]
+\end{document}
