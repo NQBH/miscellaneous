@@ -1,0 +1,777 @@
+\documentclass{book}
+\usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
+\addbibresource{/home/nguyen/1_NQBH/math/bib.bib}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{notation}{Notation}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{ques}{Question}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\usepackage[left=0.5in,right=0.5in,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\addtolength{\headheight}{0pt} % obsolete
+\lhead{\itshape \scriptsize \chaptername~\thechapter}
+\rhead{\itshape \scriptsize \nouppercase{\leftmark}} %\nouppercase !
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\cfoot{\thepage}
+
+\title{William Zinsser (2012). \textit{On Writing Well: The Classic Guide to Writing Nonfiction}, 30th Anniversary Edition}
+\author{Collector: Nguyen Quan Ba Hong}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{secnumdepth}{6}
+\setcounter{tocdepth}{6}
+\tableofcontents
+
+%------------------------------------------------------------------------------%
+
+\chapter*{Introduction}
+
+``1 of the pictures hanging in my office in mid-Manhattan is a photograph of the writer E. B. White.
+
+It was taken by Jill Krementz when White was 77 years old, at his home in North Brooklin, Maine.
+
+A white-haired man is sitting on a plain wooden bench at a plain wooden table - 3 boards nailed to 4 legs - in a small boathouse.
+
+The window is open to a view across the water.
+
+White is typing on a manual typewriter, and the only other objects are an ashtray and a nail keg.
+
+The keg, I don't have to be told, is his wastebasket.
+
+%
+Many people from many corners of my life - writers and aspiring writers, students and former students - have seen that picture.
+
+They come to talk through a writing problem or to catch me up on their lives.
+
+But usually it doesn't take more than a few minutes for their eye to be drawn to the old man sitting at the typewriter.
+
+What gets their attention is the simplicity of the process.
+
+White has everything he needs: a writing implement, a piece of paper, and a receptacle for all the sentences that didn't come out the way he wanted them to.
+
+%
+Since then writing has gone electronic.
+
+Computers have replaced the typewriter, the delete key has replaced the wastebasket, and various other keys insert, move and rearrange whole chunks of text.
+
+But nothing has replaced the writer.
+
+He or she is still stuck with the same old job of saying something that other people will want to read.
+
+That's the point of the photograph, and it's still the point - 30 years later - of this book.
+
+%
+I 1st wrote \textit{On Writing Well} in an outbuilding in Connecticut that was as small and as crude as White's boathouse.
+
+My tools were a dangling lightbulb, an Underwood standard typewriter, a ream of yellow copy paper and a wire wastebasket.
+
+I had then been teaching my nonfiction writing course at Yale for 5 years, and I wanted to use the summer of 1975 to try to put the course into a book.
+
+%
+E. B. White, as it happened, was very much on my mind.
+
+I had long considered him my model as a writer.
+
+His was the seemingly effortless style - achieved, I knew, with great effort - that I wanted to emulate, and whenever I began a new project I would 1st read some White to get his cadences into my ear.
+
+But now I also had a pedagogical interest: White was the reigning champ of the arena I was trying to enter.
+
+\textit{The Elements of Style}, his updating of the book that had most influenced \textit{him}, written in 1919 by his English professor at Cornell, William Strunk Jr., was the dominant how-to manual for writers.
+
+Tough competition.
+
+%
+Instead of competing with the Strunk \& White book I decided to complement it.
+
+\textit{The Elements of Style} was a book of pointers and admonitions: do this, don't do that.
+
+What it \textit{didn't} address was how to apply those principles to the various forms that nonfiction writing and journalism can take.
+
+That's what I taught in my course, and it's what I would teach in my book: how to write about people and places, science and technology, history and medicine, business and education, sports and the arts and everything else under the sun that's waiting to be written about.
+
+So \textit{On Writing Well} was born, in 1976, and it's now in its 3rd generation of readers, its sales well over a million.
+
+Today I often meet young newspaper reporters who were given the book by the editor who hired them, just as those editors were 1st given the book by the editor who hired \textit{them}.
+
+I also often meet gray-haired matrons who remember being assigned the book in college and not finding it the horrible medicine they expected.
+
+Sometimes they bring that early edition for me to sign, its sentences highlighted in yellow.
+
+They apologize for the mess.
+
+I love the mess.
+
+As America has steadily changed in 30 years, so has the book.
+
+I've revised it 6 times to keep pace with new social trends (more interest in memoir, business, science and sports), new literary trends (more women writing nonfiction), new demographic patterns (more writers from other cultural traditions), new technologies (the computer) and new words and usages.
+
+I've also incorporated lessons I learned by continuing to wrestle with the craft myself, writing books on subjects I hadn't tried before: baseball and music and American history.
+
+My purpose is to make myself and my experience available.
+
+If readers connect with my book it's because they don't think they're hearing from an English professor.
+
+They're hearing from a working writer.
+
+%
+My concerns as a teacher have also shifted.
+
+I'm more interested in the intangibles that produce good writing - \fbox{confidence, enjoyment, intention, integrity} - and I've written new chapters on those values.
+
+Since the 1990s I've also taught an adult course on memoir and family history at the New School.
+
+My students are men and women who want to \textit{use writing to try to understand who they are} and \textit{what heritage they were born into}.
+
+Year after year their stories take me deeply into their lives and into their yearning to leave a record of what they have done and thought and felt.
+
+Half the people in America, it seems, are writing a memoir.
+
+%
+The bad news is that most of them are paralyzed by the size of the task.
+
+How can they even begin to impose a coherent shape on the past - that vast sprawl of half-remembered people and events and emotions?
+
+Many are near despair.
+
+To offer some help and comfort I wrote a book in 2004 called \textit{Writing About Your Life}.
+
+It's a memoir of various events in my own life, but it's also a teaching book: along the way I explain the writing decisions I made.
+
+They are the same decisions that confront every writer going in search of his or her past: matter of selection, reduction, organization and tone.
+
+Now, for this 7th edition, I've put the lessons I learned into a new chapter called ``Writing Family History and Memoir.''
+
+%
+When I 1st wrote \textit{On Well Writing}, the readers I had in mind were a small segment of the population: students, writers, editors, teachers and people who wanted to learn how to write.
+
+I had no inkling of the electronic marvels that would soon revolutionize the act of writing.
+
+1st came the word processor, in the 1980s, which made the computer an everyday tool for people who had never thought of themselves as writers.
+
+Then came the Internet and e-mail, in the 1990s, which continued the revolution.
+
+Today everybody in the world is writing to everybody else, making instant contact across every border and across every time zone.
+
+Bloggers are saturating the globe.
+
+%
+On 1 level the new torrent is good news.
+
+Any invention that reduces the fear of writing is up there with air-conditioning and the lightbulb.
+
+But, as always, there's a catch.
+
+Nobody told all the new computer writers that the essence of writing is rewriting.
+
+Just because they're writing fluently doesn't mean they're writing well.
+
+%
+That condition was 1st revealed with the arrival of the word processor.
+
+2 opposite things happened: good writers got better and bad writers got worse.
+
+Good writers welcomed the gift of being able to fuss endlessly with their sentences - pruning and revising and reshaping - without the drudgery of retyping.
+
+Bad writers became even more verbose because writing was suddenly so easy and their sentences looked so pretty on the screen.
+
+How could such beautiful sentences not be perfect?
+
+%
+E-mail is an impromptu medium, not conductive to slowing down or looking back.
+
+It's ideal for the never-ending upkeep of daily life.
+
+If the writing is disorderly, no real harm is done.
+
+But e-mail is also where much of the world's business is now conducted.
+
+Millions of e-mail messages every day give people the information they need to do their job, and a badly written message can do a lot of damage.
+
+So can a badly written Web site.
+
+The new age, for all its electronic wizardry, is still writing-based.
+
+%
+\textit{On Writing Well} is a craft book, and its principles haven't changed since it was written 30 years ago.
+
+I don't know what still newer marvels will make writing twice as easy in the next 30 years.
+
+But I do know they don't make writing twice as good.
+
+That will still require plain old hard thinking - what E. B. White was doing in his boathouse - and the plain old tools of the English language.''
+
+\begin{flushright}
+    William Zinsser
+    
+    Apr 2006
+\end{flushright}
+
+%------------------------------------------------------------------------------%
+
+\part{Principles}
+
+\chapter{The Transaction}
+
+A school in Connecticut once held ``a day devoted to the arts,'' and I was asked if I would come and talk about writing as a vocation.
+
+When I arrived I found that a 2nd speaker had been invited - Dr. Brock (as I'll call him), a surgeon who had recently begun to write and had sold some stories to magazines.
+
+He was going to talk about writing as an avocation.
+
+That made us a panel, and we sat down to face a crowd of students and teachers and parents, all eager to learn the secrets of our glamorous work.
+
+%
+Dr. Brock was dressed in a bright red jacket, looking vaguely bohemian, as authors are supposed to look, and the 1st question went to him.
+
+\textit{What was it like to be a writer?}
+
+%
+He said it was tremendous fun.
+
+Coming home from an arduous day at the hospital, he would go straight to his yellow pad and write his tensions away.
+
+The words just flowed.
+
+It was easy.
+
+I then said that writing wasn't easy and wasn't fun.
+
+It was hard and lonely, and the words seldom just flowed.
+
+%
+Next Dr. Brock was asked if it was important to rewrite.
+
+Absolutely not, he said.
+
+``\textit{Let it all hang out},'' he told us, and whatever form the sentences take will reflect the writer at his most natural.
+
+I then said that rewriting is the essence of writing.
+
+I pointed out that professional writers rewrite their sentences over and over and then rewrite what they have rewritten.
+
+%
+``\textit{What do you do on days when it isn't going well?}''
+
+Dr. Brock was asked.
+
+He said he just stopped writing and put the work aside for a day when it would go better.
+
+I then said that the professional writer must establish a daily schedule and stick to it.
+
+I said that writing is a craft, not an art, and that the man who runs away from his craft because he lacks inspiration is fooling himself.
+
+He is also going broke.
+
+%
+``\textit{What is you're feeling depressed or unhappy?}'' a student asked.
+
+``\textit{Won't that affect your writing?}''
+
+Probably it will, Dr. Brock replied.
+
+Go fishing.
+
+Take a walk.
+
+Probably it won't, I said.
+
+If your job is to write every day, you learn to do it like any other job.
+
+%
+A student asked if we found it useful to circulate in the literary world.
+
+Dr. Brock said he was greatly enjoying his new life as a man of letters, and he told several stories of being taken to lunch by his publisher and his agent at Manhattan restaurants where writers and editors gather.
+
+I said that professional writers are solitary drudges who seldom see other writers.
+
+``Do you put symbolism in your writing?'' a student asked me.
+
+``Not if I can help it,'' I replied.
+
+I have an unbroken record of missing the deeper meaning in any story, play or movie, and as for dance and mime, I have ever had any idea of what is being conveyed.
+
+%
+``I \textit{love} symbols!'' Dr. Brock exclaimed, and he described with gusto the joys of weaving them through his work.
+
+%
+So the morning went, and it was a revelation to all of us.
+
+At the end Dr. Brock told me he was enormously interested in my answers - it had never occurred to him that writing could be hard.
+
+I told him I was just as interested in \textit{his} answers - it had never occurred to me that writing could be easy.
+
+Maybe I should take up surgery on the side.
+
+%
+As for the students, anyone might think we left them bewildered.
+
+But in fact we gave them a broader glimpse of the writing process than if only one of us had talked.
+
+For there isn't any ``right'' way to do such personal work.
+
+There are all kinds of writers and all kinds of methods, and any method that helps you to say what you want to say is the right method for you.
+
+Some people write by day, others by night.
+
+Some people need silence, others turn on the radio.
+
+Some write by hand, some by computer, some by talking into a tape recorder.
+
+Some people write their 1st draft in 1 long burst and then revise; others can't write the 2nd paragraph until they have fiddled endlessly with the 1st.
+
+%
+But all of them are vulnerable and all of them are tense.
+
+They are driven by a compulsion to put some part of themselves on paper, and yet they don't just write what comes naturally.
+
+They sit down to commit an act of literature, and the self who emerges on paper is far stiffer than the person who sat down to write.
+
+The problem is to find the real man or woman behind the tension.
+
+Ultimately the product that any writer has to sell is not the subject being written about, who who he or she is.
+
+I often find myself reading with interest about a topic I never thought would interest me - some scientific quest, perhaps.
+
+What holds me is the enthusiasm of the writer for his field.
+
+\textit{How was he drawn into it?}
+
+\textit{What emotional baggage did he bring along?}
+
+\textit{How did it change his life?}
+
+\textit{It's not necessary to want to spend a year alone at Walden Pond to become involved with a writer who did}.
+
+%
+This is the personal transaction that's at the heart of good nonfiction writing.
+
+Out of it come 2 of the most important qualities that this book will go in search of: \textit{humanity} and \textit{warmth}.
+
+Good writing has an aliveness that keeps the reader reading from 1 paragraph to the next, and it's not a question of gimmicks to ``personalize'' the author.
+
+It's a question of using the English language in a way that will achieve the greatest clarity and strength.
+
+%
+\textit{Can such principles be taught?}
+
+Maybe not.
+
+But most of them can be learned.
+
+%------------------------------------------------------------------------------%
+
+\chapter{Simplicity}
+
+Clutter is the disease of American writing.
+
+We are a society strangling in unnecessary words, circular constructions, pompous frills and meaningless jargon.
+
+%
+Who can understand the clotted language of everyday American commerce: the memo, the corporation report, the business letter, the notice from the bank explaining its latest ``simplified'' statement?
+
+What member of an insurance or medical plan can decipher the brochure explaining his costs and benefits?
+
+What father or mother can put together a child's toy from the instructions on the box?
+
+Our national tendency is to inflate and thereby sound important.
+
+The airline pilot who announces that he is presently anticipating experiencing considerable precipitation wouldn't think of saying it may rain.
+
+The sentence is too simple - there must be something wrong with it.
+
+But \fbox{\textit{the secret of good writing is to strip every sentence to its cleanest components}}.
+
+Every word that serves no function, every long word that could be a short word, every adverb that carries the same meaning that's already in the verb, every passive construction that leaves the reader unsure of who is doing what - these are the thousand and 1 adulterants that weaken the strength of a sentence.
+
+And they usually occur in proportion to education and rank.
+
+%
+During the 1960s the president of my university wrote a letter to mollify the alumni after a spell of campus unrest.
+
+``You are probably aware,'' he began, ``that we have been experiencing very considerable potentially explosive expressions of dissatisfaction on issues only partially related.''
+
+He meant that the students had been hassling them about different things.
+
+I was far more upset by the president's English than by the students' potentially explosive expressions of dissatisfaction.
+
+I would have preferred the presidential approach taken by Franklin D. Roosevelt when he tried to convert into English his own government's memos, such as this blackout order of 1942:
+\begin{quotation}
+    \textit{Such preparations shall be made as will completely obscure all Federal buildings and non-Federal buildings occupied by the Federal government during an air raid for any period of time from visibility by reason of internal or external illumination}.
+\end{quotation}
+``Tell them,'' Roosevelt said, ``that in buildings where they have to keep the work going to put something across the windows.''
+
+%
+Simplify, simplify.
+
+Thoreau said it, as we are so often reminded, and no American writer more consistently practiced what he preached.
+
+Open \textit{Walden} to any page and you will find a man saying in a plain and orderly way what is on his mind:
+\begin{quotation}
+    \textit{I went to the woods because I wished to live deliberately, to front only the essential facts of life, and see if I could not learn what it had to teach, and not, when I came to die, discover that I had not lived}.
+\end{quotation}
+How can the rest of us achieve such enviable freedom from clutter?
+
+The answer is to clear our heads of clutter.
+
+Clear thinking becomes clear writing; one can't exist without the others.
+
+It's impossible for the muddy thinker to write good English.
+
+He may get away with it for a paragraph or 2, but soon the reader will be lost, and there's no sin so grave, for the reader will not easily be lured back.
+
+%
+Who is this elusive creature, the reader?
+
+The reader is someone with an attention span of about 30 seconds - a person assailed by many forces competing for attention.
+
+At one time those forces were relatively few: newspapers, magazines, radio, spouse, children, pets.
+
+Today they also include a galaxy of electronic devices for receiving entertainment and information - television, VCRs, DVDs, CDs, video games, the Internet, e-mail, cell phones, BlackBerries, iPods - as well as a fitness program, a pool, a lawn and that most potent of competitors, sleep.
+
+The man or woman snoozing in a chair with a magazine or a book is a person who was being given too much unnecessary trouble by the writer.
+
+%
+It won't do to say that the reader is too dumb or too lazy to keep pace with the train of though.
+
+If the reader is lost, it''s usually because the writer hasn't been careful enough.
+
+That carelessness can take any number of forms.
+
+Perhaps a sentence is so excessively cluttered that the reader, hacking through the verbiage, simply doesn't know what it means.
+
+Perhaps a sentence has been so shoddily constructed that the reader could read it in several ways.
+
+Perhaps the writer has switched pronouns in midsentence, or has switched tenses, so the reader loses track of who is talking or when the action took place.
+
+Perhaps Sentence B is not a logical sequel to Sentence A; the writer, in whose head the connection is clear, hasn't bothered to provide the missing link.
+
+Perhaps the writer has used a word incorrectly by not taking the trouble to look it up.
+
+Faced with such obstacles, readers are at 1st tenacious.
+
+They blame themselves - they obviously missed something, and they go back over the mystifying sentence, or over the whole paragraph, piecing it out like an ancient rune, making guesses and moving on.
+
+But they won't do that for long.
+
+The writer is making them work too hard, and they will look for one who is better at the craft.
+
+%
+Writers must therefore constantly ask: \textit{what am I trying to say?}
+
+Surprisingly often they don't know.
+
+Then they must look at what they have written and ask: \textit{have I said it?}
+
+Is it clear to someone encountering the subject for the 1st time?
+
+If it's not, some fuzz has worked its way into the machinery.
+
+The clear writer is someone clearheaded enough to see this stuff for what it is: fuzz.
+
+%
+I don't mean that some people are born clearheaded and are therefore natural writers, whereas others are naturally fuzzy and will never write well.
+
+Thinking clearly is a conscious act that writers must force on themselves, as if they were working on any other project that requires logic: making a shopping list or doing an algebra problem.
+
+Good writing doesn't come naturally, though most people seem to think it does.
+
+Professional writers are constantly bearded by people who say they'd like to ``try to little writing sometime'' - meaning when they retire from their real profession, like insurance or real estate, which is hard.
+
+Or they say, ``I could write a book about that.''
+
+I doubt it.
+
+%
+Writing is hard work.
+
+A clear sentence is no accident.
+
+Very few sentences come out right the 1st time, or even the 3rd time.
+
+Remember this in moments of despair.
+
+If you find that writing is hard, it's because it \textit{is} hard.
+
+\textsf{2 pages of the final manuscript of this chapter from the 1st Edition of \textit{On Writing Well}. Although they look like a 1st draft, they had already been rewritten and retyped - like almost every other page - 4 or 5 times. With each rewrite I try to make what I have written tighter, stronger and more precise, eliminating every element that's not doing useful work. Then I go over it once more, reading it aloud, and am always amazed at how much clutter can still be cut. (In later editions I eliminated the sexist pronoun ``he'' denoting ``the writer'' and ``the reader.'')}
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Clutter}
+
+Fighting clutter is like fighting weeds - the writer is always slightly behind.
+
+New varieties sprout overnight, and by noon they are part of American speech.
+
+Consider what President Nixon's aide John Dean accomplished in just 1 day of testimony on television during the Watergate hearings.
+
+The next day everyone in America was saying ``at this point in time'' instead of ``now.''
+
+Consider all the prepositions that are draped onto verbs that don't need any help.
+
+We no longer head committees.
+
+We head them up.
+
+We don't face problems anymore.
+
+We face up to them when we can free up a few minutes.
+
+A small detail, you may say - not worth bothering about.
+
+It \textit{is} worth bothering about.
+
+Writing improves in direct ratio to the number of things we can keep out of it that shouldn't be there.
+
+``Up'' in ``free up'' shouldn't be there.
+
+Examine every word you put on paper.
+
+You'll find a surprising number that don't serve any purpose.
+
+%
+Take the adjective ``personal,'' as in ``a personal friend of mine,'' ``his personal feeling'' or ``her personal physician.''
+
+It's typical of hundreds of words that can be eliminated.
+
+The personal friend has come into the language to distinguish him or her from the business friend, thereby debasing both language and friendship.
+
+Someone's feeling \textit{is} that person's personal feeling - that's what ``his'' means.
+
+As for the personal physician, that's the man or woman summoned to the dressing room of a stricken actress so she won't have to be treated by the impersonal physician assigned to the theater.
+
+Someday I'd like to see that person identified as ``her doctor.''
+
+Physicians are physicians, friends are friends.
+
+The rest is clutter.
+
+%
+Clutter is the laborious phrase that has pushed out the short word that means the same thing.
+
+Even before John Dean, people and businesses had stopped saying ``now.''
+
+They were saying ``currently'' (``all our operators are currently assisting other customers''), or ``at the present time,'' or ``presently'' (which means ``soon'').
+
+Yet the idea can always be expressed by ``now'' to mean the immediate moment (``Now I can see him''), or by ``today'' to mean the historical present (``Today prices are high''), or simply by the verb ``to be'' (``It is raining'').
+
+There's no need to say, ``At the present time we are experiencing precipitation.''
+
+%
+``Experiencing'' is 1 of the worst clutterers.
+
+Even your dentist will ask if you are experiencing any pain.
+
+If he had his own kid in the chair he would say, ``Does it hurt?''
+
+He would, in short, be himself.
+
+By using a more pompous phrase in his professional role he not only sounds more important; he blunts the painful edge of truth.
+
+It's the language of the flight attendant demonstrating the oxygen mask that will drop down if the plane should run out of air.
+
+``in the unlikely possibility that th aircraft should experience such an eventuality,'' she begins - a phrase so oxygen-depriving in itself that we are prepared for any disaster.
+
+%
+Clutter is the ponderous euphemism that turns a slum into a depressed socioeconomic area, garbage collectors into waste-disposal personnel and the town dump into the volume reduction unit.
+
+I think of Bill Mauldin's cartoon of 2 hobos riding a freight car.
+
+1 of them says, ``I started as a simple bum, but now I'm hard-core unemployed.''
+
+Clutter is political correctness gone amok.
+
+I saw an ad for a boys' camp designed to provide ``individual attention for the minimally exceptional.''
+
+%
+Clutter is the official language used by corporations to hide their mistakes.
+
+When the Digital Equipment Corporation eliminated 3,000 jobs its statement didn't mention layoffs; those were ``involuntary methodologies.''
+
+When an Air Force missile crashed, it ``impacted with the ground prematurely.''
+
+When General Motors had a plant shutdown, that was a ``volume-related production-schedule adjustment.''
+
+Companies that go belly-up have ``a negative cash-flow position.''
+
+%
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Style}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{The Audience}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Words}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Usage}
+
+
+
+%------------------------------------------------------------------------------%
+
+\part{Methods}
+
+\chapter{Unity}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{The Lead \& the Ending}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Bits \& Pieces}
+
+
+
+%------------------------------------------------------------------------------%
+
+\part{Forms}
+
+\chapter{Nonfiction as Literature}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Nonfiction as Literature}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Writing About People: The Interview}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Writing About Places: The Travel Article}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Writing About Yourself: The Memoir}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Science \& Technology}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Business Writing: Writing in Your Job}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Sports}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Writing About the Arts: Critics \& Columnists}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Humor}
+
+
+
+%------------------------------------------------------------------------------%
+
+\part{Attitudes}
+
+\chapter{The Sound of Your Voice}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Enjoyment, Fear \& Confidence}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{The Tyranny of the Final Product}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{A Writer's Decisions}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Writing Family History \& Memoir}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Write as Well as You Can}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{Sources}
+
+
+
+%------------------------------------------------------------------------------%
+
+\chapter{About the Author}
+
+
+
+%------------------------------------------------------------------------------%
+
+\printbibliography[heading=bibintoc]
+\end{document}
