@@ -2,6 +2,8 @@
 \usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
 \addbibresource{/home/nguyen/1_NQBH/math/bib.bib}
 \usepackage[utf8]{inputenc}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % for sections, if you really want! (It is default in report and book class (So you may not need it).
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
@@ -21,14 +23,6 @@
 \newtheorem{problem}{Problem}[section]
 \newtheorem{conjecture}{Conjecture}[section]
 \usepackage[left=0.5in,right=0.5in,top=1.5cm,bottom=1.5cm]{geometry}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\addtolength{\headheight}{0pt} % obsolete
-\lhead{\scriptsize ~\thesection}
-\rhead{\itshape \scriptsize \nouppercase{\leftmark}} %\nouppercase !
-\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
-\cfoot{\thepage}
 
 \title{G. H. Hardy (2017). \textit{A Mathematician's Apology}}
 \author{Collector: Nguyen Quan Ba Hong}
@@ -38,7 +32,6 @@
 \maketitle
 \setcounter{secnumdepth}{6}
 \setcounter{tocdepth}{6}
-\tableofcontents
 
 %------------------------------------------------------------------------------%
 
@@ -1487,7 +1480,7 @@ Each evening that week before she left him, she read a chapter from a history of
 %------------------------------------------------------------------------------%
 
 \section*{Preface}
-I am indebted for many valuable criticisms to Prof. C. D. Broad and Dr. C. P. Snow, each of whom read my original manuscript.
+\textsc{I am} indebted for many valuable criticisms to Prof. C. D. Broad and Dr. C. P. Snow, each of whom read my original manuscript.
 
 I have incorporated the substance of nearly all of their suggestions in my text, and have so removed a good many crudities and obscurities.
 
@@ -1508,9 +1501,10 @@ I have therefore left it unaltered, but have added a short statement of the chie
 
 %------------------------------------------------------------------------------%
 
-
-\section{}
-It is a melancholy experience for a professional mathematician to find himself writing about mathematics.
+\begin{center}
+    \Large\textbf{I}
+\end{center}
+\textsc{It} is a melancholy experience for a professional mathematician to find himself writing about mathematics.
 
 The function of a mathematician is to do something, to prove new theorems, to add to mathematics, and not to talk about what he or other mathematicians have done.
 
@@ -1551,8 +1545,10 @@ If then I find myself writing, not mathematics but `about' mathematics, it is a 
 
 I write about mathematics because, like any other mathematician who has passed 60, I have no longer the \textit{freshness of mind}, the \textit{energy}, or the \textit{patience to carry on effectively} with my \textit{proper job}.
 
-\section{}
-I propose to put forward an apology for mathematics; and I may be told that it needs none, since there are now few studies more generally recognized, for good reasons or bad, as profitable and praiseworthy.
+\begin{center}
+    \large\textbf{2}
+\end{center}
+\textsc{I propose} to put forward an apology for mathematics; and I may be told that it needs none, since there are now few studies more generally recognized, for good reasons or bad, as profitable and praiseworthy.
 
 This may be true; indeed it is probable, since the sensational triumphs of Einstein, that stellar astronomy and atomic physics are the only sciences which stand higher in popular estimation.
 
@@ -1608,23 +1604,25 @@ He must shut his eyes a little and think a little more of his subject and himsel
 
 This is not too difficult: it is harder not to make his subject and himself ridiculous by shutting his eyes too tightly.
 
-\section{}
-A man who sets out to justify his existence and his activities has to distinguish 2 different questions.
+\begin{center}
+    \large\textbf{3}
+\end{center}
+\textsc{A man} who sets out to justify his existence and his activities has to distinguish 2 different questions.
 
 The 1st is whether the work which he does is worth doing; and the 2nd is why he does it, whatever its value may be.
 
 The 1st question is often very difficult, and the answer very discouraging, but most people will find the 2nd easy enough even then.
 
 Their answers, if they are honest, will usually take 1 or other of 2 forms; and the 2nd form is merely a humbler variation of the 1st, which is the only answer which we need consider seriously.
-\begin{quotation}
-    (I) `I do what I do because it is the one and only thing that I can do at all well.
+\begin{itemize}
+    \item[(1)] `I do what I do because it is the one and only thing that I can do at all well.
     
     I am a lawyer, or a stockbroker, or a professional cricketer, because I have some real talent for that particular job.
     
     I am a lawyer because I have a fluent tongue, and am interested in legal subtleties; I am a stockbroker because my judgment of the markets is quick and sound; I am a professional cricketer because I can bat unusually well.
     
     I agree that it might be better to be a poet or a mathematician, but unfortunately I have no talent for such pursuits.'
-\end{quotation}
+\end{itemize}
 I am not suggesting that this is a defense which can be made by most people, since most people can do nothing at all well.
 
 But it is impregnable when it can be made without absurdity, as it can by a substantial minority: perhaps 5 or even 10\% of men can do something rather well.
@@ -1670,8 +1668,10 @@ If a man is in any sense a real mathematician, then it is a hundred to 1 that hi
 
 Such a sacrifice could be justified only by economic necessity or age.
 
-\section{}
-I had better say something here about this question of age, since it is particularly important for mathematicians.
+\begin{center}
+    \large\textbf{4}
+\end{center}
+\textsc{I had} better say something here about this question of age, since it is particularly important for mathematicians.
 
 No mathematician should ever allow himself to forget that mathematics, more than any other art of science, is a young man's game.
 
@@ -1713,6 +1713,289 @@ There may have been young men who would have been 1st-rate mathematicians if the
 And all this is fully borne out by my own very limited experience.
 
 Every young mathematician of real talent whom I have known has been faithful to mathematics, and not from lack of ambition but from abundance of it; they have all recognized that there, if anywhere, lay the road to a life of any distinction. 
+
+\begin{center}
+    \large\textbf{5}
+\end{center}
+\textsc{There} is also what I called the `humbler variation' of the standard apology; but I may dismiss this in a very few words.
+\begin{itemize}
+    \item[(2)] `There is \textit{nothing} that I can do particularly well.
+    
+    I do what I do because it came my way.
+    
+    I really never had a chance of doing anything else.'
+    
+    And this apology too I accept as conclusive.
+    
+    It is quite true that most people can do nothing well.
+    
+    If so, it matters very little what career they choose, and there is really nothing more to say about it.
+    
+    It is a conclusive reply, but hardly one likely to be made by a man with any pride; and I may assume that none of us would be content with it.
+\end{itemize}
+
+\begin{center}
+    \large\textbf{6}
+\end{center}
+\textsc{It} is time to begin thinking about the 1st question which I put in \S3, and which is so much more difficult than the 2nd.
+
+\textit{Is mathematics, what I and other mathematicians mean by mathematics, worth doing, and if so, why?}
+
+%
+I have been looking again at the 1st pages of the inaugural lecture which I gave at Oxford in 1920, where there is an outline of an apology for mathematics.
+
+It is very inadequate (less than a couple of pages), and it is written in a style (a 1st essay, I suppose, in what I then imagined to be the `Oxford manner') of which I am not now particularly proud; but I still feel that, however much development it may need, it contains the essentials of the matter.
+
+I will resume what I said then, as a preface to a fuller discussion.
+\begin{itemize}
+    \item[(1)] I began by laying stress on the \textit{harmlessness} of mathematics - `the study of mathematics is, if an unprofitable, a perfectly harmless and innocent occupation'.
+    
+    I shall stick to that, but obviously it will need a good deal of expansion and explanation.
+\end{itemize}
+\textit{\emph{Is} mathematics `unprofitable'?}
+
+In some ways, plainly, it is not; e.g., it gives great pleasure to quite a large number of people.
+
+I was thinking of `profit', however, in a narrower sense.
+
+Is mathematics `useful', \textit{directly} useful, as other sciences e.g. chemistry and physiology are?
+
+This is not an altogether easy and uncontroversial question, and I shall ultimately say No, though some mathematicians, and most outsiders, would no doubt say Yes.
+
+\textit{And is mathematics `harmless'?}
+
+Again the answer is not obvious, and the question is one which I should have in some ways preferred to avoid, since it raises the whole problem of the effect of science on war.
+
+\textit{Is mathematics harmless, in the sense in which, e.g., chemistry plainly is not?}
+
+I shall have to come back to both these questions later.
+\begin{itemize}
+    \item[(2)] I went on to say that `the scale of the universe is large and, if we are wasting our time, the waste of the lives of a few university dons is no such overwhelming catastrophe': and here I may seem to be adopting, or affecting, the pose of exaggerated humility which I repudiated a moment ago.
+    
+    I am sure that that was not what was really in my mind; I was trying to say in a sentence what I have said at much greater length in \S3.
+    
+    I was assuming that we dons really had our little talents, and that we could hardly be wrong if we did our best to cultivate them fully.
+    \item[(3)] Finally (in what seem to me now some rather painfully rhetorical sentences) I emphasized the performance of mathematical achievement -
+    \begin{quotation}
+        What we do may be small, but it has a certain character of performance; and to have produced anything of the slightest permanent interest, whether it be a copy of verses or a geometrical theorem, is to have done something utterly beyond the powers of vast majority of men.
+    \end{quotation}
+    And -
+    \begin{quotation}
+        In these days of conflict between ancient and modern studies, there must surely be something to be said for a study which did not begin with Pythagoras, and will not end with Einstein, but is the oldest and the youngest of all.
+    \end{quotation}
+\end{itemize}
+And this is `rhetoric'; but the substance of it seems to me still to ring true, and I can expand it at once without prejudging any of the other questions which I am leaving open.
+
+\begin{center}
+    \large\textbf{7}
+\end{center}
+\textsc{I shall} assume that I am writing for readers who are full, or have in the past been full, of a proper spirit of ambition.
+
+A man's 1st duty, a young man's at any rate, is to be ambitious.
+
+Ambition is a noble passion which may legitimately take many forms; there was \textit{something} noble in the ambition of Attila or Napoleon: but the noblest ambition is that of leaving behind 1 something of permanent value -
+\begin{quotation}
+    Here, on the level sand,
+    
+    Between the sea and land,
+    
+    What shall I build or write
+    
+    Against the fall of night?
+    \\
+    
+    Tell me of runes to grave
+    
+    That hold the bursting wave,
+    
+    Or bastions to design
+    
+    For longer date than mine.
+\end{quotation}
+\textit{Ambition has been the driving force behind nearly all the best work of the world}.
+
+In particular, \textit{practically all substantial contributions to \fbox{human happiness} have been made by \fbox{ambitious men}}.
+
+To take 2 famous examples, were not Lister and Pasteur ambitious?
+
+Or, on a humbler level, King Gillette and William Willett; and who in recent times have contributed more to human comfort than they?
+
+%
+Physiology provides particularly good examples, just because it is so obviously a `beneficial' study.
+
+We must guard against a fallacy common among apologists of science, the fallacy of supposing that men whose work most benefits humanity are thinking much of that while they do it, that physiologists, e.g., have particularly noble souls.
+
+A physiologist may indeed be glad to remember that his work will benefit mankind, but the motives which provide the force and the inspiration for it are indistinguishable from those of a classical scholar or a mathematician.
+
+%
+There are many highly respectable motives which may lead men to prosecute research, but 3 which are much more important than the rest.
+
+The 1st (without which the rest must come to nothing) is intellectual curiosity, desire to know the truth.
+
+Then, professional pride, anxiety to be satisfied with one's performance, the shame that overcomes any self-respecting craftsman when his work is unworthy of his talent.
+
+Finally, ambition, desire for reputation, and the position, even the power or the money, which it brings.
+
+It may be fine to feel, when you have done your work, that you have added to the happiness or alleviated the sufferings of others, but that will not be why you did it.
+
+So if a mathematician, or a chemist, or even a physiologist, were to tell me that the driving force in his work had been the desire to benefit humanity, then I should not believe him (nor should I think the better of him if I did).
+
+His dominant motives have been those which I have stated, and in which, surely, there is nothing of which any decent man need be ashamed.
+
+\begin{center}
+    \large\textbf{8}
+\end{center}
+\textsc{If} intellectual curiosity, professional pride, and ambition are the dominant incentives to research, then assuredly no one has a fairer chance of gratifying them than a mathematician.
+
+His subject is the most curious of all - there is none in which truth plays such odd pranks.
+
+It has the most elaborate and the most fascinating technique, and gives unrivaled openings for the display of sheer professional skill.
+
+Finally, as history proves abundantly, mathematical achievement, whatever its intrinsic worth, is the most enduring of all.
+
+%
+We can see this even in semi-historic civilizations.
+
+The Babylonian and Assyrian civilizations have perished; Hammurabi, Sargon, and Nebuchadnezzar are empty names; yet Babylonian mathematics is still interesting, and the Babylonian scale of 60 is still used in astronomy.
+
+But of course the crucial case is that of the Greeks.
+
+%
+The Greeks were the 1st mathematicians who are still `real' to us to-day.
+
+Oriental mathematics may be an interesting curiosity, but Greek mathematics is the real thing.
+
+The Greeks 1st spoke a language which modern mathematicians can understand; as Littlewood said to me once, they are not clever schoolboys or `scholarship candidates', but `Fellows of another college'.
+
+So Greek mathematics is `permanent', more permanent even than Greek literature.
+
+Archimedes will be remembered when Aeschylus in forgotten, because languages die and mathematical ideas do not.
+
+`Immortality' may be a silly word, but probably a mathematician has the best chance of whatever it may mean.
+
+%
+Nor need he fear very seriously that the future will be unjust to him.
+
+Immortality is often ridiculous or cruel: few of us would have chosen to be Og or Ananias or Gallio.
+
+Even in mathematics, history sometimes plays strange tricks; Rolle figures in the text-books of elementary calculus as if he had been a mathematician like Newton; Farey is immortal because he failed to understand a theorem which Haros had proved perfectly 14 years before; the names of 5 worthy Norwegians still stand in Abel's \textit{Life}, just for 1 act of conscientious imbecility, dutifully deformed at the expense of their country's greatest man.
+
+But on the whole the history of science is fair, and this is particularly true in mathematics.
+
+No other subject has such clear-cut or unanimously accepted standards, and the men who are remembered are almost always the men who merit it.
+
+\textit{Mathematical fame}, if you have the cash to pay for it, is 1 of the \textit{soundest and steadiest of investments}.
+
+\begin{center}
+    \large\textbf{9}
+\end{center}
+\textsc{All} this is very comforting for dons, and especially for professors of mathematics.
+
+It is sometimes suggested, by lawyers or politicians or business men, that an academic career is one sought mainly by cautious and unambitious persons who care primarily for comfort and security.
+
+The reproach is quite misplaced.
+
+A don surrenders something, and in particular the chance of making large sums of money - it is very hard for a professor to make \pounds2000 a year; and security of tenure is naturally 1 of the considerations which make this particular surrender easy.
+
+That is not why Housman would have refused to be Lord Simon or Lord Beaverbrook.
+
+He would have rejected their careers because of his ambition, because he would have scorned to be a man to be forgotten in 20 years.
+
+%
+Yet how painful it is to feel that, with all these advantages, one may fail.
+
+I can remember Bertrand Russell telling me of a horrible dream.
+
+He was in the top floor of the University Library, about A.D. 2100.
+
+A library assistant was going round the shelves carrying an enormous bucket, taking down book after book, glancing at them, restoring them to the shelves or dumping them into the bucket.
+
+At last he came to 3 large volumes which Russell could recognize as the last surviving copy of \textit{Principia mathematica}.
+
+He took down 1 of the volumes, turned over a few pages, seemed puzzled for a moment by the curious symbolism, closed the volume, balanced it in his hand and hesitated$\ldots$
+
+\begin{center}
+    \large\textbf{10}
+\end{center}
+\textsc{A mathematician}, like a painter or a poet, is a marker of patterns.
+
+If his patterns are more permanent than theirs, it is because they are made with \textit{ideas}.
+
+A painter makes patterns with shapes and colors, a poet with words.
+
+A painting may embody an `idea', but the idea is usually commonplace and unimportant.
+
+In poetry, ideas count for a good deal more; but, as Housman insisted, the importance of ideas in poetry is habitually exaggerated:
+\begin{quotation}
+    `I cannot satisfy myself that there are any such things as poetical ideas$\ldots$
+    
+    Poetry is not the thing said but a way of saying it.'
+\end{quotation}
+
+\begin{quotation}
+    Not all the water in the rough rude sea
+    
+    Can wash the balm from an anointed King.
+\end{quotation}
+Could lines be better, and could ideas be at once more trite and more false?
+
+The poverty of the ideas seems hardly to affect the beauty of the verbal pattern.
+
+\textit{A mathematician, on the other hand, has no material to work with but ideas}, and so his \textit{patterns are likely to last longer}, since \textit{ideas wear less with time than words}.
+
+%
+The mathematician's patterns, like the painter's or the poet's, must be \textit{beautiful}; the ideas, like the colors or the words, must fit together in a harmonious way.
+
+\textit{\fbox{Beauty is the 1st test}: there is no permanent place in the world for ugly mathematics}.
+
+And here I must deal with a misconception which is still widespread (though probably much less so now than it was 20 years ago), what Whitehead has called the `literary superstition' that love of and aesthetic appreciation of mathematics is `a monomania confined to a few eccentrics in each generation'.
+
+%
+It would be difficult now to find an educated man quite insensitive to the aesthetic appeal of mathematics.
+
+It may be very hard to \textit{define} mathematical beauty, but that is just as true of beauty of any kind - we may not know quite what we mean by a beautiful poem, but that does not prevent us from recognizing one when we read it.
+
+Even Prof. Hogben, who is out to minimize at all costs the importance of the aesthetic element in mathematics, does not venture to deny its reality.
+
+`There are, to be sure, individuals for whom mathematics exercises a coldly impersonal attraction$\ldots$
+
+The aesthetic appeal of mathematics may be very real for a chosen few.'
+
+But they are `few', he suggests, and they feel `coldly' (and are really rather ridiculous people, who live in silly little university towns sheltered from the fresh breezes of the wide open spaces).
+
+In this he is merely echoing Whitehead's `literary superstition.'
+
+%
+The fact is that there are few more `popular' subjects than mathematics.
+
+Most people have some appreciation of mathematics, just as most people can enjoy a pleasant tune; and there are probably more people really interested in mathematics than in music.
+
+Appearances may suggest the contrary, but there are easy explanations.
+
+Music can be used to stimulate mass emotion, while mathematics cannot; and musical incapacity is recognized (no doubt rightly) as mildly discreditable, whereas most people are so frightened of the name of mathematics that they are ready, quite unaffectedly, to exaggerate their own mathematical stupidity.
+
+%
+A very little reflection is enough to expose the absurdity of the `literary superstition'.
+
+There are masses of chess-players in every civilized country - in Russia, almost the whole educated population; and every chess-player can recognize and appreciate a `beautiful' game or problem.
+
+Yet a chess problem is \textit{simply} an exercise in pure mathematics (a game not entirely, since psychology also plays a part), and everyone who calls a problem `beautiful' is applauding mathematical beauty, even if it is beauty of a comparatively lowly kind.
+
+Chess problems are the hymn-tunes of mathematics.
+
+%
+We may learn the same lesson, at a lower level but for a wider public, from bridge, or descending further, from the puzzle columns of the popular newspapers.
+
+Nearly all their immense popularity is a tribute to the drawing power of rudimentary mathematics, and the better makers of puzzles, e.g. Dudeney or `Caliban', use very little else.
+
+They know their business; what the public wants is a little intellectual `kick', and nothing else has quite the kick of mathematics.
+
+%
+I might add that there is nothing in the world which pleases even famous men (and men who have used disparaging language about mathematics) quite so much as to discover, or rediscover, a genuine mathematical theorem.
+
+Herbert Spencer republished in his autobiography a theorem about circles which he proved when he was 20 (not knowing that it had been proved over 2000 years before by Plato).
+
+Prof. Soddy is a more recent and a more striking example (but \textit{his} theorem really is his own)\footnote{See his letters on the `Hexlet' in \textit{Nature}, vols. 137-9 (1936-7).}.
 
 %------------------------------------------------------------------------------%
 
