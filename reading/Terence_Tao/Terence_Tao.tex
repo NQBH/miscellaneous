@@ -1,0 +1,107 @@
+\documentclass{book}
+\usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
+\addbibresource{/home/nguyen/1_NQBH/math/bib.bib}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
+\usepackage{amsmath,amssymb,amsthm}
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{notation}{Notation}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{ques}{Question}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\usepackage[left=0.5in,right=0.5in,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\addtolength{\headheight}{0pt} % obsolete
+\lhead{\scriptsize \chaptername~\thechapter}
+\rhead{\itshape \scriptsize \nouppercase{\leftmark}} %\nouppercase !
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\cfoot{\thepage}
+
+\title{\href{https://terrytao.wordpress.com/}{Terence Tao's Blog: What's New}}
+\author{Collector: Nguyen Quan Ba Hong}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{secnumdepth}{6}
+\setcounter{tocdepth}{6}
+\tableofcontents
+
+%------------------------------------------------------------------------------%
+
+\chapter{Home}
+
+%------------------------------------------------------------------------------%
+
+\chapter{About}
+
+%------------------------------------------------------------------------------%
+
+\chapter{\href{https://terrytao.wordpress.com/career-advice/}{Career Advice}}
+
+\begin{quotation}
+    \textit{Advice is what we ask for when we already know the answer but wish we didn't}. - \href{http://en.wikipedia.org/wiki/Erica_Jong}{Erica Jong}
+\end{quotation}
+Here is Terence Tao's collection of various pieces of advice on academic career issues in mathematics, roughly arranged by the stage of career at which the advice is most pertinent (though of course some of the advice pertains to multiple stages).
+
+\begin{remark}[Disclaimer]
+    The advice here is very generic in nature; Terence Tao does not pretend to have any sort of ``silver bullet'' that will solve all career issues.
+    
+    You will of course need to evaluate many factors, contexts, and needs specific to your own situation, as well as employing a healthy dose of common sense, before making any important career decisions.
+    
+    Terence Tao would in particular recommend \href{https://terrytao.wordpress.com/career-advice/talk-to-your-advisor/}{discussing such decisions with your advisor} if you have one, as he or she will be familiar with your situation and will likely be able to provide pertinent advice.
+    
+    Also, it should be clear that most of this advice is targeted towards academic careers in mathematics; of course, there are many other career options available besides this, but Terence Tao has no particularly informed advice to offer for such alternatives.
+\end{remark}
+
+\section{\href{https://terrytao.wordpress.com/career-advice/talk-to-your-advisor/}{Talk to your advisor}}
+\begin{quotation}
+    \textit{It is the province of knowledge to speak and it is the privilege of wisdom to listen}. (\href{https://en.wikipedia.org/wiki/Oliver_Wendell_Holmes_Sr.}{Oliver Wendell Holmes}, ``The Poet at the Breakfast Table'')
+\end{quotation}
+Your advisor is 1 of the best sources of guidance you have; not only in directly assisting you with your \textit{research topic}, but in directing you (both explicitly and implicitly) to \textit{relevant researchers, conferences, publications, open problems, folklore}, or \textit{other pieces of good mathematics}.
+
+Your advisor also knows your situation well and can give career advice which is tailored to your specific strengths and weaknesses (unlike the \href{https://terrytao.wordpress.com/career-advice/}{generic} advice in these pages).
+
+%
+If things get to the point that you are actively avoiding your advisor (or vice versa), that is a very bad sign. In particular, you should be aware of your advisor's schedule, and conversely your advisor should be aware of when you will be available in the department, and what you are currently working on.
+
+%
+For similar reasons, you should give your advisor some advance warning if you want to take a long period of time away from your studies.
+
+%
+If your advisor is unavailable, you should regularly discuss mathematical issues with at least 1 other mathematician instead, preferably an experienced one.
+
+[Also, it is not uncommon for a student to have both a formal advisor, who handles all the official paperwork, and an informal advisor, with which you discuss research and career issues.]
+
+%
+Of course, you should not rely \textit{purely} on your advisor; you also need to \href{https://terrytao.wordpress.com/career-advice/take-the-initiative/}{take the initiative} when it comes to your mathematical career.
+
+%------------------------------------------------------------------------------%
+
+\chapter{On Writing}
+
+%------------------------------------------------------------------------------%
+
+\chapter{Books}
+
+%------------------------------------------------------------------------------%
+
+\chapter{Applets}
+
+%------------------------------------------------------------------------------%
+
+\printbibliography[heading=bibintoc]
+\end{document}
