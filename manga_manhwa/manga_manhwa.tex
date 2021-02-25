@@ -1,7 +1,9 @@
-\documentclass{book}
+\documentclass{article}
 \usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
 \addbibresource{/home/nguyen/1_NQBH/math/bib.bib}
 \usepackage[utf8]{inputenc}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % for sections, if you really want! (It is default in report and book class (So you may not need it).
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
@@ -21,14 +23,6 @@
 \newtheorem{problem}{Problem}[section]
 \newtheorem{conjecture}{Conjecture}[section]
 \usepackage[left=0.5in,right=0.5in,top=1.5cm,bottom=1.5cm]{geometry}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\addtolength{\headheight}{0pt}% obsolete
-\lhead{\itshape \scriptsize \chaptername~\thechapter}
-\rhead{\itshape \scriptsize \nouppercase{\leftmark}} %\nouppercase !
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
-\cfoot{\thepage}
 
 \title{Manga \& Manhwa}
 \author{Collector: Nguyen Quan Ba Hong}
@@ -42,26 +36,26 @@
 
 %------------------------------------------------------------------------------%
 
-\chapter{Manga}
+\section{Manga}
 
 \begin{enumerate}
     \item Case Closed/Detective Conan [Chap. ?/?].
     \item Chainsaw Man [Chap. 1/97?].
-    \item Demon Slayer: Kimetsu No Yaiba [Chap. 205/205].
+    \item \textit{Demon Slayer: Kimetsu No Yaiba} [Chap. 205/205].
     \item Jujutsu Kaisen [Chap. ?/?].
-    \item Kattobi Itto [Chap. 102/102].
+    \item \textit{Kattobi Itto} [Chap. 102/102].
     \item Mushoku-tensei $\sim$Isekai ittara honki dasu$\sim$ $\star$ Mushoku Tensei: Jobless Reincarnation [Chap. 69/?].
-    \item My Balls [Chap. 41/41]
+    \item \textit{My Balls} [Chap. 41/41]
     \item Shingeki no kyojin $\star$ Attack on Titan [Chap. 137/?].
 \end{enumerate}
 
 %------------------------------------------------------------------------------%
 
-\chapter{Manhwa}
+\section{Manhwa}
 
 \begin{enumerate}
-    \item Perfect Half [Chap. 136/?]
-    \item Sweet Guy [Chap. 75/75].
+    \item Perfect Half [Chap. 138/?]
+    \item \textit{Sweet Guy} [Chap. 75/75].
 \end{enumerate}
 
 %------------------------------------------------------------------------------%
