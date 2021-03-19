@@ -6,6 +6,7 @@
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
 \usepackage{amsmath,amssymb,amsthm}
 \allowdisplaybreaks
+\usepackage{tcolorbox}
 \numberwithin{equation}{section}
 \newtheorem{assumption}{Assumption}[section]
 \newtheorem{lemma}{Lemma}[section]
@@ -24,10 +25,11 @@
 \pagestyle{fancy}
 \fancyhf{}
 \addtolength{\headheight}{0pt}% obsolete
-\lhead{\itshape \small \chaptername~\thechapter}
-\rhead{\itshape \small \nouppercase{\leftmark}} %\nouppercase !
+\lhead{\scriptsize \chaptername~\thechapter}
+\rhead{\scriptsize \nouppercase{\leftmark}} %\nouppercase !
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \cfoot{\thepage}
+\def\labelitemii{$\circ$}
 
 \title{Music}
 \author{Collector: Nguyen Quan Ba Hong}
@@ -44,9 +46,138 @@
 \part{Lyrics}
 
 \chapter{Alec Benjamin}
+
 \begin{enumerate}
     \item \href{https://www.youtube.com/watch?v=50VNCymT-Cs}{Let Me Down Slowly}
 \end{enumerate}
+
+%------------------------------------------------------------------------------%
+
+\chapter{Anna Blue}
+
+\section{Silent Scream}
+
+\begin{quotation}\it
+    I'm caught up in your expectations
+    
+    You're trying to make me live your dream
+    
+    But I'm causing you so much frustration
+    
+    And you only want the best for me
+    \\
+    
+    You wanted me to show more interests
+    
+    To always keep a big bright smile
+    
+    Be that pinky little perfect princess
+    
+    But I'm not that type of child
+    \\
+    
+    And this storm is rising inside of me
+    
+    Don't you feel that our whole worlds collide?
+    
+    It's getting harder to breathe
+    
+    It hurts deep inside
+    \\
+    
+    Just let me be
+    
+    Who I am
+    
+    It's what you really need to understand
+    
+    And I hope so hard for the pain to go away
+    \\
+    
+    And it's torturing me
+    
+    But I can't break free
+    
+    So I cry and cry but just won't get it out
+    
+    The silent scream
+    \\
+    
+    Tell me why you're putting pressure on me
+    
+    And everyday you 'cause me harm
+    
+    That's the reason why I feel so lonely
+    
+    Even though you hold me in your arms
+    \\
+    
+    Wanna put me in a box of glitter
+    
+    But I'm just trying to get right out
+    
+    And now you're feeling so so bitter
+    
+    Because I've let you down
+    \\
+    
+    And this storm is rising inside of me
+    
+    Don't you feel that our whole worlds collide?
+    
+    It's getting harder to breathe
+    
+    It hurts deep inside
+    \\
+    
+    Just let me be
+    
+    Who I am
+    
+    It's what you really need to understand
+    
+    And I hope so hard for the pain to go away
+    \\
+    
+    And it's torturing me
+    
+    But I can't break free
+    
+    So I cry and cry but just won't get it out
+    
+    The silent scream
+    \\
+    
+    Can't you see how I cry for help
+    
+    'Cause you should love me just for being myself
+    
+    I'll drown in an ocean
+    
+    Of pain and emotion
+    
+    If you don't save me right away
+    \\
+    
+    Just let me be
+    
+    Who I am
+    
+    It's what you really need to understand
+    
+    And I hope so hard for the pain to go away
+    \\
+    
+    And it's torturing me
+    
+    But I can't break free
+    
+    So I cry and cry but just won't get it out
+    
+    The silent scream
+    
+    My silent scream
+\end{quotation}
 
 %------------------------------------------------------------------------------%
 
@@ -54,8 +185,7 @@
 
 \section{7 rings}
 
-\begin{quotation}
-    \it
+\begin{quotation}\it
     Yeah, breakfast at Tiffany's and bottles of bubbles
     
     Girls with tattoos who like getting in trouble
@@ -165,8 +295,7 @@
 
 \section{Take Me to Church}
 
-\begin{quotation}
-    \it
+\begin{quotation}\it
     My lover's got humor
     
     She's the giggle at a funeral
@@ -316,8 +445,7 @@
 
 \section{Gasoline}
 
-\begin{quotation}
-    \it
+\begin{quotation}\it
     \textbf{Are you insane like me?}
     
     \textbf{Been in pain like me?}
@@ -425,7 +553,7 @@
 
 \section{Unstoppable}
 
-\begin{quotation}
+\begin{quotation}\it
     All smiles, I know what it takes to fool this town
     
     I'll do it 'til the sun goes down and all through the night time
