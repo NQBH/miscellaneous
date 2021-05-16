@@ -1,0 +1,91 @@
+\documentclass[oneside]{article}
+\usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
+\addbibresource{/home/nguyen/1_NQBH/reference/bib.bib}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{notation}{Notation}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{ques}{Question}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\usepackage[left=0.5in,right=0.5in,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small \textsc{Sect.} ~\thesection}
+\rhead{\small \nouppercase{\leftmark}} % \nouppercase !
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\cfoot{\thepage}
+\def\labelitemii{$\circ$}
+
+\title{Collins. Unlocking German with Paul Noble: Your Key to Language Success. 2018}
+\author{Collector: Nguyen Quan Ba Hong}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{secnumdepth}{6}
+\setcounter{tocdepth}{6}
+\tableofcontents
+
+%------------------------------------------------------------------------------%
+
+\section*{Introduction: Did you know you already speak German?}
+Did you know you already speak German?
+
+That you speak it every day?
+
+That you read and write it every day?
+
+That you use it with your friends, with your family, at work, down the post office - even in the shower when you read the label on the shampoo bottle?
+
+%
+\textbf{Were you aware of that fact?}
+
+%
+\textbf{Well, even if you weren't, it's nevertheless true.}
+
+%
+Of course, you might not have realized at the time that what you were reading/saying/writing was actually German but Paul can prove to you that it was.
+
+Just take a look at these words below:
+\begin{example}
+    winter, name, warm, baby, land, blind, wild, arm, hand, finger, blond, hammer, horn, ring, wind, butter, bitter, sand, wolf, hunger, rose, nest, gold
+\end{example}
+
+\section{Can you come over tonight?}
+
+\section{I wouldn't like to do it now because I'm very busy.}
+
+\section{I bought the ticket but I didn't see the film.}
+
+\section{I gave the money to the taxi driver.}
+
+\section{My father's car is old \& shabby. (part 1)}
+
+\section{The car my's father's is old \& shabby. Erm, what? (part 2)}
+
+\section{We're lucky that the weather's so good. (part 1)}
+
+\section{We're lucky that the weather's so good. (part 2)}
+
+\section{Do you think I'm oblivious to what's going on around me? (part 1)}
+
+\section{Do you think I'm oblivious to what's going on around me? (part 2)}
+
+%------------------------------------------------------------------------------%
+
+\printbibliography[heading=bibintoc]
+\end{document}
