@@ -1,0 +1,184 @@
+\documentclass[oneside]{article}
+\usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
+\addbibresource{/home/nguyen/1_NQBH/reference/bib.bib}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{notation}{Notation}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{ques}{Question}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\usepackage[left=0.5in,right=0.5in,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small \textsc{Sect.} ~\thesection}
+\rhead{\small \nouppercase{\leftmark}} % \nouppercase !
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\cfoot{\thepage}
+\def\labelitemii{$\circ$}
+
+\title{Lundy Bancroft. \textit{Why Does He Do That?: Inside the Minds of Angry \& Controlling Men}}
+\author{Collector: Nguyen Quan Ba Hong}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{secnumdepth}{6}
+\setcounter{tocdepth}{6}
+\tableofcontents
+
+%------------------------------------------------------------------------------%
+
+\begin{quotation}
+    ``This fascinating investigation into what makes abusive men tick is alarming, but its candid handling of a difficult subject makes it a valuable resource for professionals and victims alike$\ldots$
+    
+    Jargon-free analysis is frequently broken up by interesting 1st-person accounts and boxes that distill in-depth information into simple checklists.
+    
+    Bancroft's book promises to be a beacon of calm for many storm-tossed families.'' - Publishers Weekly (starred review)
+    \\
+    
+    ``Most books about abuse in relationships focus on women - how they're hurt, why they stay.
+    
+    As important as these questions are, they can also distract us from the heart of the problem.
+    
+    Bancroft boldly asks - and brilliantly answers - the most important questions of all: Why do so many men abuse women?
+    
+    What can be done about it?
+    
+    This book is desperately needed and long overdue.'' - Jackson Katz, creator of the award-winning video \textit{Tough Guise: Violence, Media \& the Crisis in Masculinity}
+    
+    ``Bancroft, a former codirector of Emerge, the 1st U.S. program for abusive men, and a 15-year veteran of work with abusive men, reminds readers that each year in this country, 2--4 million women are assaulted by their partners and that at least 1 out of 3 American women will be a victim of violence by a husband or boyfriend at some point in her life.
+    
+    His valuable resource covers early warning signs, 10 abusive personality types, the abusive mentality, problems with getting help from the legal system, and the long, complex process of change$\ldots$
+    
+    This is essential reading for those in the helping professions and highly recommended.'' - Library Journal (starred review)
+    
+    ``At last - the straight scoop on men who abuse women.
+    
+    This is a book not just for abused women and domestic violence professionals, but for everyone who wonders why there's so much violence in America.
+    
+    Read it.'' - Anne Jones, author of \textit{When Love Goes Wrong} \& \textit{Next Time She'll Be Dead}
+    
+    ``Bancroft helps women who feel trapped in unhealthy relationships make sense out of what is happening.'' - Sarah Buel, J.D., codirector, Domestic Violence Clinic, and lecturer, University of Texas Law School
+    
+    ``A compelling read about a tough topic.
+    
+    What you read here will come back to you long after you put the book down.'' - Angela Browne, author of \textit{When Battered Women Kill}
+    
+    ``An informative and necessary read.'' - Susan Weitzman, Ph.D., author of \textit{Not to People Like Us: Hidden Abuse in Upscale Marriages}
+\end{quotation}
+To the thousands of courageous women, many of them survivors of abuse themselves, who have created and sustained the movement against the abuse of women, and to the many men who have joined this struggle as allies.
+
+\section*{Acknowledgments}
+Bancroft has had many, many teachers along his path to understanding the mentality and behavior of abusive men.
+
+The survivors of abuse have been Bancroft's greatest educators; if we could hear their voices much more, and the voices of the abusers and their allies much less, the world would move rapidly to eliminate the chronic mistreatment that so many women currently face in their intimate relationships.
+
+%
+Equally important to the growth of Bancroft's understanding of abusive men, and of their impact on their partners and children, was Carole Sousa, who simultaneously educated Bancroft at Emerge and kept them honest.
+
+\fbox{Her criticisms of Bancroft's blind spots were often annoying, mostly because of how right they were.}
+
+\section*{Note on Terminology}
+In referring to angry and controlling men in this book, Bancroft has chosen to use in most cases the shorter terms \textit{abusive man} and \textit{abuser}.
+
+Bancroft has used these terms for readability and not because Bancroft believes that every man who has problems with angry of controlling behaviors is abusive.
+
+Bancroft needed to select a simple word Bancroft could apply to any man who has recurring problems with disrespecting, controlling, insulting, or devaluing his partner, whether or not his behavior also involves more explicit verbal abuse, physical aggression, or sexual mistreatment.
+
+Any of these behaviors can have a serious impact on a woman's life and can lead her to feel confused, depressed, anxious, or afraid.
+
+So even if your partner is not an abuser, you will find that much of what is described in the pages ahead can help to clarify for both of you the problems in your relationship and what steps you can take to head in a more satisfying, supportive, and intimate direction.
+
+If you are not sure whether your partner's behavior should be called \textit{abuse} or not, turn to Chap. 5, which will help you sort out the distinctions.
+
+%
+At the same time, remember that even if your partner's behavior doesn't fit the definition of abuse, it may still have a serious affect on you.
+
+Any coercion or disrespect by a relationship partner is an important problem.
+
+Controlling men fall on a \textit{spectrum} of behaviors, from those who exhibit only a few of the tactics Bancroft describes in this book to those who use almost all of them.
+
+Similarly, these men run a gamut in their attitudes, from those who are willing to accept confrontation about their behaviors and strive to change them, to those who won't listen to the woman's perspective at all, feel completely justified, and become highly retaliatory if she attempts to stand up for herself.
+
+(In fact, as we see in Chap. 5, 1 of the best ways to tell how deep a man's control problem goes is by seeing how he reacts when you start demanding that he treats you better.
+
+If he accepts your grievances and actually takes steps to change what he does, the prospects for the future brighten somewhat.)
+
+The level of anger exhibited by a controlling man also shows wide variation, but unfortunately it doesn't tell us much in itself about how psychologically destructive he may be or how likely he is to change, as we will see.
+
+%
+In addition, Bancroft has chosen to use the terms \textit{he} to refer to the abusive person and \textit{she} to the abused partner.
+
+Bancroft selected these terms for convenience and because they correctly describe the great majority of relationships in which power is being abused.
+
+However, control and abuse are also a widespread problem in lesbian and gay male relationships, and the bulk of what Bancroft describes in this book as relevant to same-sex abusers.
+
+\section*{Introduction}
+35
+
+\begin{center}
+    Part I: The Nature of Abusive Thinking
+\end{center}
+
+\section{The Mystery}
+
+\section{The Mythology}
+
+\section{The Abusive Mentality}
+
+\section{The Types of Abusive Men}
+
+\begin{center}
+    Part II: The Abusive Man in Relationships
+\end{center}
+
+\section{How Abuse Begins}
+
+\section{The Abusive Man in Everyday Life}
+
+\section{Abusive Men \& Sex}
+
+\section{Abusive Men \& Addiction}
+
+\section{The Abusive Man \& Breaking Up}
+
+\begin{center}
+    Part III: The Abusive Man in the World
+\end{center}
+
+\section{Abusive Men as Parents}
+
+\section{Abusive Men \& Their Allies}
+
+\section{The Abusive Man \& the Legal System}
+
+\begin{center}
+    Part IV: Changing the Abusive Man
+\end{center}
+
+\section{The Making of an Abusive Man}
+
+\section{The Process of Change}
+
+\section{Creating an Abuse-Free World}
+
+\section*{Resources}
+
+%------------------------------------------------------------------------------%
+
+\printbibliography[heading=bibintoc]
+\end{document}
