@@ -1,0 +1,325 @@
+\documentclass[oneside]{article}
+\usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
+\addbibresource{/home/nguyen/1_NQBH/reference/bib.bib}
+\usepackage[utf8]{inputenc}
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % for sections, if you really want! (It is default in report and book class (So you may not need it).
+\usepackage{float,graphicx,algorithm,algpseudocode}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\allowdisplaybreaks
+\numberwithin{equation}{section}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{notation}{Notation}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{ques}{Question}[section]
+\newtheorem{problem}{Problem}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\usepackage[left=0.5in,right=0.5in,top=1.5cm,bottom=1.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small \textsc{Sect.} ~\thesection}
+\rhead{\small \nouppercase{\leftmark}} % \nouppercase !
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\cfoot{\thepage}
+\def\labelitemii{$\circ$}
+
+\title{Bayesian Inverse Problem}
+\author{Nguyen Quan Ba Hong}
+\date{\today}
+
+\begin{document}
+\maketitle
+\setcounter{secnumdepth}{6}
+\setcounter{tocdepth}{6}
+\tableofcontents
+
+%------------------------------------------------------------------------------%
+
+\section*{Ingredients}
+\begin{itemize}
+    \item Inverse Problem (IP)
+    \item Uncertainty Quantification (UQ)
+    \item Probability Theory
+    \item Bayesian Inverse Problem
+\end{itemize}
+
+\section{Introduction}
+
+\subsection{Inverse problem}
+\textbf{References.}
+\begin{itemize}
+    \item \cite{Aster_Borchers_Thurber2018} [\href{https://github.com/NQBH/reference/blob/master/Aster_Borchers_Thurber2018.pdf}{pdf}]
+    \item \cite{Ito_Jin2015} [\href{https://github.com/NQBH/reference/blob/master/Ito_Jin2015.pdf}{pdf}]
+    \item \cite{Kirsch2021} [\href{https://github.com/NQBH/reference/blob/master/Kirsch2021.pdf}{pdf}]
+    \item \textbf{[W\texttt{/}IP]} \href{https://en.wikipedia.org/wiki/Inverse_problem}{Wikipedia\texttt{/}Inverse Problem}.
+\end{itemize}
+\textbf{Sketches.}
+\begin{enumerate}
+    \item \textbf{Definition.} \textbf{[W\texttt{/}IP]} ``An \textit{inverse problem} in science is the process of calculating from a set of observations the \href{https://en.wikipedia.org/wiki/Causal}{causal} factors that produced them.''
+    \item \textbf{Intuition.} ``It is called an inverse problem because it starts with the effects and then calculates the causes.
+    
+    It is the inverse of a \textit{forward problem}, which starts with the causes and then calculates the effects.''
+    \item \textbf{Motivation.} ``Inverse problems are some of the most important mathematical problems in science and mathematics because they tell us about parameters that we cannot directly observe.''
+    \item \textbf{Application.} Inverse problems ``have wide application in \href{https://en.wikipedia.org/wiki/System_identification}{system identification}, \href{https://en.wikipedia.org/wiki/Optics}{optics}, \href{https://en.wikipedia.org/wiki/Radar}{radar}, \href{https://en.wikipedia.org/wiki/Acoustics}{acoustics}, \href{https://en.wikipedia.org/wiki/Communication_theory}{communication theory}, \href{https://en.wikipedia.org/wiki/Signal_processing}{signal processing}, \href{https://en.wikipedia.org/wiki/Medical_imaging}{medical imaging}, \href{https://en.wikipedia.org/wiki/Computer_vision}{computer vision}, \href{https://en.wikipedia.org/wiki/Geophysics}{geophysics}, \href{https://en.wikipedia.org/wiki/Oceanography}{oceanography}, \href{https://en.wikipedia.org/wiki/Astronomy}{astronomy}, \href{https://en.wikipedia.org/wiki/Remote_sensing}{remote sensing}, \href{https://en.wikipedia.org/wiki/Natural_language_processing}{natural language processing}, \href{https://en.wikipedia.org/wiki/Machine_learning}{machine learning}, \href{https://en.wikipedia.org/wiki/Nondestructive_testing}{nondestructive testing}, slope stability analysis and many other fields.
+\end{enumerate}
+\textbf{Communities.}
+\begin{itemize}
+    \item \href{https://www.wias-berlin.de/research/rgs/fg4/index.jsp}{WIAS\texttt{/}Research Group 4: \textit{Nonlinear Optimization \& Inverse Problem}}.
+\end{itemize}
+
+\subsubsection{Forward problem vs. inverse problem}
+\textbf{Physical Model.} $\mathcal{G}(u)\to y$.
+\begin{itemize}
+    \item $u\in X$ parameter vector/parameter function
+    \item $\mathcal{G}:X\to Y$ forward response operator
+    \item $y$ results\texttt{/}observations
+    \item Evaluation of $\mathcal{G}$ expensive
+\end{itemize}
+\textbf{Forward Problem.} Find the output $y$ for given parameters $u$.
+
+%
+Find the \textit{unknown data} $u\in X$ from \textit{noisy observations}
+\begin{align*}
+    y = \mathcal{G}(u) + \eta \mbox{ with } \eta\sim\mathcal{N}(0,\Gamma).
+\end{align*}
+\begin{itemize}
+    \item $u\in X$ parameter vector\texttt{/}parameter function
+    \item $\mathcal{G}:X\to Y$ forward response operator
+    \item $y$ result\texttt{/}observations
+    \item Evaluation of $\mathcal{G}$ expensive.
+\end{itemize}
+
+\textbf{Forward Problem.} \fbox{Find the output $y$ for given parameters $u$} $\to$ \textbf{well-posed}.
+
+\textbf{Inverse Problem.} \fbox{Find the parameters $u$ from (noisy) observations $y$} $\to$ \textbf{ill-posed}.
+\begin{example}[2D Inhomogeneous sideways heat equations]
+    Consider the following 2D inhomogeneous sideways heat equation (SHE):
+    \begin{equation}
+        \label{2D inhomogeneous sideways heat equation}
+        \tag{2D-iSHE}
+        \left\{\begin{split}
+            \partial_tu - \Delta u &= f(t,x,y), &&\mbox{ in } [0,\infty)\times\mathbb{R}^2,\\
+            u(t,0,y) &= \phi(t,y), &&\mbox{ in } [0,\infty)\times\mathbb{R},\\
+            \partial_xu(t,0,y) &= \psi(t,y) &&\mbox{ in } [0,\infty)\times\mathbb{R},
+        \end{split}\right.
+    \end{equation}
+    where $\phi$, $\psi$: \emph{temperature, flux data} given in the \emph{accessible region} $x = 0$, $f$: heat source density.
+    
+    \noindent(i) \textbf{Determination of temperature.} Denote the 2D Fourier transform of a function $f(t,y)$ by
+    \begin{align}
+        \label{2D Fourier transform}
+        \tag{2D-Ft}
+        \hat{f}(\tau,\xi) = \mathcal{F}(f)(\tau,\xi) = \frac{1}{2\pi}\int_{\mathbb{R}^2} f(t,y)e^{-{\rm i}(\tau t + \xi y)}{\rm d}y{\rm d}t,\ \forall(\tau,\xi)\in\mathbb{R}^2.
+    \end{align}
+    extend the domain of time $t$ from $[0,\infty)$ to $\mathbb{R}$, then applying the 2D Fourier transform \eqref{2D Fourier transform} w.r.t. $y,t$ to \eqref{2D inhomogeneous sideways heat equation}, obtain in the frequency space the following 2nd-order ODE:
+    \begin{equation*}
+        \left\{\begin{split}
+            \partial_x^2\hat{u} - ({\rm i}\tau + \xi^2)\hat{u}(\tau,x,\xi) &= \hat{f}(\tau,x,\xi), &&\mbox{ in } \mathbb{R}^3,\\
+            \hat{u}(\tau,0,\xi) &= \hat{\phi}(\tau,\xi), &&\mbox{ in } \mathbb{R}^2,\\
+            \partial_x\hat{u}(\tau,0,\xi) &= \hat{\psi}(\tau,\xi), &&\mbox{ in } \mathbb{R}^2.
+        \end{split}\right.
+    \end{equation*}
+    Solving this ODE yields
+    \begin{align}
+        \label{Fourier transform of solution of 2D inhomogeneous sideways heat equation}
+        \tag{$\hat{u}$}
+        \hat{u}(\tau,x,\xi) = \hat{\phi}(\tau,\xi)\cosh(x\theta) + \hat{\psi}(\tau,\xi)\frac{\sinh(x\theta)}{\theta} - \int_0^x \frac{\sinh((x - \eta)\theta)}{\theta}\hat{f}(\tau,\eta,\xi){\rm d}\eta,\ \forall(\tau,x,\xi)\in\mathbb{R}^3,
+    \end{align}
+    where $\theta = \theta(\tau,\xi)$ is the principle value of $\sqrt{{\rm i}\tau + \xi^2}$ and is given by
+    \begin{align*}
+        \theta(\tau,\xi) = \sqrt{\frac{\sqrt{\tau^2 + \xi^4} + \xi^2}{2}} + {\rm i}\operatorname{sign}(\tau)\sqrt{\frac{\sqrt{\tau^2 + \xi^4} - \xi^2}{2}},\ \forall(\tau,\xi)\in\mathbb{R}^2.
+    \end{align*}
+    This representation of $\hat{u}$ also indicates the ill-posedness of \eqref{2D inhomogeneous sideways heat equation}. Indeed, for $i = 1,2$, consider $u_i$ solves \eqref{2D inhomogeneous sideways heat equation} with the data $(f_i,\phi_i,\psi_i)$, and then
+    \begin{align*}
+        \hat{u}_i(\tau,x,\xi) = \hat{\phi}_i(\tau,\xi)\cosh(x\theta) + \hat{\psi}_i(\tau,\xi)\frac{\sinh(x\theta)}{\theta} - \int_0^x \frac{\sinh((x - \eta)\theta)}{\theta}\hat{f}_i(\tau,\eta,\xi){\rm d}\eta,\ \forall(\tau,x,\xi)\in\mathbb{R}^3, \mbox{ for } i = 1,2.
+    \end{align*}
+    Subtract these, term by term, to obtain:
+    \begin{align*}
+        (\hat{u}_1 - \hat{u}_2)(\tau,x,\xi) = (\hat{\phi}_1 - \hat{\phi}_2)(\tau,\xi)\cosh(x\theta) + (\hat{\psi}_1 - \hat{\psi}_2)(\tau,\xi)\frac{\sinh(x\theta)}{\theta} - \int_0^x \frac{\sinh((x - \eta)\theta)}{\theta}(\hat{f}_1 - \hat{f}_2)(\tau,\eta,\xi){\rm d}\eta,\ \forall(\tau,x,\xi)\in\mathbb{R}^3.
+    \end{align*}
+    The perturbations in the data, which are indicated by $(\hat{f}_1 - \hat{f}_2,\hat{\phi}_1 - \hat{\phi}_2,\hat{\psi}_1 - \hat{\psi}_2)$, are magnified by the hyperbolic function $\cosh$ and even a singular kernel $\frac{\sinh(x\theta)}{\theta}$ whose a singularity is the origin of the frequency space, i.e., $(\tau,\xi) = (0,0)$.
+    
+    \begin{remark}[Generalization: $x = 0$ to $x = x_0\in\mathbb{R}$]
+        Note that by using the 2D Fourier transform \eqref{2D Fourier transform}, the solution of \eqref{2D inhomogeneous sideways heat equation} where the Cauchy data $(\phi,\psi)$ is posed at $x = x_0\in\mathbb{R}$ instead of $x = 0$, can be represented as
+        \begin{align*}
+            \hat{u}(\tau,x,\xi) = \hat{\phi}(\tau,\xi)\cosh((x - x_0)\theta) + \hat{\psi}(\tau,\xi)\frac{\sinh((x - x_0)\theta)}{\theta} - \int_{x_0}^x \frac{\sinh((x - \eta)\theta)}{\theta}\hat{f}(\tau,\eta,\xi){\rm d}\eta,\ \forall(\tau,x,\xi)\in\mathbb{R}^3.
+        \end{align*}
+    \end{remark}
+    \begin{itemize}
+        \item \textbf{Ill-posedness.} Both kernels $\cosh(x\theta)$, $\frac{\sinh(x\theta)}{\theta}$ are unbounded for arbitrarily $x\ne 0$ when $\|(\tau,\xi)\|_2^2 = \tau^2 + \xi^2\to\infty$, and thus small errors in the data can blow up and ultimately destroy the solution.
+        \item \textbf{Measured data.} The measured data, denoted by $(f_\delta,\phi_\delta,\psi_\delta)$, where $\delta > 0$ is called an \emph{error level} (see, e.g., \cite{Ito_Jin2015, Kirsch2021}), is typically assumed to satisfy
+        \begin{align}
+            \label{noise boundedness}
+            \tag{noise}
+            \max\{\|f_\delta - f\|_{L^2(\mathbb{R}^3)},\|\phi_\delta - \phi\|_{L^2(\mathbb{R}^2)},\|\psi_\delta - \psi\|_{L^2(\mathbb{R}^2)}\}\le\delta.
+        \end{align}
+    \end{itemize}
+    (ii) \textbf{Determination of the thermal flux.} Differentiate the RHS of \eqref{Fourier transform of solution of 2D inhomogeneous sideways heat equation} w.r.t. $x$, with the help of Leibnitz integral rule for the integral term, to obtain the following representation of the thermal flux w.r.t. $x$
+    \begin{align*}
+        \partial_x\hat{u}(\tau,x,\xi) = \theta\hat{\phi}(\tau,\xi)\sinh(x\theta) + \hat{\psi}(\tau,\xi)\cosh(x\theta) - \int_0^x \cosh((x - \eta)\theta)\hat{f}(\tau,\eta,\xi){\rm d}\eta,\ \forall(\tau,x,\xi)\in\mathbb{R}^3.
+    \end{align*}
+    Blow-up kernels: $\sinh(x\theta)$, $\cosh((x - \eta)\theta)$ $\to$ ill-posedness.
+    
+    \noindent(iii) \textbf{Numerical implementation.} The Cauchy data $(u,\partial_xu)|_{x=0} = (\phi,\psi)$ and the source term $f(t,x,y)$ are given and sampled at an equidistant grid in the domain $[L,R]^2$ with $n\times n$ points ($n$: sampling frequency), and the discretizations of $(f,\phi,\psi)$ are denoted by $({\bf F},\Phi,\Psi)$, to distinguish them and their continuous counterparts.
+    
+    Main tools: \textsc{Matlab} builtin-in function \verb|fft2|, which is used to carry out the 2D fast Fourier transforms (abbr., 2D FFT) of the given data, and \verb|ifft2|, which is used to obtain 2D inverse fast Fourier transforms (abbr., 2D IIFT). 
+    
+    Denote $\bar{x}\in[0,1]$ the point at which we choose to observe the solutions and the thermal fluxes. Use Gauss-Legendre quadrature of order $m$ for numerical integrations, where $m\in\mathbb{Z}_{> 0}$ is chosen by users, i.e.,
+    \begin{align*}
+        \int_0^{\bar{x}} \widehat{f_\delta}(\tau,\eta,\xi)\frac{\sinh((\bar{x} - \eta))}{\theta}{\rm d}\eta&\approx\sum_{k=1}^m w_{m,k}\widehat{f_\delta}(\tau,x_{m,k},\xi)\frac{\sinh((\bar{x} - x_{m,k})\theta)}{\theta},\\
+        \int_0^{\bar{x}} \widehat{f_\delta}(\tau,\eta,\xi)\cosh((\bar{x} - \eta)\theta){\rm d}\eta&\approx\sum_{k=1}^m w_{m,k}\widehat{f_\delta}(\tau,x_{m,k},\xi)\cosh((\bar{x} - x_{m,k})\theta),
+    \end{align*}
+    where $x_{m,k}$ and $w_{m,k}$ are the nodes and weights of the Gauss-Legendre quadrature of degree $m$ for the interval $[0,\bar{x}]$, resp. To apply these numerical integration formulas, it is necessary to carry out the 2D FFT of $f_\delta$ at each Gauss-Legendre quadrature's node.
+    
+    Add random noises to the (discrete) exact input data $({\bf F},\Phi,\Psi)$, i.e.:
+    \begin{equation}
+        \label{noise data}
+        \tag{noise data}
+        \left\{\begin{split}
+            {\bf F}_\delta(\cdot,x_{m,k},\cdot) &= {\bf F}(\cdot,x_{m,k},\cdot) + \delta\texttt{randn}(\texttt{size}({\bf F}(\cdot,x_{m,k},\cdot))),\ \forall k = 1,\ldots,m,\\
+            \Phi_\delta &= \Phi + \delta\texttt{randn}(\texttt{size}(\Phi)),\ \Psi_\delta = \Psi + \delta\texttt{randn}(\texttt{size}(\Psi)),
+        \end{split}\right.        
+    \end{equation}
+    where \verb|randn()| is a \textsc{Matlab} built-in function.
+    
+    Denote $\|\cdot\|_{\overline{\rm F}}$ the ``average'' Frobenius norm, i.e.:
+    \begin{align*}
+        \|A\|_{\overline{\rm F}}\coloneqq\frac{1}{\sqrt{mn}}\|A\|_{\rm F} = \frac{1}{\sqrt{mn}}\left(\sum_{i=1}^m\sum_{j=1}^n |A_{ij}|^2\right)^{\frac{1}{2}},\ \forall A\in\operatorname{Mat}_\mathbb{C}(m\times n),
+    \end{align*}
+    where $\|\cdot\|_{\rm F}$ is the Frobenius norm, we can define the total noises of the 3D array ${\bf F}_\delta$ and the matrices $(\Phi_\delta,\Psi_\delta)$ as
+    \begin{align}
+        \label{total noise}
+        \tag{total noise}
+        \operatorname{TN}({\bf F},{\bf F}_\delta)\coloneqq\frac{1}{n\sqrt{m}}\left(\sum_{k=1}^m \|({\bf F}_\delta - {\bf F})(\cdot,x_{m,k},\cdot)\|_{\rm F}^2\right)^{\frac{1}{2}},\ \operatorname{TN}(\Phi,\Phi_\delta)\coloneqq\|\Phi_\delta - \Phi\|_{\overline{\rm F}},\ \operatorname{TN}(\Psi,\Psi_\delta)\coloneqq\|\Psi_\delta - \Psi\|_{\overline{\rm F}},\ \forall\delta > 0.
+    \end{align}
+    After doing this, we obtain the noisy data $({\bf F}_\delta,\Phi_\delta,\Psi_\delta)$ satisfying the condition $\max\{\operatorname{TN}({\bf F},{\bf F}_\delta),\operatorname{TN}(\Phi,\Phi_\delta),\operatorname{TN}(\Psi,\Psi_\delta)\}\le\delta$, which can be interpreted as the discrete analogue of \eqref{noise boundedness}. We also use the norm $\|\cdot\|_{\overline{\rm F}}$ to calculate root mean square and relative errors, e.g.,
+    \begin{align*}
+        \operatorname{RMSE}({\bf U}_\mathcal{R}^\delta)\coloneqq\|{\bf U}_\mathcal{R}^\delta - {\bf U}_{\rm exact}\|_{\overline{\rm F}},\ \operatorname{RE}({\bf U}_\mathcal{R}^\delta)\coloneqq\frac{\|{\bf U}_\mathcal{R}^\delta - {\bf U}_{\rm exact}\|_{\overline{\rm F}}}{\|{\bf U}_{\rm exact}\|_{\overline{\rm F}}},
+    \end{align*}
+    where ${\bf U}_{\rm exact}$, ${\bf U}_\mathcal{R}^\delta$ is the discrete version of the solution $u$ of \eqref{2D inhomogeneous sideways heat equation} and its regularized analogue $u_\mathcal{R}^\delta$ on the sampled grid.
+\end{example}
+
+\begin{algorithm}[H]
+    \caption{Numerical implementation of a regularization method proposed for \eqref{2D inhomogeneous sideways heat equation}.}
+    \label{algorithm1}
+    \begin{algorithmic}[1]
+        \State \textbf{Inputs:} observed point $x_{\rm obs} \in\mathbb{R}$, Cauchy data $\left[\phi,\psi\right]$ at $x = 0$, source term $f$, boundaries $L$ and $R$ of the computational domain $\Omega _{L,R}$, sampling frequency $n$, order $m\in \mathbb{Z}_{> 0}$ of Gauss-Legendre quadrature, (approximate) nodes $x_{k,m}$ and (approximate) weights $w_{k,m}$ of the Gauss-Legendre quadrature of degree $m$ for the interval $[0,x_{\rm obs}]$, noisy level $\delta > 0$, exact solution $u$ or the set of its values at the grid points;
+        \State Generate an equidistant grid in the computational domain $\Omega _{L,R}$; \Comment{Treat the origin $\left(0,0\right)$ carefully}
+        \State Compute the discrete exact data $({\bf F},\Phi,\Psi)$;
+        \State Generate the discrete noisy data $({\bf F}_\delta,\Phi_\delta,\Psi_\delta)$ by \eqref{noise data};
+        \State (Optional) Compute the triple of the averaged noises $(\operatorname{TN}({\bf F},{\bf F}_\delta),\operatorname{TN}(\Phi,\Phi_\delta),\operatorname{TN}(\Psi,\Psi_\delta))$ of the discrete noisy data generated in Step 4 by \eqref{total noise}; \Comment{This triple will slightly change in magnitude in each execution due to randomness.}
+        \State Compute 2D FFT $(\widehat{{\bf F}_\delta},\widehat{\Phi_\delta},\widehat{\Psi_\delta})$ of the discrete noisy data in Step 4 by \verb|fft2|;
+        \State Compute 2D FFT of the discrete versions $\widehat{{\bf U}_\delta}$ and $\widehat{{\bf U}_\mathcal{R}^\delta}$ of \eqref{Fourier transform of solution of 2D inhomogeneous sideways heat equation} and the regularized one(s);
+        \State Carry out both the discrete versions ${\bf U}_\delta$ and ${\bf U}_\mathcal{R}^\delta$ of the non-regularized and regularized solutions $u_\delta$ and $u_\mathcal{R}^\delta$ by \verb|ifft2|;
+        \State Compute the corresponding Root Mean Square Error $\operatorname{RMSE}({\bf U}_\mathcal{R}^\delta)$ and Relative Error $\operatorname{RE}({\bf U}_\mathcal{R}^\delta)$;
+        \State (Optional) 3D-Plot the discrete non-regularized solution ${\bf U}_\delta$ and regularized solution ${\bf U}_\mathcal{R}^\delta$ on the equidistant grid generated in Step 2;
+        \State \textbf{Output:} Triple of the averaged noises $(\operatorname{TN}({\bf F},{\bf F}_\delta),\operatorname{TN}(\Phi,\Phi_\delta),\operatorname{TN}(\Psi,\Psi_\delta))$ (optional), non-regularized discrete solution ${\bf U}_\delta$, regularized discrete solution ${\bf U}_\mathcal{R}^\delta$, errors $\operatorname{RMSE}({\bf U}_\mathcal{R}^\delta)$, $\operatorname{RE}({\bf U}_\mathcal{R}^\delta)$, 3D plots of non-regularized and regularized solutions.
+    \end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Deterministic Optimization Problem}
+Find the unknown data $u\in X$ from noisy observations
+\begin{align*}
+    y = \mathcal{G}(u) + \eta.
+\end{align*}
+Deterministic optimization problem
+\begin{align*}
+    \min_{u\in X} \frac{1}{2}\|y - \mathcal{G}(u)\|^2 + R(u).
+\end{align*}
+\begin{itemize}
+    \item $\|y - \mathcal{G}(u)\|$ potential\texttt{/}data misfit
+    \item $R$ regularization term
+\end{itemize}
+\begin{itemize}
+    \item Large-scale, deterministic optimization problem
+    \item No quantification of the uncertainty in the unknown $u$
+    \item Proper choice of the regularization term $R$
+\end{itemize}
+
+\subsubsection{Bayesian Inverse Problem}
+Find the unknown data $u\in X$ from noisy observations $y = \mathcal{G}(u) + \eta$.
+
+Bayesian inverse problem
+\begin{itemize}
+    \item $u,\eta,y$ random variables/fields
+    \item Prior $\mu_0$, posterior $\mu^y$
+    \item Goal of computation: moments of system quantities under the posterior w.r.t. noisy data
+\end{itemize}
+\textsf{Prior $\to$ Forward Model $G$ $\to$ (Noisy) Data $y$.}
+
+\textsf{Posterior $\to$ Forward Model $G$ $\to$}
+\begin{itemize}
+    \item[$\star$] \textsf{$\to$ (Noisy) Data $y$ $\to$ Posterior}
+    \item[$\star$] \textsf{$\to$ Quantity of Interest}
+\end{itemize}
+\begin{itemize}
+    \item Quantification of uncertainty in $u$ \& system quantities
+    \item Well-posedness of the inverse problem
+    \item Incorporation of prior knowledge on the uncertain data $u$
+    \item Need for efficient approximations of the posterior
+\end{itemize}
+
+\subsection{Uncertainty quantification}
+\textbf{References.}
+\begin{itemize}
+    \item \textbf{[W\texttt{/}U]} \href{https://en.wikipedia.org/wiki/Uncertainty}{Wikipedia\texttt{/}Uncertainty}.
+    \item \textbf{[W\texttt{/}UQ]} \href{https://en.wikipedia.org/wiki/Uncertainty_quantification}{Wikipedia\texttt{/}Uncertainty Quantification}.
+\end{itemize}
+\textbf{Sketches.}
+\begin{enumerate}
+    \item \textbf{Definitions.} \textbf{[W\texttt{/}U]} ``\textit{Uncertainty} refers to \href{https://en.wikipedia.org/wiki/Epistemology}{epistemic} situations involving imperfect or unknown \href{https://en.wikipedia.org/wiki/Information}{information}.''
+    
+    \textbf{[W\texttt{/}UQ]} ``\textit{Uncertainty quantification} (UQ) is the science of quantitative characterization and reduction of \href{https://en.wikipedia.org/wiki/Uncertainty}{uncertainties} in both computational and real world applications.''
+    \item \textbf{Intuition.} Uncertainty quantification ``tries to determine how likely certain outcomes are if some aspects of the system are not exactly known''.
+    \item \textbf{Motivation.} ``Many problems in the natural sciences and engineering are also rife with sources of uncertainty.'' E.g., (see, e.g., \textbf{[Schillings\_Teckentrup2017]}, Slides 3--4) \textit{environmental systems} (weather, climate, seismic, subsurface geophysics), \textit{engineering systems} (automobiles, aircraft, bridges, structures), \textit{biological systems} (health \& medicine, pharmaceuticals, gene expression, cancer research), \textit{physical systems} (nano-optics, quantum physics, radioactive decay), etc.
+    \item \textbf{Sources of uncertainty.} \textbf{[W\texttt{/}UQ]} ``Uncertainty can enter \href{https://en.wikipedia.org/wiki/Mathematical_model}{mathematical models} and experimental measurements in various contexts.''
+    
+    \textbf{Categorization of sources of uncertainty.} Consider: parameter uncertainty, parametric variability, structural uncertainty\texttt{/}model inadequacy\texttt{/}model bias\texttt{/}model discrepancy, algorithmic uncertainty\texttt{/}numerical uncertainty\texttt{/}discrete uncertainty, experimental uncertainty\texttt{/}observation error, interpolation uncertainty.
+    
+    \textbf{Classification of uncertainty.}
+    \begin{itemize}
+        \item \textit{Aleatoric uncertainty}\texttt{/}\textit{statistical uncertainty} is representative of unknowns that differ each time we run the same experiment. E.g., \textsc{Matlab} built-in function \texttt{rand()}.
+        
+        ``The quantification for the aleatoric uncertainties can be relatively straightforward, where traditional \href{https://en.wikipedia.org/wiki/Frequentist_probability}{(frequentist) probability} is the most basic form.''
+        \item \textit{Epistemic uncertainty}\texttt{/}\textit{systematic uncertainty} is due to things one could in principle know but do not in practice, which may be because a measurement is not accurate, because the model neglects certain effects, or because particulardata has been deliberately hidden. E.g., $g = 9.8{\rm m}\texttt{/}{\rm s}^2$ ignores the effects of air resistance.
+        
+        ``To evaluate epistemic uncertainties, the efforts are made to understand the (lack of) knowledge of the system, process or mechanism.''
+    \end{itemize}
+    ``Uncertainty quantification intends to explicitly express both types of uncertainty separately.''
+    
+    \textbf{Mathematical perspective of aleatoric \& epistemic uncertainty.} ``In mathematics, uncertainty is often characterized in terms of a \href{https://en.wikipedia.org/wiki/Probability_distribution}{probability distribution}. From that perspective, epistemic uncertainty means not being certain what the relevant probability distribution is, and aleatoric uncertainty means not being certain what a \href{https://en.wikipedia.org/wiki/Random_sample}{random sample} drawn from a probability distribution will be.''
+    \item \textbf{Quantification \& minimization of uncertainties.}
+    \begin{itemize}
+        \item Uncertainty quantification in numerical simulations
+        \item Minimization of uncertainties in design \& control problems
+        \item Identification of uncertain parameters from noisy observations
+    \end{itemize}
+    \textbf{Related research fields.} Numerical analysis, methods for optimal control\texttt{/}optimization problems, approximation theory, stochastic, statistics, algorithms \& data structures.
+\end{enumerate}
+\textbf{Communities.}
+\begin{itemize}
+    \item \href{https://www.wias-berlin.de/research/rgs/fg5/index.jsp}{WIAS\texttt{/}Research Group 5: \textit{Interacting Random Systems}}.
+    \item \href{https://www.wias-berlin.de/research/rgs/fg6/index.jsp}{WIAS\texttt{/}Research Group 6: \textit{Stochastic Algorithms \& Nonparametric Statistics}}.
+\end{itemize}
+
+\subsection{Probability Theory}
+
+\subsection{Bayesian Inverse Problems}
+\textbf{References.}
+\begin{itemize}
+    \item \textbf{[Schillings\_Teckentrup2017]} Schillings, Claudia \& Teckentrup, Aretha,
+    2017. \textit{Mathematical Foundations of Bayesian Inverse Problems: Well-posedness \& Statistical Estimates in Bayesian Inverse Problems}. [\href{https://github.com/NQBH/reference/blob/master/Schillings_Teckentrup2017_part_1.pdf}{pdf}]
+\end{itemize}
+
+%------------------------------------------------------------------------------%
+
+\printbibliography[heading=bibintoc]
+\end{document}
