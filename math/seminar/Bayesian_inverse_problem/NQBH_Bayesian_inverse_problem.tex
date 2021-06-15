@@ -32,7 +32,7 @@
 \def\labelitemii{$\circ$}
 
 \title{Bayesian Inverse Problem}
-\author{Nguyen Quan Ba Hong}
+\author{Collector: Nguyen Quan Ba Hong}
 \date{\today}
 
 \begin{document}
@@ -42,14 +42,6 @@
 \tableofcontents
 
 %------------------------------------------------------------------------------%
-
-\section*{Ingredients}
-\begin{itemize}
-    \item Inverse Problem (IP)
-    \item Uncertainty Quantification (UQ)
-    \item Probability Theory
-    \item Bayesian Inverse Problem
-\end{itemize}
 
 \section{Introduction}
 
@@ -113,6 +105,8 @@ Find the \textit{unknown data} $u\in X$ from \textit{noisy observations}
     \end{equation}
     where $\phi$, $\psi$: \emph{temperature, flux data} given in the \emph{accessible region} $x = 0$, $f$: heat source density.
     
+    Approaches to represent solutions: separation of variables, transform methods, etc., see, e.g., \cite{Evans2010}.
+    
     \noindent(i) \textbf{Determination of temperature.} Denote the 2D Fourier transform of a function $f(t,y)$ by
     \begin{align}
         \label{2D Fourier transform}
@@ -135,7 +129,7 @@ Find the \textit{unknown data} $u\in X$ from \textit{noisy observations}
     \end{align}
     where $\theta = \theta(\tau,\xi)$ is the principle value of $\sqrt{{\rm i}\tau + \xi^2}$ and is given by
     \begin{align*}
-        \theta(\tau,\xi) = \sqrt{\frac{\sqrt{\tau^2 + \xi^4} + \xi^2}{2}} + {\rm i}\operatorname{sign}(\tau)\sqrt{\frac{\sqrt{\tau^2 + \xi^4} - \xi^2}{2}},\ \forall(\tau,\xi)\in\mathbb{R}^2.
+        \theta(\tau,\xi) = \sqrt{\frac{\sqrt{\tau^2 + \xi^4} + \xi^2}{2}} + {\rm i}\operatorname{sgn}(\tau)\sqrt{\frac{\sqrt{\tau^2 + \xi^4} - \xi^2}{2}},\ \forall(\tau,\xi)\in\mathbb{R}^2.
     \end{align*}
     This representation of $\hat{u}$ also indicates the ill-posedness of \eqref{2D inhomogeneous sideways heat equation}. Indeed, for $i = 1,2$, consider $u_i$ solves \eqref{2D inhomogeneous sideways heat equation} with the data $(f_i,\phi_i,\psi_i)$, and then
     \begin{align*}
@@ -224,6 +218,11 @@ Find the \textit{unknown data} $u\in X$ from \textit{noisy observations}
         \State \textbf{Output:} Triple of the averaged noises $(\operatorname{TN}({\bf F},{\bf F}_\delta),\operatorname{TN}(\Phi,\Phi_\delta),\operatorname{TN}(\Psi,\Psi_\delta))$ (optional), non-regularized discrete solution ${\bf U}_\delta$, regularized discrete solution ${\bf U}_\mathcal{R}^\delta$, errors $\operatorname{RMSE}({\bf U}_\mathcal{R}^\delta)$, $\operatorname{RE}({\bf U}_\mathcal{R}^\delta)$, 3D plots of non-regularized and regularized solutions.
     \end{algorithmic}
 \end{algorithm}
+The \textsc{Matlab} scripts and a gallery for this algorithm for \eqref{2D inhomogeneous sideways heat equation} can be downloaded at the following \textsc{url}s:
+\begin{itemize}
+    \item \href{https://github.com/NQBH/miscellaneous/tree/master/math/seminar/Bayesian_inverse_problem/MATLAB}{NQBH\texttt{/}math\texttt{/}seminar\texttt{/}Bayesian inverse problem\texttt{/}\textsc{Matlab}}
+    \item \href{https://github.com/NQBH/miscellaneous/tree/master/math/seminar/Bayesian_inverse_problem/gallery}{NQBH\texttt{/}math\texttt{/}seminar\texttt{/}Bayesian inverse problem\texttt{/}gallery}.
+\end{itemize}
 
 \subsubsection{Deterministic Optimization Problem}
 Find the unknown data $u\in X$ from noisy observations
@@ -242,29 +241,6 @@ Deterministic optimization problem
     \item Large-scale, deterministic optimization problem
     \item No quantification of the uncertainty in the unknown $u$
     \item Proper choice of the regularization term $R$
-\end{itemize}
-
-\subsubsection{Bayesian Inverse Problem}
-Find the unknown data $u\in X$ from noisy observations $y = \mathcal{G}(u) + \eta$.
-
-Bayesian inverse problem
-\begin{itemize}
-    \item $u,\eta,y$ random variables/fields
-    \item Prior $\mu_0$, posterior $\mu^y$
-    \item Goal of computation: moments of system quantities under the posterior w.r.t. noisy data
-\end{itemize}
-\textsf{Prior $\to$ Forward Model $G$ $\to$ (Noisy) Data $y$.}
-
-\textsf{Posterior $\to$ Forward Model $G$ $\to$}
-\begin{itemize}
-    \item[$\star$] \textsf{$\to$ (Noisy) Data $y$ $\to$ Posterior}
-    \item[$\star$] \textsf{$\to$ Quantity of Interest}
-\end{itemize}
-\begin{itemize}
-    \item Quantification of uncertainty in $u$ \& system quantities
-    \item Well-posedness of the inverse problem
-    \item Incorporation of prior knowledge on the uncertain data $u$
-    \item Need for efficient approximations of the posterior
 \end{itemize}
 
 \subsection{Uncertainty quantification}
@@ -312,12 +288,321 @@ Bayesian inverse problem
 
 \subsection{Probability Theory}
 
+\subsubsection{Background in Probability Theory}
+Probability Space $(\Omega,\mathcal{A},\mu)$
+\begin{itemize}
+    \item $\Omega$ is a set
+    \item $\mathcal{A}$ is a $\sigma$-algebra over $\Omega$
+    \begin{itemize}
+        \item $\emptyset\in\mathcal{A}$,
+        \item the complement $A^c\coloneqq\{\omega\in\Omega;\omega\notin A\}\in\mathcal{A}$ for all $A\in\mathcal{A}$ and
+        \item the union $\bigcup_{j\in\mathbb{N}} A_j\in\mathcal{A}$ for every sequence $(A_j)_{j\in\mathbb{N}}\in\mathcal{A}$.
+    \end{itemize}
+    \item A \textit{measure} $\mu$ on a measurable space $(\Omega,\mathcal{A})$ is a mapping from $\mathcal{A}$ to $\mathbb{R}_+\cup\{\infty\}$ s.t.
+    \begin{itemize}
+        \item the empty set has measure zero, i.e., $\mu(\emptyset) = 0$ and
+        \item $\mu\left(\bigcup_{j\in\mathbb{N}} A_j\right) = \sum_{j\in\mathbb{N}} \mu(A_j)$ if $A_j\in\mathcal{A}$ are disjoint.
+    \end{itemize}
+    \item $\mu$ is a \textit{probability measure} iff
+    \begin{itemize}
+        \item $\mu(\Omega) = 1$
+    \end{itemize}
+    \item $\mathcal{B}(\mathbb{R})$ denotes the \textit{Borel $\sigma$-algebra} and equals the smallest $\sigma$-algebra containing all open subsets of $\mathbb{R}$.
+    \item The usual notion of volume of subsets of $\mathbb{R}^d$ gives rise to the \textit{Lebesgue measure}.
+\end{itemize}
+
+\subsubsection{Real-valued Random Variables}
+Let $(\Omega,\mathcal{A},\mu)$ be a probability space.
+
+A mapping $f:\Omega\to\mathbb{R}$ is called a \textit{random variable}, if $f$ is $\mathcal{A}$-$\mathcal{B}(\mathbb{R})$-measurable, i.e.,
+\begin{align*}
+    \forall B\in\mathcal{B}(\mathbb{R}),\ f^{-1}(B) = \{\omega\in\Omega;f(\omega)\in B\}\in\mathcal{A}\Rightarrow f^{-1}(\mathcal{B}(\mathbb{R}))\subset\mathcal{A}.
+\end{align*}
+\begin{itemize}
+    \item Image measure/distribution
+    \begin{itemize}
+        \item $\mu_f(B)\coloneqq(\mu\circ f^{-1}(B)) = \mu(f^{-1}(B)) = \mu(\{f\in B\})$.
+        \item $(\mathbb{R},\mathcal{B}(\mathbb{R}),\mu_f)$ is again a probability measure.
+    \end{itemize}
+    \item Distribution function
+    \begin{itemize}
+        \item $F_f(x)\coloneqq\mu_f((-\infty,x]) = \mu(f\le x) = \mu(\{\omega\in\Omega;f(\omega)\le x\})$.
+    \end{itemize}
+    \item Density function
+    \begin{itemize}
+        \item If $\mu_f(B)\coloneqq\int_B \rho(x){\rm d}x$ for all $B\in\mathcal{B}(\mathbb{R})$ with a measurable function $\rho:\mathbb{R}\to[0,\infty)$.
+    \end{itemize}
+    \item If $h$ is a real-valued measurable function on $\mathbb{R}\Rightarrow h\circ f$ $\mathcal{A}$-$\mathcal{B}(\mathbb{R})$-measurable
+\end{itemize}
+
+\subsubsection{Expectations}
+\begin{itemize}
+    \item For $f\in\mathcal{L}^1(\mu)$ is the \textit{expectation} defined as
+    \begin{align*}
+        \mathbb{E}(f) = \int_\Omega f{\rm d}\mu = \int_\Omega f(\omega){\rm d}\mu(\omega).
+    \end{align*}
+    \item For a real-valued measurable function $h$
+    \begin{itemize}
+        \item discretely distributed random variable: $\mu_f = \sum_{i=1}^n p_i{\bf 1}_{x_i}$
+        \begin{align*}
+            \mathbb{E}(h\circ f) = \int_\Omega h\circ f{\rm d}\mu = \int_\mathbb{R} h{\rm d}\mu_f = \sum_{i=1}^n p_if_{x_i}.???
+        \end{align*}
+        \item continuously distributed random variable: $\mu_f([a,b]) = \int_a^b \rho(x){\rm d}x$.
+        \begin{align*}
+            \mathbb{E}(h\circ f) = \int_\Omega h\circ f{\rm d}\mu = \int_\mathbb{R} h{\rm d}\mu_f = \int_\mathbb{R} h(x)\rho(x){\rm d}x.
+        \end{align*}
+    \end{itemize}
+    \item For $f\in\mathcal{L}^2(\mu)$ is the \textit{variance} defined as
+    \begin{align*}
+        \mathbb{V}(f) = \mathbb{E}((f - \mathbb{E}(f))^2) = \mathbb{E}(f^2) - (\mathbb{E}(f))^2.
+    \end{align*}
+\end{itemize}
+
+\subsubsection{Product Spaces \& Joint Distributions}
+\begin{itemize}
+    \item Product space $(\bigtimes_{i=1}^N \Omega_i,\bigotimes_{i=1}^N \mathcal{A}_i,\bigotimes_{i=1}^N \mu_i)$
+    \begin{itemize}
+        \item $\bigtimes_{i=1}^N \Omega_i = \{(\omega_1,\ldots,\omega_N);\omega_i\in\Omega_i,\ i = 1,\ldots,N\}$.
+        \item $\bigotimes_{i=1}^N \mathcal{A}_i$ smallest $\sigma$-algebra that contains all sets of the form $A = A_1\times\cdots\times A_N$ with $A_i\in\mathcal{A}_i$, $i = 1,\ldots,N$.
+        \item $\bigotimes_{i=1}^N \mu_i$ is defined by
+        \begin{align*}
+            \bigotimes_{i=1}^N \mu_i = \mu_1(A_1)\times\cdots\times\mu_N(A_N),\ \forall A_1\in\mathcal{A}_1,\ldots,A_N\in\mathcal{A}_N.
+        \end{align*}
+    \end{itemize}
+    \item For a real-valued random variables ($f_i$, $i = 1,\ldots,N$), we define $f_1\otimes\cdots\otimes f_N:\Omega\to\mathbb{R}^N$ via $\omega\mapsto(f_1(\omega),\ldots,f_N(\omega))$ a random variable in $(\mathbb{R}^N,\mathcal{B}(\mathbb{R}^N))$.
+    \begin{itemize}
+        \item Joint distribution is for $B\in\mathcal{B}(\mathbb{R}^N)$ given by
+        \begin{align*}
+            \mu_{f_1\otimes\cdots\otimes f_N}(B) = \mu(f_1\otimes\cdots\otimes f_N\in B).
+        \end{align*}
+        \item Joint distribution function is given by
+        \begin{align*}
+            F_{f_1\otimes\cdots\otimes f_N}(x_1,\ldots,x_N) = \mu_{f_1\otimes\cdots\otimes f_N} ((-\infty,x_1],\ldots,(-\infty,x_N]) = \mu(f_1\le x_1,\ldots,f_n\le x_n).
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Conditional Probabilities \& Expectations}
+Let $(\Omega,\mathcal{A},\mu)$ be a probability space.
+\begin{itemize}
+    \item The \textit{conditional probability} that an event $A\in\mathcal{A}$ occurs given that an event $B\in\mathcal{A}$ has occurred is defined by
+    \begin{align*}
+        \mu(A|B) = \frac{\mu(A\cap B)}{\mu(B)} \mbox{ for } \mu(B) > 0.
+    \end{align*}
+    \item Given 2 random variables $f$ and $h$ with joint density function $\rho$ and $x\in\mathbb{R}$ s.t. $\int_{-\infty}^\infty \rho(x,v){\rm d}v > 0$,
+    \begin{itemize}
+        \item the \textit{conditional distribution function} of $h$ given $f = x$ is given by
+        \begin{align*}
+            F_{h|f}(y|x) = \int_{-\infty}^y \frac{\rho(x,v){\rm d}v}{\int_{-\infty}^\infty \rho(x,v){\rm d}v}.
+        \end{align*}
+        \item the \textit{conditional density function} of $h$ given $f = x$ is given by
+        \begin{align*}
+            \rho_{h|f}(y|x) = \frac{\rho(x,y)}{\int_{-\infty}^\infty \rho(x,v){\rm d}v}.
+        \end{align*}
+        \item the \textit{conditional expectation} $\mathbb{E}(h|f)$ is defined by
+        \begin{align*}
+            \mathbb{E}(h|f) = \int_{-\infty}^\infty y\rho_{h|f}(y|x){\rm d}y.
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Independent Random Variables}
+\begin{itemize}
+    \item For \textit{independent random variables} $(f_i)_{i=1}^N$, it holds
+    \begin{align*}
+        \mu_{f_1\otimes\cdots\otimes f_N}(B_1\times\cdots\times B_N) &= \mu(f_1\in B_1,\ldots,f_N\in B_N) = \mu(f_1\in B_1)\cdots\mu(f_N\in B_N)\\
+        &= \mu_{f_1}(B_1)\cdots\mu_{f_N}(B_N) = \mu_{f_1}\otimes\cdots\otimes\mu_{f_N}(B_1\times\cdots\times B_N).
+    \end{align*}
+    \item $(f_i)_{i=1}^N$ are independent $\Leftrightarrow$ the joint distribution is equal to the product measure.
+\end{itemize}
+
 \subsection{Bayesian Inverse Problems}
 \textbf{References.}
 \begin{itemize}
     \item \textbf{[Schillings\_Teckentrup2017]} Schillings, Claudia \& Teckentrup, Aretha,
     2017. \textit{Mathematical Foundations of Bayesian Inverse Problems: Well-posedness \& Statistical Estimates in Bayesian Inverse Problems}. [\href{https://github.com/NQBH/reference/blob/master/Schillings_Teckentrup2017_part_1.pdf}{pdf}]
 \end{itemize}
+Find the unknown data $u\in X$ from noisy observations $y = \mathcal{G}(u) + \eta$.
+
+Bayesian inverse problem
+\begin{itemize}
+    \item $u,\eta,y$ random variables/fields
+    \item Prior $\mu_0$, posterior $\mu^y$ ???
+    \item Goal of computation: moments of system quantities under the posterior w.r.t. noisy data
+\end{itemize}
+\textsf{Prior $\to$ Forward Model $G$ $\to$ (Noisy) Data $y$.}
+\begin{equation*}
+    \mbox{Posterior}\to\mbox{Forward Model } G\to\left\{\begin{split}
+        &\to\mbox{(Noisy) Data } y\to\mbox{Posterior},\\
+        &\to\mbox{Quantity of interest}. 
+    \end{split}\right.
+\end{equation*}
+\begin{itemize}
+    \item Quantification of uncertainty in $u$ \& system quantities
+    \item Well-posedness of the inverse problem ???
+    \item Incorporation of prior knowledge on the uncertain data $u$
+    \item Need for efficient approximations of the posterior
+\end{itemize}
+
+\section{Bayesian Inversion in $\mathbb{R}^n$}
+Find the unknown data $u\in\mathbb{R}^n$ from noisy observations
+\begin{align*}
+    y = \mathcal{G}(u) + \eta,\ \eta\in\mathbb{R}^K.
+\end{align*}
+\begin{itemize}
+    \item $u\in\mathbb{R}^n$ random variable with Lebesgue density $\rho_0(u)$.
+    \item $\mathcal{G}:\mathbb{R}^n\to\mathbb{R}^K$ measurable function.
+    \item $\eta\in\mathbb{R}^K$ independent of $u$ ($u\bot\eta$), distributed according to measure $\mu_\eta$ with Lebesgue density $\rho(\eta)$.
+    \item $y|u$ is then distributed according to measure $\mu_u$ with Lebesgue density $\rho(y - \mathcal{G}(u))$.???
+    \item $(u,y)\in\mathbb{R}^n\times\mathbb{R}^K$ is a random variable with Lebesgue density $\rho(y - \mathcal{G}(u))\rho_0(u)$.
+\end{itemize}
+
+\begin{theorem}[Bayes' Theorem]
+    Assume that
+    \begin{align*}
+        Z\coloneqq\int_{\mathbb{R}^n} \rho(y - \mathcal{G}(u))\rho_0(u){\rm d}u > 0.
+    \end{align*}
+    Then, $u|y$ is a random variable with Lebesgue density $\rho^y(u)$ given by
+    \begin{align*}
+        \rho^y(u) = \frac{1}{Z}\rho(y - G(u))\rho_0(u).
+    \end{align*}
+\end{theorem}
+
+\begin{itemize}
+    \item $\rho_0(u)$ is the \textit{prior density}.
+    \item $\rho(y - \mathcal{G}(u))$ is the \textit{likelihood}.
+    \item $\rho^y(u)$ is the posterior density.
+    \item $\Phi(u;y) = -\log \rho(y - G(u))$ is called the \textit{potential} (negative log likelihood).
+    \item Bayes' formula expresses
+    \begin{align*}
+        \mathbb{P}(u|y) = \frac{1}{\mathbb{P}(y)}\mathbb{P}(y|u)\mathbb{P}(u).
+    \end{align*}
+    \item Let $\mu^y$ be a measure on $\mathbb{R}^n$ with density $\rho^y$ and $\mu_0$ a measure on $\mathbb{R}^n$ with Lebesgue density $\rho_0$.
+    
+    Then, Bayes' theorem may be written as
+    \begin{align*}
+        \frac{{\rm d}\mu^y}{{\rm d}\mu_0}(u) = \frac{1}{Z}\exp\left(-\Phi(u;y)\right),\ Z = \int_{\mathbb{R}^n} \exp(-\Phi(u;y))\mu_0({\rm d}u).
+    \end{align*}
+    \item The expression for the Radon-Nikodym derivative is to be interpreted as follows: for all measurable function $f:\mathbb{R}^n\to\mathbb{R}$
+    \begin{align*}
+        \mathbb{E}_{\mu^y}f(u) = \mathbb{E}_{\mu_0}\left(\frac{{\rm d}\mu^y}{{\rm d}\mu_0}(u)f(u)\right).
+    \end{align*}
+\end{itemize}
+
+\begin{example}[1D Gaussian, linear example]
+    Forward response operator $g\in L(\mathbb{R},\mathbb{R})$
+    
+    Prior:
+    \begin{align*}
+        \mu_0 = \mathcal{N}(0,\sigma_0^2),\ \sigma_0\in\mathbb{R}, \mbox{ Leb. dens. } \rho_0(u) = \frac{1}{\sigma_0\sqrt{2\pi}}\exp\left(-\frac{\|u\|^2}{\sigma_0^2}\right).
+    \end{align*}
+    Noise:
+    \begin{align*}
+        \eta\sim\mathcal{N}(0,\gamma^2),\ \gamma\in\mathbb{R}, \mbox{ Leb. dens. } \rho_0(\eta) = \frac{1}{\gamma\sqrt{2\pi}}\exp\left(-\frac{\|\eta\|^2}{2\gamma^2}\right).
+    \end{align*}
+    Bayes' formula
+    \begin{align*}
+        \rho(u|y) = \frac{\rho(y|u)\rho(u)}{\int_{\mathbb{R}^2} \rho(y|u)\rho(u){\rm d}u}.
+    \end{align*}
+    Completing the square
+    \begin{align*}
+        \mu^y = \mathcal{N}\left(\frac{\sigma_0^2g}{\gamma^2 + g^2\sigma_0^2}y,\sigma_0^2 - \frac{\sigma_0^4g^2}{\gamma^2 + g^2\sigma_0^2}\right).
+    \end{align*}
+    By assumption, we have for the prior density $\rho_0(u)$
+    \begin{align*}
+        \rho_0(u)\propto\exp\left(-\frac{1}{2\sigma_0^2}u^2\right),
+    \end{align*}
+    and the noise has density
+    \begin{align*}
+        \rho(\eta)\propto\exp\left(-\frac{1}{2\gamma^2}\eta^2\right).
+    \end{align*}
+    Thus, by Bayes' formula, the posterior is given by
+    \begin{align*}
+        \rho^y(u)\propto\exp\left(-\frac{1}{2\sigma_0^2}u^2 - \frac{1}{2\gamma^2}(y - gu)^2\right) = \exp\left(-\frac{1}{2}\left(\frac{1}{\sigma_0^2} + \frac{g^2}{\gamma^2}\right)u^2 - 2\frac{gy}{\gamma^2}u + \frac{y^2}{u^2}\right).
+    \end{align*}
+    Defining
+    \begin{align*}
+        a = \frac{1}{\sigma_0^2} + \frac{g^2}{\gamma^2},\ b = \frac{gy}{\gamma^2},\ c = \frac{y^2}{\gamma^2},
+    \end{align*}
+    we are interested in constants $m,K,\sigma$, s.t.
+    \begin{align*}
+        \rho^\gamma(u)\propto\exp\left(-\frac{1}{2\sigma^2}(u - m)^2 + K\right).
+    \end{align*}
+    By completing the square, we obtain
+    \begin{align*}
+        au^2 - 2bu + c = a\left(u^2 - 2\frac{b}{a}u + \frac{c}{a}\right) = a\left(u - \frac{b}{a}\right)^2 + c - \frac{b^2}{a},
+    \end{align*}
+    and thus
+    \begin{align*}
+        \sigma = \frac{1}{a} = \frac{\sigma_0^2\gamma^2}{\gamma^2 + g^2\sigma_0^2},\ m = \frac{b}{a} = \frac{\sigma_0^2g}{\gamma^2 + \sigma_0^2g^2}y,
+    \end{align*}
+    and for the constant $K$, which does not depend on $u$, we obtain
+    \begin{align*}
+        K = c - \frac{b^2}{a} = \frac{y^2}{\gamma^2} - \frac{\sigma_0^2g^2y^2}{y^4 + y^2g^2\sigma^2}.
+    \end{align*}
+    Hence,
+    \begin{align*}
+        \rho^y(u)\propto\exp\left(-\frac{1}{2\left(\frac{\sigma_0^2\gamma^2}{\gamma^2 + g^2\sigma_0^2}\right)^2}\left(u - \frac{\sigma_0^2g}{\gamma^2 + g^2\sigma_0^2}y\right)^2\right).
+    \end{align*}
+\end{example}
+
+\subsection{Estimators}
+\begin{itemize}
+    \item Maximum a posteriori estimate (MAP)
+    \begin{align*}
+        u_{\rm MAP} = \operatorname{arg\max}_{u\in\mathbb{R}^n} \rho^y(u).
+    \end{align*}
+    \item Conditional mean (CM)
+    \begin{align*}
+        u_{\rm CM} = \mathbb{E}(u|y) = \int_{\mathbb{R}^n} u\rho^y(u){\rm d}u.
+    \end{align*}
+    \item Maximum likelihood estimate (ML)
+    \begin{align*}
+        u_{\rm ML} = \operatorname{arg\max}_{u\in\mathbb{R}^n} \rho(y - \mathcal{G}(u)).
+    \end{align*}
+    \item Conditional variance (speed estimator)
+    \begin{align*}
+        \mathbb{V}(u|y) = \int_{\mathbb{R}^n} (u - u_{\rm CM})(u - u_{\rm CM})^\top\rho^y(u){\rm d}u.
+    \end{align*}
+\end{itemize}
+
+\begin{example}[Linear Gaussian Case]
+    \textbf{Connection of MAP \& CM \& optimization.}
+    
+    Forward response operator $A\in L(\mathbb{R}^n,\mathbb{R}^J)$
+    
+    Prior: $\mu_0 = \mathcal{N}(m_0,C_0)$
+    
+    Noise: $\eta\sim\mathcal{N}(0,\Gamma)$
+    
+    Posterior:
+    \begin{align*}
+        \mu^y = \mathcal{N}(m,C) \mbox{ with } m = m_0 + C_0A^*(AC_0A^* + \Gamma)^{-1}(y - Am_0) \mbox{ and } C = C_0 - C_0A^*(AC_0A^* + \Gamma)^{-1}AC_0.
+    \end{align*}
+    \begin{align*}
+        u_{\rm MAP} &= \operatorname{arg\max}_{u\in\mathbb{R}^n} \rho^y(u) = \operatorname{arg\min}_{u\in\mathbb{R}^n} (u - m)^\top C^{-1}(u - m) = m,\\
+        u_{\rm CM} &= \mathbb{E}(u|y) = m,\\
+        u_{\rm opt} &= \operatorname{arg\min}_{u\in\mathbb{R}^n} \|Ax - y\|_\Gamma^2 + \|u - m_0\|_{C_0}^2 = m.
+    \end{align*}
+\end{example}
+
+\begin{example}[Comparison of CM \& MAP (1D)]
+    Let $u$ be a real-valued rv and assume that the posterior density is given by
+    \begin{align*}
+        \rho^y(u) = \frac{\alpha}{\sigma_0}\varphi\left(\frac{u}{\sigma_0}\right) + \frac{1 - \alpha}{\sigma_1}\varphi\left(\frac{u - 1}{\sigma_1}\right) \mbox{ with } 0 < \alpha < 1,\ \sigma_0,\sigma_1 > 0 \mbox{ and } \varphi(u) = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{u^2}{2}\right).
+    \end{align*}
+    \textbf{Estimators.}
+    \begin{equation*}
+        u_{\rm CM} = 1 - \alpha,\ u_{\rm MAP} = \left\{\begin{split}
+            &0, &&\mbox{ if } \frac{\alpha}{\sigma_0} > \frac{1 - \alpha}{\sigma_1},\\
+            &1, &&\mbox{ if } \frac{\alpha}{\sigma_0} < \frac{1 - \alpha}{\sigma_1},\\
+            &\{0,1\}, &&\mbox{ if } \frac{\alpha}{\sigma_0} = \frac{1 - \alpha}{\sigma_1}
+        \end{split}\right.
+    \end{equation*}
+    \textsf{Fig. Posterior density with parameter values $\alpha = \frac{1}{2}$, $\sigma_0 = 0.08$, $\sigma_1 = 0.04$.}
+    
+    \textsf{Fig. Posterior density with parameter values $\alpha = 0.01$, $\sigma_0 = 0.001$, $\sigma_1 = 0.1$.}
+\end{example}
 
 %------------------------------------------------------------------------------%
 
