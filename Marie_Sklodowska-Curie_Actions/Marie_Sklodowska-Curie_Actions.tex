@@ -1,12 +1,12 @@
-\documentclass[onsided]{book}
+\documentclass[oneside]{book}
 \usepackage[backend=biber,natbib=true,style=authoryear]{biblatex}
-\addbibresource{/home/nguyen/1_NQBH/math/bib.bib}
+\addbibresource{/home/nguyen/1_NQBH/reference/bib.bib}
 \usepackage[utf8]{inputenc}
-\usepackage{float}
 \usepackage{graphicx}
 \usepackage[colorlinks=true,linkcolor=blue,urlcolor=red,citecolor=magenta]{hyperref}
-\usepackage{amsmath,amssymb,amsthm}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
 \allowdisplaybreaks
+\usepackage{tcolorbox}
 \numberwithin{equation}{section}
 \newtheorem{assumption}{Assumption}[section]
 \newtheorem{lemma}{Lemma}[section]
@@ -17,6 +17,7 @@
 \newtheorem{notation}{Notation}[section]
 \newtheorem{remark}{Remark}[section]
 \newtheorem{example}{Example}[section]
+\newtheorem{algorithm}{Algorithm}[section]
 \newtheorem{ques}{Question}[section]
 \newtheorem{problem}{Problem}[section]
 \newtheorem{conjecture}{Conjecture}[section]
@@ -25,10 +26,11 @@
 \pagestyle{fancy}
 \fancyhf{}
 \addtolength{\headheight}{0pt}% obsolete
-\lhead{\itshape \scriptsize \chaptername~\thechapter}
-\rhead{\itshape \scriptsize \nouppercase{\leftmark}} %\nouppercase !
+\lhead{\scriptsize \chaptername~\thechapter}
+\rhead{\scriptsize \nouppercase{\leftmark}} %\nouppercase !
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \cfoot{\thepage}
+\def\labelitemii{$\circ$}
 
 \title{Marie Sk\l odowska-Curie Actions}
 \author{Collector: Nguyen Quan Ba Hong}
@@ -42,9 +44,9 @@
 
 %------------------------------------------------------------------------------%
 
-\part{Wikipedia's}
+\chapter{Wikipedia's}
 
-\chapter{Wikipedia/Marie Sk\l odowska-Curie Actions}
+\section{\href{https://en.wikipedia.org/wiki/Marie_Sklodowska-Curie_Actions}{Wikipedia\texttt{/}Marie Sk\l odowska-Curie Actions}}
 
 \textit{Marie Skłodowska-Curie Actions (MSCA)} are a set of major research fellowships created by the \href{https://en.wikipedia.org/wiki/European_Union}{European Union}/\href{https://en.wikipedia.org/wiki/European_Commission}{European Commission} to support research in the \href{https://en.wikipedia.org/wiki/European_Research_Area}{European Research Area} (ERA).
 
@@ -70,7 +72,7 @@ To mark this milestone, the European Commission selected thirty highly-promising
 
 The only person \href{https://en.wikipedia.org/wiki/Nobel_Prize#Multiple_laureates}{to win a Nobel Prize for contributions in 2 different sciences} (\href{https://en.wikipedia.org/wiki/Nobel_Prize_in_Physics}{physics} and \href{https://en.wikipedia.org/wiki/Nobel_Prize_in_Chemistry}{chemistry}), she was also the 1st - and only woman - to have been awarded a Nobel Prize twice.
 
-\section{Types of funding}
+\subsection{Types of funding}
 Fellowships are awarded by the European Commission across scientific disciplines within the framework of Horizon 2020.
 
 %
@@ -84,7 +86,7 @@ MSCA are grouped into the following schemes:
 \end{itemize}
 Within the framework of Horizon 2020, which runs from 2014 through 2020, MSCA will award €6.16 billion in funding.
 
-\section{External links}
+\subsection{External links}
 \begin{itemize}
     \item \href{http://ec.europa.eu/research/mariecurieactions/}{Main Marie Sk\l odowska-Curie Actions website}
     \item \href{http://cordis.europa.eu/fp7/people/}{People programme (FP7)}
@@ -93,7 +95,7 @@ Within the framework of Horizon 2020, which runs from 2014 through 2020, MSCA wi
 
 %------------------------------------------------------------------------------%
 
-\chapter{\href{https://ec.europa.eu/research/mariecurieactions/actions/individual-fellowships_en}{European Commission/Marie Skłodowska-Curie Actions}}
+\chapter{\href{https://ec.europa.eu/research/mariecurieactions/actions/individual-fellowships_en}{European Commission\texttt{/}Marie Skłodowska-Curie Actions}}
 
 \section{\href{https://ec.europa.eu/research/mariecurieactions/}{Home}}
 
@@ -290,7 +292,7 @@ The grant is awarded to the host organization, usually a university, research ce
 \subsubsection{How do I apply?}
 You submit a \textit{research proposal}, including your CV.
 
-The proposal is \textit{written jointly with your chosen host organisation(s)}.
+The proposal is \textit{written jointly with your chosen host organization(s)}.
 
 \href{https://ec.europa.eu/research/mariecurieactions/actions/get-funding_en}{Apply Now}.
 
@@ -573,7 +575,7 @@ Need inspiration? Check out the \href{https://ec.europa.eu/research/mariecurieac
 
 \subsection{\href{https://ec.europa.eu/research/mariecurieactions/how-to/apply_en}{How to apply}}
 \begin{quotation}
-    To get funding you and/or the research organisation have to submit a proposal to 1 of the calls published on the Participant Portal, the single-entry point for the EU research and innovation programmes.
+    To get funding you and/or the research organization have to submit a proposal to 1 of the calls published on the Participant Portal, the single-entry point for the EU research and innovation programmes.
 \end{quotation}
 \textit{To get funding you and/or the research organization have to submit a proposal to 1 of the calls published on the \href{http://ec.europa.eu/research/participants/portal/desktop/en/home.html}{Participant Portal}, the single-entry point for the EU research and innovation programmes}.
 
