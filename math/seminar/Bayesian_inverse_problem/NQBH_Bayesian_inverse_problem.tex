@@ -265,8 +265,7 @@ Deterministic optimization problem
         \item \textit{Aleatoric uncertainty}\texttt{/}\textit{statistical uncertainty} is representative of unknowns that differ each time we run the same experiment. E.g., \textsc{Matlab} built-in function \texttt{rand()}.
         
         ``The quantification for the aleatoric uncertainties can be relatively straightforward, where traditional \href{https://en.wikipedia.org/wiki/Frequentist_probability}{(frequentist) probability} is the most basic form.''
-        \item \textit{Epistemic uncertainty}\texttt{/}\textit{systematic uncertainty} is due to things one could in principle know but do not in practice, which may be because a measurement is not accurate, because the model neglects certain effects, or because particular
-data has been deliberately hidden. E.g., $g = 9.8{\rm m}\texttt{/}{\rm s}^2$ ignores the effects of air resistance.
+        \item \textit{Epistemic uncertainty}\texttt{/}\textit{systematic uncertainty} is due to things one could in principle know but do not in practice, which may be because a measurement is not accurate, because the model neglects certain effects, or because particular data has been deliberately hidden. E.g., $g = 9.8{\rm m}\texttt{/}{\rm s}^2$ ignores the effects of air resistance.
         
         ``To evaluate epistemic uncertainties, the efforts are made to understand the (lack of) knowledge of the system, process or mechanism.''
     \end{itemize}
@@ -294,28 +293,6 @@ data has been deliberately hidden. E.g., $g = 9.8{\rm m}\texttt{/}{\rm s}^2$ ign
     2017. \textit{Mathematical Foundations of Bayesian Inverse Problems: Well-posedness \& Statistical Estimates in Bayesian Inverse Problems}. [\href{https://github.com/NQBH/reference/blob/master/Schillings_Teckentrup2017_part_1.pdf}{pdf}]
 \end{itemize}
 In \cite{Dashti_Stuart2017}, the authors highlight the mathematical and computational structure relating to the formulation of, and development of algorithms for, the Bayesian approach to inverse problems in differential equations, which is a fundamental approach in the quantification of uncertainty within applications involving the blending of mathematical models with data.
-
-Find the unknown data $u\in X$ from noisy observations $y = \mathcal{G}(u) + \eta$.
-
-Bayesian inverse problem
-\begin{itemize}
-    \item $u,\eta,y$ random variables/fields
-    \item Prior $\mu_0$, posterior $\mu^y$ ???
-    \item Goal of computation: moments of system quantities under the posterior w.r.t. noisy data
-\end{itemize}
-\textsf{Prior $\to$ Forward Model $G$ $\to$ (Noisy) Data $y$.}
-\begin{equation*}
-    \mbox{Posterior}\to\mbox{Forward Model } G\to\left\{\begin{split}
-        &\to\mbox{(Noisy) Data } y\to\mbox{Posterior},\\
-        &\to\mbox{Quantity of interest}. 
-    \end{split}\right.
-\end{equation*}
-\begin{itemize}
-    \item Quantification of uncertainty in $u$ \& system quantities
-    \item Well-posedness of the inverse problem ???
-    \item Incorporation of prior knowledge on the uncertain data $u$
-    \item Need for efficient approximations of the posterior
-\end{itemize}
 
 \subsection{Bayesian Inversion in $\mathbb{R}^n$}
 Consider the problem of finding ${\bf u}\in\mathbb{R}^n$ from ${\bf y}\in\mathbb{R}^J$ where ${\bf u}$ and ${\bf y}$ are related by the equation ${\bf y} = G({\bf u})$.
