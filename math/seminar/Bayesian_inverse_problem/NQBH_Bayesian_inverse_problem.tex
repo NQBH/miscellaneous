@@ -265,7 +265,8 @@ Deterministic optimization problem
         \item \textit{Aleatoric uncertainty}\texttt{/}\textit{statistical uncertainty} is representative of unknowns that differ each time we run the same experiment. E.g., \textsc{Matlab} built-in function \texttt{rand()}.
         
         ``The quantification for the aleatoric uncertainties can be relatively straightforward, where traditional \href{https://en.wikipedia.org/wiki/Frequentist_probability}{(frequentist) probability} is the most basic form.''
-        \item \textit{Epistemic uncertainty}\texttt{/}\textit{systematic uncertainty} is due to things one could in principle know but do not in practice, which may be because a measurement is not accurate, because the model neglects certain effects, or because particulardata has been deliberately hidden. E.g., $g = 9.8{\rm m}\texttt{/}{\rm s}^2$ ignores the effects of air resistance.
+        \item \textit{Epistemic uncertainty}\texttt{/}\textit{systematic uncertainty} is due to things one could in principle know but do not in practice, which may be because a measurement is not accurate, because the model neglects certain effects, or because particular
+data has been deliberately hidden. E.g., $g = 9.8{\rm m}\texttt{/}{\rm s}^2$ ignores the effects of air resistance.
         
         ``To evaluate epistemic uncertainties, the efforts are made to understand the (lack of) knowledge of the system, process or mechanism.''
     \end{itemize}
@@ -285,6 +286,304 @@ Deterministic optimization problem
     \item \href{https://www.wias-berlin.de/research/rgs/fg5/index.jsp}{WIAS\texttt{/}Research Group 5: \textit{Interacting Random Systems}}.
     \item \href{https://www.wias-berlin.de/research/rgs/fg6/index.jsp}{WIAS\texttt{/}Research Group 6: \textit{Stochastic Algorithms \& Nonparametric Statistics}}.
 \end{itemize}
+
+\section{Bayesian Inverse Problems}
+\textbf{References.}
+\begin{itemize}
+    \item \textbf{[Schillings\_Teckentrup2017]} Schillings, Claudia \& Teckentrup, Aretha,
+    2017. \textit{Mathematical Foundations of Bayesian Inverse Problems: Well-posedness \& Statistical Estimates in Bayesian Inverse Problems}. [\href{https://github.com/NQBH/reference/blob/master/Schillings_Teckentrup2017_part_1.pdf}{pdf}]
+\end{itemize}
+In \cite{Dashti_Stuart2017}, the authors highlight the mathematical and computational structure relating to the formulation of, and development of algorithms for, the Bayesian approach to inverse problems in differential equations, which is a fundamental approach in the quantification of uncertainty within applications involving the blending of mathematical models with data.
+
+Find the unknown data $u\in X$ from noisy observations $y = \mathcal{G}(u) + \eta$.
+
+Bayesian inverse problem
+\begin{itemize}
+    \item $u,\eta,y$ random variables/fields
+    \item Prior $\mu_0$, posterior $\mu^y$ ???
+    \item Goal of computation: moments of system quantities under the posterior w.r.t. noisy data
+\end{itemize}
+\textsf{Prior $\to$ Forward Model $G$ $\to$ (Noisy) Data $y$.}
+\begin{equation*}
+    \mbox{Posterior}\to\mbox{Forward Model } G\to\left\{\begin{split}
+        &\to\mbox{(Noisy) Data } y\to\mbox{Posterior},\\
+        &\to\mbox{Quantity of interest}. 
+    \end{split}\right.
+\end{equation*}
+\begin{itemize}
+    \item Quantification of uncertainty in $u$ \& system quantities
+    \item Well-posedness of the inverse problem ???
+    \item Incorporation of prior knowledge on the uncertain data $u$
+    \item Need for efficient approximations of the posterior
+\end{itemize}
+
+\subsection{Bayesian Inversion in $\mathbb{R}^n$}
+Consider the problem of finding ${\bf u}\in\mathbb{R}^n$ from ${\bf y}\in\mathbb{R}^J$ where ${\bf u}$ and ${\bf y}$ are related by the equation ${\bf y} = G({\bf u})$.
+
+We refer to ${\bf y}$ as \textit{observed data} and to ${\bf u}$ as the \textit{unknown}.
+
+This problem may be difficult for a number of reasons.
+
+The authors highlight 2 of these, both particularly relevant to their future developments.
+\begin{enumerate}
+    \item The 1st difficulty, which may be illustrated in the case where $n = J$, concerns the fact that often the equation is perturbed by noise and so we should really consider the equation
+    \begin{align*}
+        \label{noise-perturbed equation}
+        {\bf y} = G({\bf u}) + \boldsymbol{\eta},
+    \end{align*}
+    where $\boldsymbol{\eta}\in\mathbb{R}^J$ represents the \textit{observational noise} which enters the observed data.
+    
+    Assume further that $G$ maps $\mathbb{R}^J$ into a proper subset of itself, $\operatorname{Im}_G$, and that $G$ has a unique inverse as a map from $\operatorname{Im}_G$ into $\mathbb{R}^J$.
+    
+    It may then be the case that, because of the noise, ${\bf y}\notin\operatorname{Im}_G$ so that simply inverting $G$ on the data ${\bf y}$ will not be possible.
+    
+    Furthermore, the specific instance of $\boldsymbol{\eta}$ which enters the data may not be known to us; typically, at best, only the statistical properties of a typical noise $\boldsymbol{\eta}$ are known.
+    
+    Thus we cannot subtract $\boldsymbol{\eta}$ from the observed data ${\bf y}$ to obtain something in $\operatorname{Im}_G$.
+    
+    Even if ${\bf y}\in\operatorname{Im}_G$, the uncertainty caused by the presence of noise $\boldsymbol{\eta}$ causes problems for the inversion.
+    \item The 2nd difficulty is manifest in the case where $n > J$ so that the system is \textit{underdetermined}: the number of equations is smaller than the number of unknowns.
+    
+    How do we attach a sensible meaning to the concept of solution in this case where, generically, there will be many solutions?
+\end{enumerate}
+Thinking probabilistically enables us to overcome both of these difficulties.
+
+We will treat ${\bf u},{\bf y}$, and $\boldsymbol{\eta}$ as random variables and determine the joint probability distribution of $({\bf u},{\bf y})$.
+
+We then define the ``solution'' of the inverse problem to be the probability distribution of ${\bf u}$ given ${\bf y}$, denoted ${\bf u}|{\bf y}$.
+
+This allows us to \fbox{model the noise via its statistical properties}, even if we do not know the exact instance of the noise entering the given data.
+
+And it also allows us to specify a priori the form of solutions that we believe to be more likely, thereby enabling us to attach weights to multiple solutions which explain the data.
+
+This is the \textit{Bayesian approach} to inverse problems.
+
+%
+To this end, we define a random variable $({\bf u},{\bf y})\in\mathbb{R}^n\times\mathbb{R}^J$ as follows.
+
+We let ${\bf u}\in\mathbb{R}^n$ be a random variable with (Lebesgue) density $\rho_0({\bf u})$.
+
+Assume that ${\bf y}|{\bf u}$ (${\bf y}$ given ${\bf u}$) is defined via the formula \eqref{noise-perturbed equation} where $G:\mathbb{R}^n\to\mathbb{R}^J$ is measurable and $\boldsymbol{\eta}$ is independent of ${\bf u}$ (we sometimes write this as $\boldsymbol{\eta}\bot{\bf u}$) and distributed according to measure $\mathbb{Q}_0$ with Lebesgue density $\rho(\boldsymbol{\eta})$.
+
+Then ${\bf y}|{\bf u}$ is simply found by shifting $\mathbb{Q}_0$ by $G({\bf u})$ to measure $\mathbb{Q}_{\bf u}$ with Lebesgue density $\rho({\bf y} - G({\bf u}))$.
+
+It follows that $({\bf u},{\bf y})\in\mathbb{R}^n\times\mathbb{R}^J$ is a random variable with Lebesgue density $\rho({\bf y} - G({\bf u}))\rho_0({\bf u})$.
+
+%
+The following theorem allows us to calculate the distribution of the random variable ${\bf u}|{\bf y}$:
+
+\begin{theorem}[Bayes' Theorem]
+    \label{Bayes' theorem}
+    Assume that
+    \begin{align*}
+        Z\coloneqq\int_{\mathbb{R}^n} \rho({\bf y} - G({\bf u}))\rho_0({\bf u}){\rm d}{\bf u} > 0.
+    \end{align*}
+    Then ${\bf u}|{\bf y}$ is a random variable with Lebesgue density $\rho^{\bf y}({\bf u})$ given by
+    \begin{align*}
+        \rho^{\bf y}({\bf u}) = \frac{1}{Z}\rho({\bf y} - G({\bf u}))\rho_0({\bf u}).
+    \end{align*}
+\end{theorem}
+
+\begin{remark}
+    The following remarks establish the nomenclature\footnote{\textbf{nomenclaure}: [n] a system of naming things, especially in a branch of science.} of Bayesian statistics and also frame the previous theorem in a manner which generalizes to the infinite-dimensional setting.
+    \begin{itemize}
+        \item $\rho_0({\bf u})$ is the \textbf{prior density}.
+        \item $\rho({\bf y} - G({\bf u}))$ is the \textbf{likelihood}.
+        \item $\rho^{\bf y}({\bf u})$ is the \textbf{posterior density}.
+        \item It will be useful in what follows to define
+        \begin{align*}
+            \Phi({\bf u};{\bf y}) = -\log\rho({\bf y} - G({\bf u})).
+        \end{align*}
+        We call $\Phi$ the \textbf{potential}.
+        
+        This is the \textbf{negative log likelihood}.
+        \item Note that $Z$ is the probability of ${\bf y}$.
+        
+        Bayes' formula expresses
+        \begin{align*}
+            \mathbb{P}({\bf u}|{\bf y}) = \frac{1}{\mathbb{P}({\bf y})}\mathbb{P}({\bf y}|{\bf u})\mathbb{P}({\bf u}).
+        \end{align*}
+        \item Let $\mu^{\bf y}$ be a measure on $\mathbb{R}^n$ with density $\rho^{\bf y}$ and $\mu_0$ a measure on $\mathbb{R}^n$ with density $\rho_0$.
+        
+        Then the conclusion of Theorem \ref{Bayes' theorem} may be written as:\footnote{Indeed, since $\mu^{\bf y}$, $\mu_0$ are measures on $\mathbb{R}^n$ with densities $\rho^{\bf y}$,$ \rho_0$, respectively, we have ${\rm d}\mu^{\bf y}({\bf u}) = \rho^{\bf y}{\rm d}{\bf u}$, ${\rm d}\mu_0({\bf u}) = \rho_0({\bf u}){\rm d}{\bf u}$, and thus the LHS can be written as
+        \begin{align*}
+            \frac{{\rm d}\mu^{\bf y}}{{\rm d}\mu_0}({\bf u}) = \frac{\rho^{\bf y}({\bf u}){\rm d}{\bf u}}{\rho_0({\bf u}){\rm d}{\bf u}} = \frac{\rho^{\bf y}({\bf u})}{\rho_0({\bf u})}.
+        \end{align*}
+        By definition of the potential $\Phi$, we have
+        \begin{align*}
+            Z = \int_{\mathbb{R}^n} \exp(-\Phi({\bf u};{\bf y}))\mu_0({\rm d}{\bf u}) = \int_{\mathbb{R}^n} \exp(\log\rho({\bf y} - G({\bf u})))\mu_0({\rm d}{\bf u}) = \int_{\mathbb{R}^n} \rho({\bf y} - G({\bf u}))\rho_0({\bf u}){\rm d}{\bf u},
+        \end{align*}
+        which is assumed to be positive to make sense of the denominator. The RHS can be written as
+        \begin{align*}
+            \frac{1}{Z}\exp(-\Phi({\bf u};{\bf y})) = \frac{1}{Z}\exp(\log\rho({\bf y} - G({\bf y}))) = \frac{1}{Z}\rho({\bf y} - G({\bf u})).
+        \end{align*}
+        Multiplying both sides with $\rho_0({\bf u})$ yields the desired equality in Theorem \ref{Bayes' theorem}.}
+        \begin{align*}
+            \frac{{\rm d}\mu^{\bf y}}{{\rm d}\mu_0}({\bf u}) = \frac{1}{Z}\exp(-\Phi({\bf u};{\bf y})),\ Z = \int_{\mathbb{R}^n} \exp(-\Phi({\bf u};{\bf y}))\mu_0({\rm d}{\bf u}).
+        \end{align*}
+        Thus \fbox{the posterior is absolutely continuous w.r.t. the prior}, and \emph{the Radon-Nikodym derivative is proportional to the likelihood}.
+        
+        This is rewriting Bayes' formula in the form
+        \begin{align*}
+            \frac{1}{\mathbb{P}({\bf u})}\mathbb{P}({\bf u}|{\bf y}) = \frac{1}{\mathbb{P}({\bf y})}\mathbb{P}({\bf y}|{\bf u}).
+        \end{align*}
+        \item The expression for the Radon-Nikodym derivative is to be interpreted as the statement that, for all measurable $f:\mathbb{R}^n\to\mathbb{R}$,
+        \begin{align*}
+            \mathbb{E}^{\mu^{\bf y}}f({\bf u}) = \mathbb{E}^{\mu_0}\left(\frac{{\rm d}\mu^{\bf y}}{{\rm d}\mu_0}({\bf u})f({\bf u})\right).
+        \end{align*}
+        Alternatively we may write this in integral form as
+        \begin{align*}
+            \int_{\mathbb{R}^n} f({\bf u})\mu^{\bf y}({\rm d}{\bf u}) = \int_{\mathbb{R}^n} \left(\frac{1}{Z}\exp(-\Phi({\bf u};{\bf y}))f({\bf u})\right)\mu_0({\rm d}{\bf u}) = \frac{\int_{\mathbb{R}^n} \exp(-\Phi({\bf u};{\bf y}))f({\bf u})\mu_0({\rm d}{\bf u})}{\int_{\mathbb{R}^n} \exp(-\Phi({\bf u};{\bf y}))\mu_0({\rm d}{\bf u})}.
+        \end{align*}
+    \end{itemize}
+\end{remark}
+
+\subsection{Inverse Heat Equation}
+This inverse problem illustrates the 1st difficulty, which motivates the Bayesian approach to inverse problems.
+
+Let $D\subset\mathbb{R}^d$ be a bounded open set, with Lipschitz boundary $\partial D$.
+
+Then define the Hilbert space $H$ and operator $A$ as follows:
+\begin{align*}
+    H = (L^2(D),\langle\cdot,\cdot\rangle,\|\cdot\|);\ A = -\Delta,\ \mathcal{D}(A) = H^2(D)\cap H_0^1(D).
+\end{align*}
+We make the following assumption about the spectrum of $A$ which is easily verified for simple geometries, but in fact holds quite generally.
+
+\begin{assumption}
+    The eigenvalue problem $A\varphi_j = \alpha_j\varphi_j$ has a countably infinite set of solutions, indexed by $j\in\mathbb{Z}^+$.
+    
+    They may be normalized to satisfy the $L^2$-orthonormality condition
+    \begin{equation*}
+        \langle\varphi_j,\varphi_k\rangle = \delta_{jk}\coloneqq\left\{\begin{split}
+            &1, &&j = k,\\
+            &0, &&j\ne k,
+        \end{split}\right.
+    \end{equation*}
+    and form a basis for $H$.
+    
+    Furthermore, the eigenvalues are positive and, if ordered to be increasing, satisfy $\alpha_j\asymp j^{2/d}$.
+\end{assumption}
+The notation $\asymp$ (i.e., ``asymptotic to'') denotes the existence of constants $C^\pm > 0$ s.t.
+\begin{align*}
+    C^-j^{2/d}\le\alpha_j\le C^+j^{2/d},\ \forall j\in\mathbb{N}.
+\end{align*}
+
+\newpage
+\begin{example}[1D Gaussian, linear example]
+    Forward response operator $g\in L(\mathbb{R},\mathbb{R})$
+    
+    Prior:
+    \begin{align*}
+        \mu_0 = \mathcal{N}(0,\sigma_0^2),\ \sigma_0\in\mathbb{R}, \mbox{ Leb. dens. } \rho_0(u) = \frac{1}{\sigma_0\sqrt{2\pi}}\exp\left(-\frac{\|u\|^2}{\sigma_0^2}\right).
+    \end{align*}
+    Noise:
+    \begin{align*}
+        \eta\sim\mathcal{N}(0,\gamma^2),\ \gamma\in\mathbb{R}, \mbox{ Leb. dens. } \rho_0(\eta) = \frac{1}{\gamma\sqrt{2\pi}}\exp\left(-\frac{\|\eta\|^2}{2\gamma^2}\right).
+    \end{align*}
+    Bayes' formula
+    \begin{align*}
+        \rho(u|y) = \frac{\rho(y|u)\rho(u)}{\int_{\mathbb{R}^2} \rho(y|u)\rho(u){\rm d}u}.
+    \end{align*}
+    Completing the square
+    \begin{align*}
+        \mu^y = \mathcal{N}\left(\frac{\sigma_0^2g}{\gamma^2 + g^2\sigma_0^2}y,\sigma_0^2 - \frac{\sigma_0^4g^2}{\gamma^2 + g^2\sigma_0^2}\right).
+    \end{align*}
+    By assumption, we have for the prior density $\rho_0(u)$
+    \begin{align*}
+        \rho_0(u)\propto\exp\left(-\frac{1}{2\sigma_0^2}u^2\right),
+    \end{align*}
+    and the noise has density
+    \begin{align*}
+        \rho(\eta)\propto\exp\left(-\frac{1}{2\gamma^2}\eta^2\right).
+    \end{align*}
+    Thus, by Bayes' formula, the posterior is given by
+    \begin{align*}
+        \rho^y(u)\propto\exp\left(-\frac{1}{2\sigma_0^2}u^2 - \frac{1}{2\gamma^2}(y - gu)^2\right) = \exp\left(-\frac{1}{2}\left(\frac{1}{\sigma_0^2} + \frac{g^2}{\gamma^2}\right)u^2 - 2\frac{gy}{\gamma^2}u + \frac{y^2}{u^2}\right).
+    \end{align*}
+    Defining
+    \begin{align*}
+        a = \frac{1}{\sigma_0^2} + \frac{g^2}{\gamma^2},\ b = \frac{gy}{\gamma^2},\ c = \frac{y^2}{\gamma^2},
+    \end{align*}
+    we are interested in constants $m,K,\sigma$, s.t.
+    \begin{align*}
+        \rho^\gamma(u)\propto\exp\left(-\frac{1}{2\sigma^2}(u - m)^2 + K\right).
+    \end{align*}
+    By completing the square, we obtain
+    \begin{align*}
+        au^2 - 2bu + c = a\left(u^2 - 2\frac{b}{a}u + \frac{c}{a}\right) = a\left(u - \frac{b}{a}\right)^2 + c - \frac{b^2}{a},
+    \end{align*}
+    and thus
+    \begin{align*}
+        \sigma = \frac{1}{a} = \frac{\sigma_0^2\gamma^2}{\gamma^2 + g^2\sigma_0^2},\ m = \frac{b}{a} = \frac{\sigma_0^2g}{\gamma^2 + \sigma_0^2g^2}y,
+    \end{align*}
+    and for the constant $K$, which does not depend on $u$, we obtain
+    \begin{align*}
+        K = c - \frac{b^2}{a} = \frac{y^2}{\gamma^2} - \frac{\sigma_0^2g^2y^2}{y^4 + y^2g^2\sigma^2}.
+    \end{align*}
+    Hence,
+    \begin{align*}
+        \rho^y(u)\propto\exp\left(-\frac{1}{2\left(\frac{\sigma_0^2\gamma^2}{\gamma^2 + g^2\sigma_0^2}\right)^2}\left(u - \frac{\sigma_0^2g}{\gamma^2 + g^2\sigma_0^2}y\right)^2\right).
+    \end{align*}
+\end{example}
+
+\subsection{Estimators}
+\begin{itemize}
+    \item Maximum a posteriori estimate (MAP)
+    \begin{align*}
+        u_{\rm MAP} = \operatorname{arg\max}_{u\in\mathbb{R}^n} \rho^y(u).
+    \end{align*}
+    \item Conditional mean (CM)
+    \begin{align*}
+        u_{\rm CM} = \mathbb{E}(u|y) = \int_{\mathbb{R}^n} u\rho^y(u){\rm d}u.
+    \end{align*}
+    \item Maximum likelihood estimate (ML)
+    \begin{align*}
+        u_{\rm ML} = \operatorname{arg\max}_{u\in\mathbb{R}^n} \rho(y - \mathcal{G}(u)).
+    \end{align*}
+    \item Conditional variance (speed estimator)
+    \begin{align*}
+        \mathbb{V}(u|y) = \int_{\mathbb{R}^n} (u - u_{\rm CM})(u - u_{\rm CM})^\top\rho^y(u){\rm d}u.
+    \end{align*}
+\end{itemize}
+
+\begin{example}[Linear Gaussian Case]
+    \textbf{Connection of MAP \& CM \& optimization.}
+    
+    Forward response operator $A\in L(\mathbb{R}^n,\mathbb{R}^J)$
+    
+    Prior: $\mu_0 = \mathcal{N}(m_0,C_0)$
+    
+    Noise: $\eta\sim\mathcal{N}(0,\Gamma)$
+    
+    Posterior:
+    \begin{align*}
+        \mu^y = \mathcal{N}(m,C) \mbox{ with } m = m_0 + C_0A^*(AC_0A^* + \Gamma)^{-1}(y - Am_0) \mbox{ and } C = C_0 - C_0A^*(AC_0A^* + \Gamma)^{-1}AC_0.
+    \end{align*}
+    \begin{align*}
+        u_{\rm MAP} &= \operatorname{arg\max}_{u\in\mathbb{R}^n} \rho^y(u) = \operatorname{arg\min}_{u\in\mathbb{R}^n} (u - m)^\top C^{-1}(u - m) = m,\\
+        u_{\rm CM} &= \mathbb{E}(u|y) = m,\\
+        u_{\rm opt} &= \operatorname{arg\min}_{u\in\mathbb{R}^n} \|Ax - y\|_\Gamma^2 + \|u - m_0\|_{C_0}^2 = m.
+    \end{align*}
+\end{example}
+
+\begin{example}[Comparison of CM \& MAP (1D)]
+    Let $u$ be a real-valued rv and assume that the posterior density is given by
+    \begin{align*}
+        \rho^y(u) = \frac{\alpha}{\sigma_0}\varphi\left(\frac{u}{\sigma_0}\right) + \frac{1 - \alpha}{\sigma_1}\varphi\left(\frac{u - 1}{\sigma_1}\right) \mbox{ with } 0 < \alpha < 1,\ \sigma_0,\sigma_1 > 0 \mbox{ and } \varphi(u) = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{u^2}{2}\right).
+    \end{align*}
+    \textbf{Estimators.}
+    \begin{equation*}
+        u_{\rm CM} = 1 - \alpha,\ u_{\rm MAP} = \left\{\begin{split}
+            &0, &&\mbox{ if } \frac{\alpha}{\sigma_0} > \frac{1 - \alpha}{\sigma_1},\\
+            &1, &&\mbox{ if } \frac{\alpha}{\sigma_0} < \frac{1 - \alpha}{\sigma_1},\\
+            &\{0,1\}, &&\mbox{ if } \frac{\alpha}{\sigma_0} = \frac{1 - \alpha}{\sigma_1}.
+        \end{split}\right.
+    \end{equation*}
+\end{example}
+
+\appendix
+
+\section{Tools}
 
 \subsection{Probability Theory}
 
@@ -415,191 +714,6 @@ Let $(\Omega,\mathcal{A},\mu)$ be a probability space.
     \end{align*}
     \item $(f_i)_{i=1}^N$ are independent $\Leftrightarrow$ the joint distribution is equal to the product measure.
 \end{itemize}
-
-\subsection{Bayesian Inverse Problems}
-\textbf{References.}
-\begin{itemize}
-    \item \textbf{[Schillings\_Teckentrup2017]} Schillings, Claudia \& Teckentrup, Aretha,
-    2017. \textit{Mathematical Foundations of Bayesian Inverse Problems: Well-posedness \& Statistical Estimates in Bayesian Inverse Problems}. [\href{https://github.com/NQBH/reference/blob/master/Schillings_Teckentrup2017_part_1.pdf}{pdf}]
-\end{itemize}
-Find the unknown data $u\in X$ from noisy observations $y = \mathcal{G}(u) + \eta$.
-
-Bayesian inverse problem
-\begin{itemize}
-    \item $u,\eta,y$ random variables/fields
-    \item Prior $\mu_0$, posterior $\mu^y$ ???
-    \item Goal of computation: moments of system quantities under the posterior w.r.t. noisy data
-\end{itemize}
-\textsf{Prior $\to$ Forward Model $G$ $\to$ (Noisy) Data $y$.}
-\begin{equation*}
-    \mbox{Posterior}\to\mbox{Forward Model } G\to\left\{\begin{split}
-        &\to\mbox{(Noisy) Data } y\to\mbox{Posterior},\\
-        &\to\mbox{Quantity of interest}. 
-    \end{split}\right.
-\end{equation*}
-\begin{itemize}
-    \item Quantification of uncertainty in $u$ \& system quantities
-    \item Well-posedness of the inverse problem ???
-    \item Incorporation of prior knowledge on the uncertain data $u$
-    \item Need for efficient approximations of the posterior
-\end{itemize}
-
-\section{Bayesian Inversion in $\mathbb{R}^n$}
-Find the unknown data $u\in\mathbb{R}^n$ from noisy observations
-\begin{align*}
-    y = \mathcal{G}(u) + \eta,\ \eta\in\mathbb{R}^K.
-\end{align*}
-\begin{itemize}
-    \item $u\in\mathbb{R}^n$ random variable with Lebesgue density $\rho_0(u)$.
-    \item $\mathcal{G}:\mathbb{R}^n\to\mathbb{R}^K$ measurable function.
-    \item $\eta\in\mathbb{R}^K$ independent of $u$ ($u\bot\eta$), distributed according to measure $\mu_\eta$ with Lebesgue density $\rho(\eta)$.
-    \item $y|u$ is then distributed according to measure $\mu_u$ with Lebesgue density $\rho(y - \mathcal{G}(u))$.???
-    \item $(u,y)\in\mathbb{R}^n\times\mathbb{R}^K$ is a random variable with Lebesgue density $\rho(y - \mathcal{G}(u))\rho_0(u)$.
-\end{itemize}
-
-\begin{theorem}[Bayes' Theorem]
-    Assume that
-    \begin{align*}
-        Z\coloneqq\int_{\mathbb{R}^n} \rho(y - \mathcal{G}(u))\rho_0(u){\rm d}u > 0.
-    \end{align*}
-    Then, $u|y$ is a random variable with Lebesgue density $\rho^y(u)$ given by
-    \begin{align*}
-        \rho^y(u) = \frac{1}{Z}\rho(y - G(u))\rho_0(u).
-    \end{align*}
-\end{theorem}
-
-\begin{itemize}
-    \item $\rho_0(u)$ is the \textit{prior density}.
-    \item $\rho(y - \mathcal{G}(u))$ is the \textit{likelihood}.
-    \item $\rho^y(u)$ is the posterior density.
-    \item $\Phi(u;y) = -\log \rho(y - G(u))$ is called the \textit{potential} (negative log likelihood).
-    \item Bayes' formula expresses
-    \begin{align*}
-        \mathbb{P}(u|y) = \frac{1}{\mathbb{P}(y)}\mathbb{P}(y|u)\mathbb{P}(u).
-    \end{align*}
-    \item Let $\mu^y$ be a measure on $\mathbb{R}^n$ with density $\rho^y$ and $\mu_0$ a measure on $\mathbb{R}^n$ with Lebesgue density $\rho_0$.
-    
-    Then, Bayes' theorem may be written as
-    \begin{align*}
-        \frac{{\rm d}\mu^y}{{\rm d}\mu_0}(u) = \frac{1}{Z}\exp\left(-\Phi(u;y)\right),\ Z = \int_{\mathbb{R}^n} \exp(-\Phi(u;y))\mu_0({\rm d}u).
-    \end{align*}
-    \item The expression for the Radon-Nikodym derivative is to be interpreted as follows: for all measurable function $f:\mathbb{R}^n\to\mathbb{R}$
-    \begin{align*}
-        \mathbb{E}_{\mu^y}f(u) = \mathbb{E}_{\mu_0}\left(\frac{{\rm d}\mu^y}{{\rm d}\mu_0}(u)f(u)\right).
-    \end{align*}
-\end{itemize}
-
-\begin{example}[1D Gaussian, linear example]
-    Forward response operator $g\in L(\mathbb{R},\mathbb{R})$
-    
-    Prior:
-    \begin{align*}
-        \mu_0 = \mathcal{N}(0,\sigma_0^2),\ \sigma_0\in\mathbb{R}, \mbox{ Leb. dens. } \rho_0(u) = \frac{1}{\sigma_0\sqrt{2\pi}}\exp\left(-\frac{\|u\|^2}{\sigma_0^2}\right).
-    \end{align*}
-    Noise:
-    \begin{align*}
-        \eta\sim\mathcal{N}(0,\gamma^2),\ \gamma\in\mathbb{R}, \mbox{ Leb. dens. } \rho_0(\eta) = \frac{1}{\gamma\sqrt{2\pi}}\exp\left(-\frac{\|\eta\|^2}{2\gamma^2}\right).
-    \end{align*}
-    Bayes' formula
-    \begin{align*}
-        \rho(u|y) = \frac{\rho(y|u)\rho(u)}{\int_{\mathbb{R}^2} \rho(y|u)\rho(u){\rm d}u}.
-    \end{align*}
-    Completing the square
-    \begin{align*}
-        \mu^y = \mathcal{N}\left(\frac{\sigma_0^2g}{\gamma^2 + g^2\sigma_0^2}y,\sigma_0^2 - \frac{\sigma_0^4g^2}{\gamma^2 + g^2\sigma_0^2}\right).
-    \end{align*}
-    By assumption, we have for the prior density $\rho_0(u)$
-    \begin{align*}
-        \rho_0(u)\propto\exp\left(-\frac{1}{2\sigma_0^2}u^2\right),
-    \end{align*}
-    and the noise has density
-    \begin{align*}
-        \rho(\eta)\propto\exp\left(-\frac{1}{2\gamma^2}\eta^2\right).
-    \end{align*}
-    Thus, by Bayes' formula, the posterior is given by
-    \begin{align*}
-        \rho^y(u)\propto\exp\left(-\frac{1}{2\sigma_0^2}u^2 - \frac{1}{2\gamma^2}(y - gu)^2\right) = \exp\left(-\frac{1}{2}\left(\frac{1}{\sigma_0^2} + \frac{g^2}{\gamma^2}\right)u^2 - 2\frac{gy}{\gamma^2}u + \frac{y^2}{u^2}\right).
-    \end{align*}
-    Defining
-    \begin{align*}
-        a = \frac{1}{\sigma_0^2} + \frac{g^2}{\gamma^2},\ b = \frac{gy}{\gamma^2},\ c = \frac{y^2}{\gamma^2},
-    \end{align*}
-    we are interested in constants $m,K,\sigma$, s.t.
-    \begin{align*}
-        \rho^\gamma(u)\propto\exp\left(-\frac{1}{2\sigma^2}(u - m)^2 + K\right).
-    \end{align*}
-    By completing the square, we obtain
-    \begin{align*}
-        au^2 - 2bu + c = a\left(u^2 - 2\frac{b}{a}u + \frac{c}{a}\right) = a\left(u - \frac{b}{a}\right)^2 + c - \frac{b^2}{a},
-    \end{align*}
-    and thus
-    \begin{align*}
-        \sigma = \frac{1}{a} = \frac{\sigma_0^2\gamma^2}{\gamma^2 + g^2\sigma_0^2},\ m = \frac{b}{a} = \frac{\sigma_0^2g}{\gamma^2 + \sigma_0^2g^2}y,
-    \end{align*}
-    and for the constant $K$, which does not depend on $u$, we obtain
-    \begin{align*}
-        K = c - \frac{b^2}{a} = \frac{y^2}{\gamma^2} - \frac{\sigma_0^2g^2y^2}{y^4 + y^2g^2\sigma^2}.
-    \end{align*}
-    Hence,
-    \begin{align*}
-        \rho^y(u)\propto\exp\left(-\frac{1}{2\left(\frac{\sigma_0^2\gamma^2}{\gamma^2 + g^2\sigma_0^2}\right)^2}\left(u - \frac{\sigma_0^2g}{\gamma^2 + g^2\sigma_0^2}y\right)^2\right).
-    \end{align*}
-\end{example}
-
-\subsection{Estimators}
-\begin{itemize}
-    \item Maximum a posteriori estimate (MAP)
-    \begin{align*}
-        u_{\rm MAP} = \operatorname{arg\max}_{u\in\mathbb{R}^n} \rho^y(u).
-    \end{align*}
-    \item Conditional mean (CM)
-    \begin{align*}
-        u_{\rm CM} = \mathbb{E}(u|y) = \int_{\mathbb{R}^n} u\rho^y(u){\rm d}u.
-    \end{align*}
-    \item Maximum likelihood estimate (ML)
-    \begin{align*}
-        u_{\rm ML} = \operatorname{arg\max}_{u\in\mathbb{R}^n} \rho(y - \mathcal{G}(u)).
-    \end{align*}
-    \item Conditional variance (speed estimator)
-    \begin{align*}
-        \mathbb{V}(u|y) = \int_{\mathbb{R}^n} (u - u_{\rm CM})(u - u_{\rm CM})^\top\rho^y(u){\rm d}u.
-    \end{align*}
-\end{itemize}
-
-\begin{example}[Linear Gaussian Case]
-    \textbf{Connection of MAP \& CM \& optimization.}
-    
-    Forward response operator $A\in L(\mathbb{R}^n,\mathbb{R}^J)$
-    
-    Prior: $\mu_0 = \mathcal{N}(m_0,C_0)$
-    
-    Noise: $\eta\sim\mathcal{N}(0,\Gamma)$
-    
-    Posterior:
-    \begin{align*}
-        \mu^y = \mathcal{N}(m,C) \mbox{ with } m = m_0 + C_0A^*(AC_0A^* + \Gamma)^{-1}(y - Am_0) \mbox{ and } C = C_0 - C_0A^*(AC_0A^* + \Gamma)^{-1}AC_0.
-    \end{align*}
-    \begin{align*}
-        u_{\rm MAP} &= \operatorname{arg\max}_{u\in\mathbb{R}^n} \rho^y(u) = \operatorname{arg\min}_{u\in\mathbb{R}^n} (u - m)^\top C^{-1}(u - m) = m,\\
-        u_{\rm CM} &= \mathbb{E}(u|y) = m,\\
-        u_{\rm opt} &= \operatorname{arg\min}_{u\in\mathbb{R}^n} \|Ax - y\|_\Gamma^2 + \|u - m_0\|_{C_0}^2 = m.
-    \end{align*}
-\end{example}
-
-\begin{example}[Comparison of CM \& MAP (1D)]
-    Let $u$ be a real-valued rv and assume that the posterior density is given by
-    \begin{align*}
-        \rho^y(u) = \frac{\alpha}{\sigma_0}\varphi\left(\frac{u}{\sigma_0}\right) + \frac{1 - \alpha}{\sigma_1}\varphi\left(\frac{u - 1}{\sigma_1}\right) \mbox{ with } 0 < \alpha < 1,\ \sigma_0,\sigma_1 > 0 \mbox{ and } \varphi(u) = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{u^2}{2}\right).
-    \end{align*}
-    \textbf{Estimators.}
-    \begin{equation*}
-        u_{\rm CM} = 1 - \alpha,\ u_{\rm MAP} = \left\{\begin{split}
-            &0, &&\mbox{ if } \frac{\alpha}{\sigma_0} > \frac{1 - \alpha}{\sigma_1},\\
-            &1, &&\mbox{ if } \frac{\alpha}{\sigma_0} < \frac{1 - \alpha}{\sigma_1},\\
-            &\{0,1\}, &&\mbox{ if } \frac{\alpha}{\sigma_0} = \frac{1 - \alpha}{\sigma_1}.
-        \end{split}\right.
-    \end{equation*}
-\end{example}
 
 %------------------------------------------------------------------------------%
 
