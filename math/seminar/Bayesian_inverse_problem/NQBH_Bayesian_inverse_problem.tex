@@ -461,6 +461,123 @@ We have the following:
 \begin{lemma}
     Let Assumption 1 hold. Then for every $u\in H$ and every $s > 0$, there is a unique solution $v$ of equation (10.4) in the space $C([0,\infty);H)\cap C((0,\infty);\mathcal{H}^s)$. We write $v(t) = \exp(-At)u$.
 \end{lemma}
+To motivate this statement, and in particular the high degree of regularity seen at each fixed $t$, we argue as follows.
+
+Note that, if the initial condition is expanded in the eigenbasis as
+\begin{align*}
+    u = \sum_{j=1}^\infty u_j\varphi_j,\ u_j = \langle u,\varphi_j\rangle,
+\end{align*}
+then the solution of (10.4) has the form
+\begin{align*}
+    v(t) = \sum_{j=1}^\infty u_je^{-\alpha_jt}\varphi_j.
+\end{align*}
+Thus
+\begin{align*}
+    \|v(t)\|_{\mathcal{H}^s}^2 = \sum_{j=1}^\infty j^{2s/d}e^{-2\alpha_jt}|u_j|^2\asymp\sum_{j=1}^\infty \alpha_j^se^{-2\alpha_jt}|u_j|^2 = t^{-s}\sum_{j=1}^\infty (\alpha_jt)^se^{-2\alpha_jt}|u_j|^2\le Ct^{-s}\sum_{j=1}^\infty |u_j|^2 = Ct^{-s}\|u\|_H^2.
+\end{align*}
+It follows that $v(t)\in\mathcal{H}^s$ for any $s > 0$, provided $u\in H$.
+
+%
+We are interested in the inverse problem of finding $u$ from $y$ where
+\begin{align*}
+    y = v(1) + \eta = G(u) + \eta = e^{-A}u + \eta.
+\end{align*}
+Here $\eta\in H$ is noise and $G(u)\coloneqq v(1) = e^{-A}u$.
+
+Formally this looks like an infinite-dimensional linear version of the inverse problem (10.1), extended from finite dimensions to a Hilbert space setting.
+
+\fbox{However, the infinite-dimensional setting throws up significant new issues.}
+
+To see this, assume that there is $\beta_c > 0$ s.t. $\eta$ has regularity $\mathcal{H}^\beta$ iff $\beta < \beta_c$.
+
+Then $y$ is not in the image space of $G$ which is, of course, contained in $\bigcap_{s > 0} \mathcal{H}^s$.
+
+Applying the formal inverse of $G$ to $y$ results in an object which is not in $H$.
+
+%
+To overcome this problem, we will apply a Bayesian approach and hence will need to put probability measures on the Hilbert space $H$; in particular we will want to study $\mathbb{P}(u)$, $\mathbb{P}(y|u)$, and $\mathbb{P}(u|y)$, all probability measures on $H$.
+
+\subsection{Elliptic Inverse Problem}
+\textit{1 motivation for adopting the Bayesian approach to inverse problems is that prior modeling is a transparent approach to dealing with under-determined inverse problems}; it forms a rational approach to dealing with the 2nd difficulty, labeled 2 in Sect. 1.1.
+
+The elliptic inverse problem we now describe is a concrete example of an under-determined inverse problem.
+
+%
+As in Sect. 1.2, $D\subset\mathbb{R}^d$ denotes a bounded open set, with Lispchitz boundary $\partial D$.
+
+We define the Gelfand triple of Hilbert spaces $V\subset H\subset V^*$ by \textbf{(10.5)}
+\begin{align*}
+    H = (L^2(D),\langle\cdot,\cdot\rangle,\|\cdot\|),\ V = (H_0^1(D),\langle\nabla\cdot,\nabla\cdot\rangle,\|\cdot\|_V = \|\nabla\cdot\|),
+\end{align*}
+and $V^*$ the dual of $V$ w.r.t. the pairing induced by $H$.
+
+Note that $\|\cdot\|\le C_{\rm p}\|\cdot\|_V$ for some constant $C_{\rm p}$: the Poincar\'e inequality.
+
+%
+Let $\kappa\in X\coloneqq L^\infty(D)$ satisfy \textbf{(10.6)}
+\begin{align*}
+    \operatorname{ess\inf}_{{\bf x}\in D} \kappa({\bf x}) = \kappa_{\min} > 0.
+\end{align*}
+Now consider the equation
+\begin{equation*}
+    \label{elliptic}
+    \tag{elliptic}
+    \left\{\begin{split}
+        -\nabla\cdot(\kappa\nabla p) &= f,\ {\bf x}\in D,\\
+        p &= 0,\ {\bf x}\in\partial D.
+    \end{split}\right.    
+\end{equation*}
+Lax-Milgram theory yields the following:
+
+\begin{lemma}
+    Assume that $f\in V^*$ and that $\kappa$ satisfies (10.6). Then (10.7) has a unique weak solution $p\in V$. This solution satisfies
+    \begin{align*}
+        \|p\|_V\le\frac{\|f\|_{V^*}}{\kappa_{\min}},
+    \end{align*}
+    and, if $f\in H$,
+    \begin{align*}
+        \|p\|_V\le C_p\frac{\|f\|}{\kappa_{\min}}.
+    \end{align*}
+\end{lemma}
+We will be interested in the inverse problem of finding $\kappa$ from $y$ where \textbf{(10.8)}
+\begin{align*}
+    y_j = l_j(p) + \eta_j,\ j = 1,\ldots,J.
+\end{align*}
+Here $l_j\in V^*$ is a continuous linear functional on $V$ and $\eta_j$ is a noise.
+
+%
+Notice that the unknown, $\kappa\in X$, is a function (infinite dimensional), whereas the data from which we wish to determine $\kappa$ is finite dimensional: ${\bf y}\in\mathbb{R}^J$.
+
+The problem is severely under-determined, illustrating point 2 from Sect. 1.1.
+
+\fbox{1 way to treat such problems is by adopting the Bayesian framework, using prior modeling to fill in missing information.}
+
+We will take the unknown function to be $u$ where either $u = \kappa$ or $u = \log\kappa$.
+
+In either case, we will define $G_j(u) = l_j(p)$ and, noting that $p$ is then a nonlinear function of $u$, (10.8) may be written as \textbf{(10.9)}
+\begin{align*}
+    {\bf y} = G(u) + \boldsymbol{\eta},
+\end{align*}
+where ${\bf y},\boldsymbol{\eta}\in\mathbb{R}^J$ and $G:X^+\subset X\to\mathbb{R}^J$.
+
+The set $X^+$ is introduced because $G$ may not be defined on the whole of $X$.
+
+In particular, the positivity constraint (10.6) is only satisfied on \textbf{(10.10)}
+\begin{align*}
+    X^+\coloneqq\left\{u\in X;\operatorname{ess\inf}_{{\bf x}\in D} u({\bf x}) > 0\right\}\subset X
+\end{align*}
+in the case where $\kappa = u$.
+
+On the other hand, if $\kappa = \exp(u)$, then the positivity constraint (10.6) is satisfied for any $u\in X$ and we may take $X^+ = X$.
+
+%
+Notice that we again need probability measures on function space, here the Banach space $X = L^\infty(D)$.
+
+Furthermore, in the case where $u = \kappa$, these probability measures should charge only positive functions, in view of the desired inequality (10.6).
+
+Probability on Banach spaces of functions is most naturally developed in the setting of separable spaces, which $L^\infty(D)$ is not.
+
+This difficulty can be circumvented in various different ways as we describe in what follows.
 
 \subsection{Prior Modeling}
 \textbf{Goal.} \textit{Show how to construct probability measures on a function space, adopting a constructive approach based on random series}.
@@ -481,9 +598,11 @@ We normalize these functions so that $\|\phi_j\| = 1$ for $j\in\mathbb{Z}_{> 0}$
 We also introduce another element $m_0\in X$, not necessarily normalized to 1.
 
 Define the function $u$ by
-\begin{align*}
+\begin{align}
+    \label{random function}
+    \tag{rand-func}
     u\coloneqq m_0 + \sum_{j=1}^\infty u_j\phi_j.
-\end{align*}
+\end{align}
 By randomizing ${\rm u}\coloneqq\{u_j\}_{j=1}^\infty$, we create real-valued random functions on $D$.
 
 (The extension to $\mathbb{R}^n$-valued random functions is straightforward, but omitted for brevity.)
@@ -516,8 +635,46 @@ In dealing with the random series construction, we will also find it useful to c
 \end{align*}
 
 \subsubsection{Uniform Priors}
+To construct the random functions \eqref{random function}, we take $X = L^\infty(D)$, choose the deterministic sequence $\gamma = \{\gamma_j\}_{j=1}^\infty\in l^1$ and specify the i.i.d. sequence $\xi = \{\xi_j\}_{j=1}^\infty$ by $\xi_j\sim U[-1,1]$, uniform random variables on $[-1,1]$ (see, e.g., \cite[Sect. 3.3]{Pope2000}).
 
+Assume further that there are finite, strictly positive constants $m_{\min},m_{\max}$, and $\delta$ s.t.
+\begin{align*}
+    \operatorname{ess\inf}_{{\bf x}\in D} m_0({\bf x})\ge m_{\min},\ \operatorname{ess\sup}_{{\bf x}\in D} m_0({\bf x})\le m_{\max},\ \|\gamma\|_{l^1} = \frac{\delta}{1 + \delta}m_{\min}.
+\end{align*}
+The space $X$ is not separable and so, instead, we work with the space $X'$ found as the closure of the linear span of the functions $(m_0,\{\phi_j\}_{j=1}^\infty)$ w.r.t. the norm $\|\cdot\|_\infty$ on $X$.
 
+The Banach space $(X',\|\cdot\|_\infty)$ is separable.
+
+\begin{theorem}
+    The following holds $\mathbb{P}$-almost surely: the sequence of functions $\{u^N\}_{N=1}^\infty$ given by (10.12) is Cauchy in $X'$, and the limiting function $u$ given by \eqref{random function} satisfies
+    \begin{align*}
+        \frac{1}{1 + \delta}m_{\min}\le u({\bf x})\le m_{\max} + \frac{\delta}{1 + \delta}m_{\min} \mbox{ a.e. } {\bf x}\in D.
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    See \cite[pp. 322--323]{Dashti_Stuart2017}.
+\end{proof}
+
+\begin{example}
+    Consider the random function \eqref{random function} as specified in this section.
+    
+    By Theorem 2 we have that, $\mathbb{P}$-a.s., \textbf{(10.13)}
+    \begin{align*}
+        u({\bf x})\ge\frac{1}{1 + \delta}m_{\min} > 0, \mbox{ a.e. } {\bf x}\in D.
+    \end{align*}
+    Set $\kappa = u$ in the elliptic equation \eqref{elliptic}, so that the coefficient $\kappa$ in the equation and the solution $p$ are random variables on $(\mathbb{R}^\infty,\mathcal{B}(\mathbb{R}^\infty),\mathbb{P})$.
+    
+    Since (10.13) holds $\mathbb{P}$-a.s., Lemma 2 shows that, again $\mathbb{P}$-a.s.,
+    \begin{align*}
+        \|p\|_V\le(1 + \delta)\frac{\|f\|_{V^*}}{m_{\min}}.
+    \end{align*}
+    Since the RHS is nonrandom, we have that for all $r\in\mathbb{Z}^+$ the random variable $p\in L_{\mathbb{P}}^r(\Omega;V)$:
+    \begin{align*}
+        \mathbb{E}\|p\|_V^r < \infty.
+    \end{align*}
+    In fact $\mathbb{E}\exp(\alpha\|p\|_V^r) < \infty$ for all $r\in\mathbb{Z}^+$ and $\alpha\in(0,\infty)$.
+\end{example}
 
 
 \newpage
